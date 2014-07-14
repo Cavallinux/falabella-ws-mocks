@@ -1,0 +1,553 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions name="AdministrationWS"
+	targetNamespace="http://ws.scc.taisachile.cl/" xmlns:ns1="http://ws.scc.taisachile.cl/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<wsdl:types>
+		<xs:schema elementFormDefault="unqualified" targetNamespace="http://ws.scc.taisachile.cl/"
+			version="1.0" xmlns:tns="http://ws.scc.taisachile.cl/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+			<xs:element name="ActivateSoftToken" type="tns:ActivateSoftToken" />
+			<xs:element name="ActivateSoftTokenResponse" type="tns:ActivateSoftTokenResponse" />
+			<xs:element name="CreateSoftToken" type="tns:CreateSoftToken" />
+			<xs:element name="CreateSoftTokenResponse" type="tns:CreateSoftTokenResponse" />
+			<xs:element name="addDailyAmount" type="tns:addDailyAmount" />
+			<xs:element name="addDailyAmountResponse" type="tns:addDailyAmountResponse" />
+			<xs:element name="assignGrid" type="tns:assignGrid" />
+			<xs:element name="assignGridResponse" type="tns:assignGridResponse" />
+			<xs:element name="assignToken" type="tns:assignToken" />
+			<xs:element name="assignTokenResponse" type="tns:assignTokenResponse" />
+			<xs:element name="getCells" type="tns:getCells" />
+			<xs:element name="getCellsResponse" type="tns:getCellsResponse" />
+			<xs:element name="getGeneratedChallengeByClient" type="tns:getGeneratedChallengeByClient" />
+			<xs:element name="getGeneratedChallengeByClientResponse"
+				type="tns:getGeneratedChallengeByClientResponse" />
+			<xs:element name="getUser" type="tns:getUser" />
+			<xs:element name="getUserMG" type="tns:getUserMG" />
+			<xs:element name="getUserMGResponse" type="tns:getUserMGResponse" />
+			<xs:element name="getUserResponse" type="tns:getUserResponse" />
+			<xs:element name="lockDevice" type="tns:lockDevice" />
+			<xs:element name="lockDeviceResponse" type="tns:lockDeviceResponse" />
+			<xs:element name="unlockDevice" type="tns:unlockDevice" />
+			<xs:element name="unlockDeviceResponse" type="tns:unlockDeviceResponse" />
+			<xs:complexType name="addDailyAmount">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="addDailyAmountParam"
+						type="tns:addDailyAmountParamVO" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="addDailyAmountParamVO">
+				<xs:complexContent>
+					<xs:extension base="tns:abstractParamVO">
+						<xs:sequence>
+							<xs:element minOccurs="0" name="deviceType" type="xs:string" />
+							<xs:element minOccurs="0" name="money" type="tns:moneyVO" />
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:complexType abstract="true" name="abstractParamVO">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="contextVO" type="tns:contextVO" />
+					<xs:element minOccurs="0" name="userVO" type="tns:userVO" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="moneyVO">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="amount" type="xs:decimal" />
+					<xs:element minOccurs="0" name="currency" type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="contextVO">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="channel" type="xs:string" />
+					<xs:element minOccurs="0" name="company" type="xs:string" />
+					<xs:element minOccurs="0" name="source" type="xs:string" />
+					<xs:element minOccurs="0" name="transactionType" type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="userVO">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="groupId" type="xs:string" />
+					<xs:element minOccurs="0" name="userId" type="xs:string" />
+					<xs:element minOccurs="0" name="userIdType" type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="addDailyAmountResponse">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="return"
+						type="tns:addDailyAmountResponseVO" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="addDailyAmountResponseVO">
+				<xs:complexContent>
+					<xs:extension base="tns:abstractResponseVO">
+						<xs:sequence />
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:complexType abstract="true" name="abstractResponseVO">
+				<xs:sequence>
+					<xs:element name="errorCode" type="xs:int" />
+					<xs:element minOccurs="0" name="errorMessage" type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="assignGrid">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="params" type="tns:assignGridParamVO" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="assignGridParamVO">
+				<xs:complexContent>
+					<xs:extension base="tns:abstractParamVO">
+						<xs:sequence>
+							<xs:element minOccurs="0" name="challengeCount" type="xs:int" />
+							<xs:element minOccurs="0" name="comment" type="xs:string" />
+							<xs:element minOccurs="0" name="leastUsedCellUsageCount"
+								type="xs:int" />
+							<xs:element minOccurs="0" name="lifeTime" type="xs:long" />
+							<xs:element minOccurs="0" name="serialNumber" type="xs:string" />
+							<xs:element minOccurs="0" name="state" type="xs:string" />
+							<xs:element minOccurs="0" name="superSede" type="xs:long" />
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:complexType name="assignGridResponse">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="return"
+						type="tns:assignGridResponseVO" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="assignGridResponseVO">
+				<xs:complexContent>
+					<xs:extension base="tns:abstractResponseVO">
+						<xs:sequence />
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:complexType name="getUser">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="getUserParam" type="tns:getUserParamVO" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="getUserParamVO">
+				<xs:complexContent>
+					<xs:extension base="tns:abstractParamVO">
+						<xs:sequence>
+							<xs:element name="getContactInfo" type="xs:boolean" />
+							<xs:element name="getDevices" type="xs:boolean" />
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:complexType name="getUserResponse">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="return" type="tns:getUserResponseVO" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="getUserResponseVO">
+				<xs:complexContent>
+					<xs:extension base="tns:abstractResponseVO">
+						<xs:sequence>
+							<xs:element maxOccurs="unbounded" minOccurs="0" name="devices"
+								nillable="true" type="tns:deviceVO" />
+							<xs:element minOccurs="0" name="fullName" type="xs:string" />
+							<xs:element minOccurs="0" name="user" type="tns:userVO" />
+							<xs:element maxOccurs="unbounded" minOccurs="0" name="userInfo"
+								nillable="true" type="tns:contactoInfoVO" />
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:complexType name="deviceVO">
+				<xs:sequence>
+					<xs:element name="attemptsRemaining" type="xs:int" />
+					<xs:element minOccurs="0" name="serialNumber" type="xs:string" />
+					<xs:element minOccurs="0" name="state" type="xs:string" />
+					<xs:element minOccurs="0" name="type" type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="contactoInfoVO">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="label" type="xs:string" />
+					<xs:element minOccurs="0" name="value" type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="getUserMG">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="getUserParam" type="tns:getUserParamVO" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="getUserMGResponse">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="return" type="tns:getUserResponseMGVO" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="getUserResponseMGVO">
+				<xs:complexContent>
+					<xs:extension base="tns:abstractResponseVO">
+						<xs:sequence>
+							<xs:element maxOccurs="unbounded" minOccurs="0" name="devices"
+								nillable="true" type="tns:deviceMGVO" />
+							<xs:element minOccurs="0" name="fullName" type="xs:string" />
+							<xs:element minOccurs="0" name="user" type="tns:userVO" />
+							<xs:element maxOccurs="unbounded" minOccurs="0" name="userInfo"
+								nillable="true" type="tns:contactoInfoVO" />
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:complexType name="deviceMGVO">
+				<xs:sequence>
+					<xs:element name="attemptsRemaining" type="xs:int" />
+					<xs:element minOccurs="0" name="groupIDG" type="xs:string" />
+					<xs:element minOccurs="0" name="serialNumber" type="xs:string" />
+					<xs:element minOccurs="0" name="state" type="xs:string" />
+					<xs:element minOccurs="0" name="tokenSet" type="xs:string" />
+					<xs:element minOccurs="0" name="type" type="xs:string" />
+					<xs:element minOccurs="0" name="vendor" type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="getGeneratedChallengeByClient">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="params" type="tns:getTransaParamVO" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="getTransaParamVO">
+				<xs:complexContent>
+					<xs:extension base="tns:abstractParamVO">
+						<xs:sequence />
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:complexType name="getGeneratedChallengeByClientResponse">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="return" type="tns:getTransaResponseVO" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="getTransaResponseVO">
+				<xs:complexContent>
+					<xs:extension base="tns:abstractResponseVO">
+						<xs:sequence>
+							<xs:element maxOccurs="unbounded" minOccurs="0"
+								name="transactions" nillable="true" type="tns:transactionVO" />
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:complexType name="transactionVO">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="accountOrigin" type="xs:string" />
+					<xs:element minOccurs="0" name="amount" type="xs:string" />
+					<xs:element minOccurs="0" name="date" type="xs:string" />
+					<xs:element minOccurs="0" name="destinationAccount"
+						type="xs:string" />
+					<xs:element minOccurs="0" name="destinationBank" type="xs:string" />
+					<xs:element name="idTransaction" type="xs:long" />
+					<xs:element minOccurs="0" name="state" type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="assignToken">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="params" type="tns:assignTokenParamVO" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="assignTokenParamVO">
+				<xs:complexContent>
+					<xs:extension base="tns:abstractParamVO">
+						<xs:sequence>
+							<xs:element minOccurs="0" name="comment" type="xs:string" />
+							<xs:element minOccurs="0" name="resetToken" type="xs:boolean" />
+							<xs:element minOccurs="0" name="resetTokenResponse1"
+								type="xs:string" />
+							<xs:element minOccurs="0" name="resetTokenResponse2"
+								type="xs:string" />
+							<xs:element minOccurs="0" name="serialNumber" type="xs:string" />
+							<xs:element minOccurs="0" name="state" type="xs:string" />
+							<xs:element minOccurs="0" name="vendor" type="xs:string" />
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:complexType name="assignTokenResponse">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="return"
+						type="tns:assignTokenResponseVO" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="assignTokenResponseVO">
+				<xs:complexContent>
+					<xs:extension base="tns:abstractResponseVO">
+						<xs:sequence />
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:complexType name="CreateSoftToken">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="params"
+						type="tns:createSoftTokenParamVO" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="createSoftTokenParamVO">
+				<xs:complexContent>
+					<xs:extension base="tns:abstractParamVO">
+						<xs:sequence>
+							<xs:element minOccurs="0" name="cellID" type="xs:string" />
+							<xs:element minOccurs="0" name="emailClient" type="xs:string" />
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:complexType name="CreateSoftTokenResponse">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="return"
+						type="tns:createSoftTokenResponseVO" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="createSoftTokenResponseVO">
+				<xs:complexContent>
+					<xs:extension base="tns:abstractResponseVO">
+						<xs:sequence>
+							<xs:element minOccurs="0" name="activationCode" type="xs:string" />
+							<xs:element minOccurs="0" name="serial" type="xs:string" />
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:complexType name="lockDevice">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="params" type="tns:lockDeviceParamVO" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="lockDeviceParamVO">
+				<xs:complexContent>
+					<xs:extension base="tns:abstractParamVO">
+						<xs:sequence />
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:complexType name="lockDeviceResponse">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="return"
+						type="tns:lockDeviceResponseVO" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="lockDeviceResponseVO">
+				<xs:complexContent>
+					<xs:extension base="tns:abstractResponseVO">
+						<xs:sequence>
+							<xs:element name="correlative" type="xs:long" />
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:complexType name="unlockDevice">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="params" type="tns:unlockDeviceParamVO" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="unlockDeviceParamVO">
+				<xs:complexContent>
+					<xs:extension base="tns:abstractParamVO">
+						<xs:sequence>
+							<xs:element minOccurs="0" name="deviceType" type="xs:string" />
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:complexType name="unlockDeviceResponse">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="return"
+						type="tns:unlockDeviceResponseVO" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="unlockDeviceResponseVO">
+				<xs:complexContent>
+					<xs:extension base="tns:abstractResponseVO">
+						<xs:sequence />
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:complexType name="ActivateSoftToken">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="params"
+						type="tns:activateSoftTokenParamVO" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="activateSoftTokenParamVO">
+				<xs:complexContent>
+					<xs:extension base="tns:abstractParamVO">
+						<xs:sequence>
+							<xs:element minOccurs="0" name="registrationCode"
+								type="xs:string" />
+							<xs:element minOccurs="0" name="serialNumber" type="xs:string" />
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:complexType name="ActivateSoftTokenResponse">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="return"
+						type="tns:activateSoftTokenResponseVO" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="activateSoftTokenResponseVO">
+				<xs:complexContent>
+					<xs:extension base="tns:abstractResponseVO">
+						<xs:sequence />
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:complexType name="getCells">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="params" type="tns:getCellsParamVO" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="getCellsParamVO">
+				<xs:complexContent>
+					<xs:extension base="tns:abstractParamVO">
+						<xs:sequence />
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:complexType name="getCellsResponse">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="return" type="tns:getCellsResponseVO" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="getCellsResponseVO">
+				<xs:complexContent>
+					<xs:extension base="tns:abstractResponseVO">
+						<xs:sequence>
+							<xs:element maxOccurs="unbounded" minOccurs="0" name="cells"
+								nillable="true" type="tns:cellVO" />
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:complexType name="cellVO">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="downloadLink" type="xs:string" />
+					<xs:element minOccurs="0" name="id" type="xs:string" />
+					<xs:element minOccurs="0" name="OS" type="xs:string" />
+					<xs:element minOccurs="0" name="versionOS" type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+		</xs:schema>
+	</wsdl:types>
+	<wsdl:message name="getGeneratedChallengeByClientResponse">
+		<wsdl:part element="ns1:getGeneratedChallengeByClientResponse"
+			name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="lockDeviceResponse">
+		<wsdl:part element="ns1:lockDeviceResponse" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="assignGrid">
+		<wsdl:part element="ns1:assignGrid" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="getUserMG">
+		<wsdl:part element="ns1:getUserMG" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="ActivateSoftTokenResponse">
+		<wsdl:part element="ns1:ActivateSoftTokenResponse" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="lockDevice">
+		<wsdl:part element="ns1:lockDevice" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="addDailyAmount">
+		<wsdl:part element="ns1:addDailyAmount" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="assignGridResponse">
+		<wsdl:part element="ns1:assignGridResponse" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="assignToken">
+		<wsdl:part element="ns1:assignToken" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="CreateSoftToken">
+		<wsdl:part element="ns1:CreateSoftToken" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="addDailyAmountResponse">
+		<wsdl:part element="ns1:addDailyAmountResponse" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="unlockDeviceResponse">
+		<wsdl:part element="ns1:unlockDeviceResponse" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="getGeneratedChallengeByClient">
+		<wsdl:part element="ns1:getGeneratedChallengeByClient" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="getCells">
+		<wsdl:part element="ns1:getCells" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="ActivateSoftToken">
+		<wsdl:part element="ns1:ActivateSoftToken" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="getUser">
+		<wsdl:part element="ns1:getUser" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="getUserMGResponse">
+		<wsdl:part element="ns1:getUserMGResponse" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="getUserResponse">
+		<wsdl:part element="ns1:getUserResponse" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="CreateSoftTokenResponse">
+		<wsdl:part element="ns1:CreateSoftTokenResponse" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="unlockDevice">
+		<wsdl:part element="ns1:unlockDevice" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="getCellsResponse">
+		<wsdl:part element="ns1:getCellsResponse" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="assignTokenResponse">
+		<wsdl:part element="ns1:assignTokenResponse" name="parameters" />
+	</wsdl:message>
+	<wsdl:portType name="AdministrationWS">
+		<wsdl:operation name="addDailyAmount">
+			<wsdl:input message="ns1:addDailyAmount" name="addDailyAmount" />
+			<wsdl:output message="ns1:addDailyAmountResponse" name="addDailyAmountResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="assignGrid">
+			<wsdl:input message="ns1:assignGrid" name="assignGrid" />
+			<wsdl:output message="ns1:assignGridResponse" name="assignGridResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="getUser">
+			<wsdl:input message="ns1:getUser" name="getUser" />
+			<wsdl:output message="ns1:getUserResponse" name="getUserResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="getUserMG">
+			<wsdl:input message="ns1:getUserMG" name="getUserMG" />
+			<wsdl:output message="ns1:getUserMGResponse" name="getUserMGResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="getGeneratedChallengeByClient">
+			<wsdl:input message="ns1:getGeneratedChallengeByClient"
+				name="getGeneratedChallengeByClient" />
+			<wsdl:output message="ns1:getGeneratedChallengeByClientResponse"
+				name="getGeneratedChallengeByClientResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="assignToken">
+			<wsdl:input message="ns1:assignToken" name="assignToken" />
+			<wsdl:output message="ns1:assignTokenResponse" name="assignTokenResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="CreateSoftToken">
+			<wsdl:input message="ns1:CreateSoftToken" name="CreateSoftToken" />
+			<wsdl:output message="ns1:CreateSoftTokenResponse" name="CreateSoftTokenResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="lockDevice">
+			<wsdl:input message="ns1:lockDevice" name="lockDevice" />
+			<wsdl:output message="ns1:lockDeviceResponse" name="lockDeviceResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="unlockDevice">
+			<wsdl:input message="ns1:unlockDevice" name="unlockDevice" />
+			<wsdl:output message="ns1:unlockDeviceResponse" name="unlockDeviceResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="ActivateSoftToken">
+			<wsdl:input message="ns1:ActivateSoftToken" name="ActivateSoftToken" />
+			<wsdl:output message="ns1:ActivateSoftTokenResponse"
+				name="ActivateSoftTokenResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="getCells">
+			<wsdl:input message="ns1:getCells" name="getCells" />
+			<wsdl:output message="ns1:getCellsResponse" name="getCellsResponse" />
+		</wsdl:operation>
+	</wsdl:portType>
+</wsdl:definitions>

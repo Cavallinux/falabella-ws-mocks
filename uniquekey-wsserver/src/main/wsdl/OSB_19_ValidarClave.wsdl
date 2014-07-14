@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://mdwcorp.falabella.com/OSB/wsdl/CMR/CORP/SwitchRiesgo/cliente/validaClave/valida-v1.0" xmlns:cs="http://mdwcorp.falabella.com/common/schema/clientservice" xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:req="http://mdwcorp.falabella.com/OSB/schema/CMR/CORP/cliente/validaClave/Req-v2012.06" xmlns:resp="http://mdwcorp.falabella.com/OSB/schema/CMR/CORP/cliente/validaClave/Resp-v2012.06" xmlns:cliente="http://mdwcorp.falabella.com/schema/CMR/cliente/v2012.6" xmlns:clave="http://mdwcorp.falabella.com/schema/CMR/clave/v2012.6" xmlns:tarjeta="http://mdwcorp.falabella.com/schema/CMR/tarjeta/v2012.6" targetNamespace="http://mdwcorp.falabella.com/OSB/wsdl/CMR/CORP/SwitchRiesgo/cliente/validaClave/valida-v1.0">
+	<wsdl:types>
+		<xs:schema xmlns:cs="http://mdwcorp.falabella.com/common/schema/clientservice" xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" targetNamespace="http://new.webservice.namespace" elementFormDefault="qualified">
+			<xs:import namespace="http://mdwcorp.falabella.com/OSB/schema/CMR/CORP/cliente/validaClave/Req-v2012.06" schemaLocation="OSB_19_ValidarClaveReq.xsd"/>
+			<xs:import namespace="http://mdwcorp.falabella.com/OSB/schema/CMR/CORP/cliente/validaClave/Resp-v2012.06" schemaLocation="OSB_19_ValidarClaveResp.xsd"/>
+			<xs:import namespace="http://mdwcorp.falabella.com/common/schema/clientservice" schemaLocation="MdwCorp_Common_clientService.xsd"/>
+			<xs:import namespace="http://schemas.xmlsoap.org/soap/envelope/" schemaLocation="MdwCorp_Common_soapFault.xsd"/>
+		</xs:schema>
+	</wsdl:types>
+	<wsdl:message name="ClaveMsgReq">
+		<wsdl:part name="ClaveReqParam" element="req:ValidarClaveRequest"/>
+	</wsdl:message>
+	<wsdl:message name="ClaveMsgResp">
+		<wsdl:part name="ClaveRespParam" element="resp:ValidarClaveResponse"/>
+	</wsdl:message>
+	<wsdl:message name="FaultMsg">
+		<wsdl:part name="FaultParam" element="env:Fault"/>
+	</wsdl:message>
+	<wsdl:message name="ClientServiceMsg">
+		<wsdl:part name="ClientServiceParam" element="cs:ClientService"/>
+	</wsdl:message>
+	<wsdl:portType name="ValidarClavePt">
+		<wsdl:operation name="ValidaClaveOp">
+			<wsdl:input message="tns:ClaveMsgReq"/>
+			<wsdl:output message="tns:ClaveMsgResp"/>
+			<wsdl:fault name="Fault" message="tns:FaultMsg"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="ValidarClaveBinding" type="tns:ValidarClavePt">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="ValidaClaveOp">
+			<soap:operation soapAction="http://mdwcorp.falabella.com/OSB/wsdl/CMR/CORP/SwitchRiesgo/cliente/validaClave/valida-v1.0/ValidaClave" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+				<soap:header message="tns:ClientServiceMsg" part="ClientServiceParam" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="ValidarClaveService">
+		<wsdl:port name="ValidarClavePort" binding="tns:ValidarClaveBinding">
+			<soap:address location="http://localhost"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

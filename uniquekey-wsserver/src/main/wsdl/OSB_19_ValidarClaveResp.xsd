@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Esquema que representa el Response de la operacion Validar Clave -->
+<!-- Desarrollado por Marcelo Valeria - ext_mvaleria@falabella.cl - 2012 -->
+<xs:schema xmlns="http://mdwcorp.falabella.com/OSB/schema/CMR/CORP/cliente/validaClave/Resp-v2012.06" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://mdwcorp.falabella.com/OSB/schema/CMR/CORP/cliente/validaClave/Resp-v2012.06" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="ValidarClaveResponse" type="ValidarClaveResponse_TYPE"/>
+	<xs:complexType name="ValidarClaveResponse_TYPE">
+		<xs:sequence>
+			<xs:element name="operacionStatus">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="codigoStatus" type="xs:string"/>
+						<xs:element name="glosaStatus" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="nivelDeSeguridad" type="xs:string"/>
+			<xs:element name="sistemaResolutor" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

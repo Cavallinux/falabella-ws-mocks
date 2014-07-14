@@ -1,0 +1,727 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<wsdl:definitions name="AdministrationCUWS" targetNamespace="http://ws.scc.taisachile.cl/" xmlns:ns1="http://ws.scc.taisachile.cl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	
+	<wsdl:types>
+		
+		<xs:schema elementFormDefault="unqualified" targetNamespace="http://ws.scc.taisachile.cl/"
+			version="1.0" xmlns:tns="http://ws.scc.taisachile.cl/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+			<xs:element name="changeLevelSecurity" type="tns:changeLevelSecurity" />
+			<xs:element name="changeLevelSecurityResponse" type="tns:changeLevelSecurityResponse" />
+			<xs:element name="changePassword" type="tns:changePassword" />
+			<xs:element name="changePasswordResponse" type="tns:changePasswordResponse" />
+			<xs:element name="createUser" type="tns:createUser" />
+			<xs:element name="createUserResponse" type="tns:createUserResponse" />
+			<xs:element name="deleteUserCU" type="tns:deleteUserCU" />
+			<xs:element name="deleteUserCUResponse" type="tns:deleteUserCUResponse" />
+			<xs:element name="existChangePasswordSecurityCodeCurrent"
+				type="tns:existChangePasswordSecurityCodeCurrent" />
+			<xs:element name="existChangePasswordSecurityCodeCurrentResponse"
+				type="tns:existChangePasswordSecurityCodeCurrentResponse" />
+			<xs:element name="generateChangePasswordSecurityCode"
+				type="tns:generateChangePasswordSecurityCode" />
+			<xs:element name="generateChangePasswordSecurityCodeResponse"
+				type="tns:generateChangePasswordSecurityCodeResponse" />
+			<xs:element name="getGenericOptions" type="tns:getGenericOptions" />
+			<xs:element name="getGenericOptionsResponse" type="tns:getGenericOptionsResponse" />
+			<xs:element name="getUserCU" type="tns:getUserCU" />
+			<xs:element name="getUserCUResponse" type="tns:getUserCUResponse" />
+			<xs:element name="lockUserByDevice" type="tns:lockUserByDevice" />
+			<xs:element name="lockUserByDeviceResponse" type="tns:lockUserByDeviceResponse" />
+			<xs:element name="validateChangePasswordSecurityCode"
+				type="tns:validateChangePasswordSecurityCode" />
+			<xs:element name="validateChangePasswordSecurityCodeResponse"
+				type="tns:validateChangePasswordSecurityCodeResponse" />
+			<xs:element name="validateSecurityCode" type="tns:validateSecurityCode" />
+			<xs:element name="validateSecurityCodeResponse" type="tns:validateSecurityCodeResponse" />
+			
+			<xs:complexType name="changeLevelSecurity">
+				
+				<xs:sequence>
+					<xs:element minOccurs="0" name="params"
+						type="tns:changeLevelSecurityParamVO" />
+				</xs:sequence>
+			</xs:complexType>
+			
+			<xs:complexType name="changeLevelSecurityParamVO">
+				
+				<xs:complexContent>
+					
+					<xs:extension base="tns:abstractParamVO">
+						
+						<xs:sequence>
+							<xs:element minOccurs="0" name="level" type="xs:string" />
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			
+			<xs:complexType abstract="true" name="abstractParamVO">
+				
+				<xs:sequence>
+					<xs:element minOccurs="0" name="contextVO" type="tns:contextVO" />
+					<xs:element minOccurs="0" name="userVO" type="tns:userVO" />
+				</xs:sequence>
+			</xs:complexType>
+			
+			<xs:complexType name="contextVO">
+				
+				<xs:sequence>
+					<xs:element minOccurs="0" name="channel" type="xs:string" />
+					<xs:element minOccurs="0" name="company" type="xs:string" />
+					<xs:element minOccurs="0" name="source" type="xs:string" />
+					<xs:element minOccurs="0" name="transactionType" type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+			
+			<xs:complexType name="userVO">
+				
+				<xs:sequence>
+					<xs:element minOccurs="0" name="groupId" type="xs:string" />
+					<xs:element minOccurs="0" name="userId" type="xs:string" />
+					<xs:element minOccurs="0" name="userIdType" type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+			
+			<xs:complexType name="changeLevelSecurityResponse">
+				
+				<xs:sequence>
+					<xs:element minOccurs="0" name="return"
+						type="tns:changeLevelSecurityResponseVO" />
+				</xs:sequence>
+			</xs:complexType>
+			
+			<xs:complexType name="changeLevelSecurityResponseVO">
+				
+				<xs:complexContent>
+					
+					<xs:extension base="tns:abstractResponseVO">
+						<xs:sequence />
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			
+			<xs:complexType abstract="true" name="abstractResponseVO">
+				
+				<xs:sequence>
+					<xs:element name="errorCode" type="xs:int" />
+					<xs:element minOccurs="0" name="errorMessage" type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+			
+			<xs:complexType name="changePassword">
+				
+				<xs:sequence>
+					<xs:element minOccurs="0" name="params"
+						type="tns:changePasswordParamVO" />
+				</xs:sequence>
+			</xs:complexType>
+			
+			<xs:complexType name="changePasswordParamVO">
+				
+				<xs:complexContent>
+					
+					<xs:extension base="tns:abstractParamVO">
+						
+						<xs:sequence>
+							<xs:element minOccurs="0" name="password" type="xs:string" />
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			
+			<xs:complexType name="changePasswordResponse">
+				
+				<xs:sequence>
+					<xs:element minOccurs="0" name="return"
+						type="tns:changePasswordResponseVO" />
+				</xs:sequence>
+			</xs:complexType>
+			
+			<xs:complexType name="changePasswordResponseVO">
+				
+				<xs:complexContent>
+					
+					<xs:extension base="tns:abstractResponseVO">
+						<xs:sequence />
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			
+			<xs:complexType name="validateSecurityCode">
+				
+				<xs:sequence>
+					<xs:element minOccurs="0" name="params"
+						type="tns:validateSecurityCodeParamVO" />
+				</xs:sequence>
+			</xs:complexType>
+			
+			<xs:complexType name="validateSecurityCodeParamVO">
+				
+				<xs:complexContent>
+					
+					<xs:extension base="tns:abstractParamVO">
+						
+						<xs:sequence>
+							<xs:element minOccurs="0" name="securityCode" type="xs:string" />
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			
+			<xs:complexType name="validateSecurityCodeResponse">
+				
+				<xs:sequence>
+					<xs:element minOccurs="0" name="return"
+						type="tns:validateSecurityCodeResponseVO" />
+				</xs:sequence>
+			</xs:complexType>
+			
+			<xs:complexType name="validateSecurityCodeResponseVO">
+				
+				<xs:complexContent>
+					
+					<xs:extension base="tns:abstractResponseVO">
+						<xs:sequence />
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			
+			<xs:complexType name="createUser">
+				
+				<xs:sequence>
+					<xs:element minOccurs="0" name="params" type="tns:createUserParamVO" />
+				</xs:sequence>
+			</xs:complexType>
+			
+			<xs:complexType name="createUserParamVO">
+				
+				<xs:complexContent>
+					
+					<xs:extension base="tns:abstractParamVO">
+						
+						<xs:sequence>
+							<xs:element minOccurs="0" name="avatar" type="xs:base64Binary" />
+							<xs:element minOccurs="0" name="avatarType" type="xs:string" />
+							<xs:element maxOccurs="unbounded" minOccurs="0" name="contacts"
+								nillable="true" type="tns:contactoInfoVO" />
+							<xs:element minOccurs="0" name="firstname" type="xs:string" />
+							<xs:element minOccurs="0" name="lastname1" type="xs:string" />
+							<xs:element minOccurs="0" name="lastname2" type="xs:string" />
+							<xs:element minOccurs="0" name="levelSecurity" type="xs:string" />
+							<xs:element maxOccurs="unbounded" minOccurs="0" name="options"
+								nillable="true" type="tns:genericOptionVO" />
+							<xs:element minOccurs="0" name="password" type="xs:string" />
+							<xs:element maxOccurs="unbounded" minOccurs="0"
+								name="questionsAnswers" nillable="true" type="tns:questionAnswerVO" />
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			
+			<xs:complexType name="contactoInfoVO">
+				
+				<xs:sequence>
+					<xs:element minOccurs="0" name="label" type="xs:string" />
+					<xs:element minOccurs="0" name="value" type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+			
+			<xs:complexType name="genericOptionVO">
+				
+				<xs:sequence>
+					<xs:element minOccurs="0" name="description" type="xs:string" />
+					<xs:element name="id" type="xs:long" />
+				</xs:sequence>
+			</xs:complexType>
+			
+			<xs:complexType name="questionAnswerVO">
+				
+				<xs:sequence>
+					<xs:element minOccurs="0" name="answer" type="xs:string" />
+					<xs:element minOccurs="0" name="groupId" type="xs:string" />
+					<xs:element minOccurs="0" name="question" type="xs:string" />
+					<xs:element minOccurs="0" name="userId" type="xs:string" />
+					<xs:element minOccurs="0" name="userIdType" type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+			
+			<xs:complexType name="createUserResponse">
+				
+				<xs:sequence>
+					<xs:element minOccurs="0" name="return"
+						type="tns:createUserResponseVO" />
+				</xs:sequence>
+			</xs:complexType>
+			
+			<xs:complexType name="createUserResponseVO">
+				
+				<xs:complexContent>
+					
+					<xs:extension base="tns:abstractResponseVO">
+						<xs:sequence />
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			
+			<xs:complexType name="getGenericOptions">
+				
+				<xs:sequence>
+					<xs:element minOccurs="0" name="params"
+						type="tns:getGenericOptionsParamVO" />
+				</xs:sequence>
+			</xs:complexType>
+			
+			<xs:complexType name="getGenericOptionsParamVO">
+				
+				<xs:complexContent>
+					
+					<xs:extension base="tns:abstractParamVO">
+						<xs:sequence />
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			
+			<xs:complexType name="getGenericOptionsResponse">
+				
+				<xs:sequence>
+					<xs:element minOccurs="0" name="return"
+						type="tns:getGenericOptionsResponseVO" />
+				</xs:sequence>
+			</xs:complexType>
+			
+			<xs:complexType name="getGenericOptionsResponseVO">
+				
+				<xs:complexContent>
+					
+					<xs:extension base="tns:abstractResponseVO">
+						
+						<xs:sequence>
+							<xs:element maxOccurs="unbounded" minOccurs="0" name="options"
+								nillable="true" type="tns:genericOptionVO" />
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			
+			<xs:complexType name="getUserCU">
+				
+				<xs:sequence>
+					<xs:element minOccurs="0" name="params" type="tns:getUserCUParamVO" />
+				</xs:sequence>
+			</xs:complexType>
+			
+			<xs:complexType name="getUserCUParamVO">
+				
+				<xs:complexContent>
+					
+					<xs:extension base="tns:abstractParamVO">
+						
+						<xs:sequence>
+							<xs:element name="getContactInfo" type="xs:boolean" />
+							<xs:element name="getDevices" type="xs:boolean" />
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			
+			<xs:complexType name="getUserCUResponse">
+				
+				<xs:sequence>
+					<xs:element minOccurs="0" name="return" type="tns:getUserCUResponseVO" />
+				</xs:sequence>
+			</xs:complexType>
+			
+			<xs:complexType name="getUserCUResponseVO">
+				
+				<xs:complexContent>
+					
+					<xs:extension base="tns:abstractResponseVO">
+						
+						<xs:sequence>
+							<xs:element minOccurs="0" name="avatar" type="xs:base64Binary" />
+							<xs:element minOccurs="0" name="avatarType" type="xs:string" />
+							<xs:element maxOccurs="unbounded" minOccurs="0" name="devices"
+								nillable="true" type="tns:deviceVO" />
+							<xs:element minOccurs="0" name="firstnames" type="xs:string" />
+							<xs:element minOccurs="0" name="lastname1" type="xs:string" />
+							<xs:element minOccurs="0" name="lastname2" type="xs:string" />
+							<xs:element minOccurs="0" name="levelSecurity" type="xs:string" />
+							<xs:element maxOccurs="unbounded" minOccurs="0" name="options"
+								nillable="true" type="tns:genericOptionVO" />
+							<xs:element maxOccurs="unbounded" minOccurs="0"
+								name="questionsAnswers" nillable="true" type="tns:questionAnswerVO" />
+							<xs:element minOccurs="0" name="user" type="tns:userVO" />
+							<xs:element maxOccurs="unbounded" minOccurs="0" name="userInfo"
+								nillable="true" type="tns:contactoInfoVO" />
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			
+			<xs:complexType name="deviceVO">
+				
+				<xs:sequence>
+					<xs:element name="attemptsRemaining" type="xs:int" />
+					<xs:element minOccurs="0" name="serialNumber" type="xs:string" />
+					<xs:element minOccurs="0" name="state" type="xs:string" />
+					<xs:element minOccurs="0" name="type" type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+			
+			<xs:complexType name="lockUserByDevice">
+				
+				<xs:sequence>
+					<xs:element minOccurs="0" name="params" type="tns:lockUserParamVO" />
+				</xs:sequence>
+			</xs:complexType>
+			
+			<xs:complexType name="lockUserParamVO">
+				
+				<xs:complexContent>
+					
+					<xs:extension base="tns:abstractParamVO">
+						
+						<xs:sequence>
+							<xs:element minOccurs="0" name="authenticationFactor"
+								type="xs:string" />
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			
+			<xs:complexType name="lockUserByDeviceResponse">
+				
+				<xs:sequence>
+					<xs:element minOccurs="0" name="return" type="tns:lockUserResponseVO" />
+				</xs:sequence>
+			</xs:complexType>
+			
+			<xs:complexType name="lockUserResponseVO">
+				
+				<xs:complexContent>
+					
+					<xs:extension base="tns:abstractResponseVO">
+						<xs:sequence />
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			
+			<xs:complexType name="deleteUserCU">
+				
+				<xs:sequence>
+					<xs:element minOccurs="0" name="params" type="tns:deleteUserCUParamVO" />
+				</xs:sequence>
+			</xs:complexType>
+			
+			<xs:complexType name="deleteUserCUParamVO">
+				
+				<xs:complexContent>
+					
+					<xs:extension base="tns:abstractParamVO">
+						<xs:sequence />
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			
+			<xs:complexType name="deleteUserCUResponse">
+				
+				<xs:sequence>
+					<xs:element minOccurs="0" name="return"
+						type="tns:deleteUserCUResponseVO" />
+				</xs:sequence>
+			</xs:complexType>
+			
+			<xs:complexType name="deleteUserCUResponseVO">
+				
+				<xs:complexContent>
+					
+					<xs:extension base="tns:abstractResponseVO">
+						<xs:sequence />
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			
+			<xs:complexType name="generateChangePasswordSecurityCode">
+				
+				<xs:sequence>
+					<xs:element minOccurs="0" name="params"
+						type="tns:generateChangePasswordSecurityCodeParamVO" />
+				</xs:sequence>
+			</xs:complexType>
+			
+			<xs:complexType name="generateChangePasswordSecurityCodeParamVO">
+				
+				<xs:complexContent>
+					
+					<xs:extension base="tns:abstractParamVO">
+						<xs:sequence />
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			
+			<xs:complexType name="generateChangePasswordSecurityCodeResponse">
+				
+				<xs:sequence>
+					<xs:element minOccurs="0" name="return"
+						type="tns:generateChangePasswordSecurityCodeResponseVO" />
+				</xs:sequence>
+			</xs:complexType>
+			
+			<xs:complexType name="generateChangePasswordSecurityCodeResponseVO">
+				
+				<xs:complexContent>
+					
+					<xs:extension base="tns:abstractResponseVO">
+						
+						<xs:sequence>
+							<xs:element minOccurs="0" name="levelSecurity" type="xs:string" />
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			
+			<xs:complexType name="existChangePasswordSecurityCodeCurrent">
+				
+				<xs:sequence>
+					<xs:element minOccurs="0" name="params"
+						type="tns:existActivationCodeCurrentParamVO" />
+				</xs:sequence>
+			</xs:complexType>
+			
+			<xs:complexType name="existActivationCodeCurrentParamVO">
+				
+				<xs:complexContent>
+					
+					<xs:extension base="tns:abstractParamVO">
+						
+						<xs:sequence>
+							<xs:element minOccurs="0" name="operationType" type="xs:string" />
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			
+			<xs:complexType name="existChangePasswordSecurityCodeCurrentResponse">
+				
+				<xs:sequence>
+					<xs:element minOccurs="0" name="return"
+						type="tns:existActivationCodeCurrentResponseVO" />
+				</xs:sequence>
+			</xs:complexType>
+			
+			<xs:complexType name="existActivationCodeCurrentResponseVO">
+				
+				<xs:complexContent>
+					
+					<xs:extension base="tns:abstractResponseVO">
+						
+						<xs:sequence>
+							<xs:element name="exist" type="xs:boolean" />
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			
+			<xs:complexType name="validateChangePasswordSecurityCode">
+				
+				<xs:sequence>
+					<xs:element minOccurs="0" name="params"
+						type="tns:validateChangePasswordSecurityCodeParamVO" />
+				</xs:sequence>
+			</xs:complexType>
+			
+			<xs:complexType name="validateChangePasswordSecurityCodeParamVO">
+				
+				<xs:complexContent>
+					
+					<xs:extension base="tns:abstractParamVO">
+						
+						<xs:sequence>
+							<xs:element minOccurs="0" name="securityCode" type="xs:string" />
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			
+			<xs:complexType name="validateChangePasswordSecurityCodeResponse">
+				
+				<xs:sequence>
+					<xs:element minOccurs="0" name="return"
+						type="tns:validateChangePasswordSecurityCodeResponseVO" />
+				</xs:sequence>
+			</xs:complexType>
+			
+			<xs:complexType name="validateChangePasswordSecurityCodeResponseVO">
+				
+				<xs:complexContent>
+					
+					<xs:extension base="tns:abstractResponseVO">
+						<xs:sequence />
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+		</xs:schema>
+	</wsdl:types>
+	
+	<wsdl:message name="validateSecurityCodeResponse">
+		<wsdl:part element="ns1:validateSecurityCodeResponse" name="parameters" />
+	</wsdl:message>
+	
+	<wsdl:message name="generateChangePasswordSecurityCode">
+		<wsdl:part element="ns1:generateChangePasswordSecurityCode"
+			name="parameters" />
+	</wsdl:message>
+	
+	<wsdl:message name="createUserResponse">
+		<wsdl:part element="ns1:createUserResponse" name="parameters" />
+	</wsdl:message>
+	
+	<wsdl:message name="validateSecurityCode">
+		<wsdl:part element="ns1:validateSecurityCode" name="parameters" />
+	</wsdl:message>
+	
+	<wsdl:message name="lockUserByDeviceResponse">
+		<wsdl:part element="ns1:lockUserByDeviceResponse" name="parameters" />
+	</wsdl:message>
+	
+	<wsdl:message name="deleteUserCUResponse">
+		<wsdl:part element="ns1:deleteUserCUResponse" name="parameters" />
+	</wsdl:message>
+	
+	<wsdl:message name="deleteUserCU">
+		<wsdl:part element="ns1:deleteUserCU" name="parameters" />
+	</wsdl:message>
+	
+	<wsdl:message name="changePassword">
+		<wsdl:part element="ns1:changePassword" name="parameters" />
+	</wsdl:message>
+	
+	<wsdl:message name="getGenericOptionsResponse">
+		<wsdl:part element="ns1:getGenericOptionsResponse" name="parameters" />
+	</wsdl:message>
+	
+	<wsdl:message name="getUserCUResponse">
+		<wsdl:part element="ns1:getUserCUResponse" name="parameters" />
+	</wsdl:message>
+	
+	<wsdl:message name="generateChangePasswordSecurityCodeResponse">
+		<wsdl:part element="ns1:generateChangePasswordSecurityCodeResponse"
+			name="parameters" />
+	</wsdl:message>
+	
+	<wsdl:message name="getGenericOptions">
+		<wsdl:part element="ns1:getGenericOptions" name="parameters" />
+	</wsdl:message>
+	
+	<wsdl:message name="changePasswordResponse">
+		<wsdl:part element="ns1:changePasswordResponse" name="parameters" />
+	</wsdl:message>
+	
+	<wsdl:message name="getUserCU">
+		<wsdl:part element="ns1:getUserCU" name="parameters" />
+	</wsdl:message>
+	
+	<wsdl:message name="validateChangePasswordSecurityCode">
+		<wsdl:part element="ns1:validateChangePasswordSecurityCode"
+			name="parameters" />
+	</wsdl:message>
+	
+	<wsdl:message name="lockUserByDevice">
+		<wsdl:part element="ns1:lockUserByDevice" name="parameters" />
+	</wsdl:message>
+	
+	<wsdl:message name="existChangePasswordSecurityCodeCurrentResponse">
+		<wsdl:part element="ns1:existChangePasswordSecurityCodeCurrentResponse"
+			name="parameters" />
+	</wsdl:message>
+	
+	<wsdl:message name="existChangePasswordSecurityCodeCurrent">
+		<wsdl:part element="ns1:existChangePasswordSecurityCodeCurrent"
+			name="parameters" />
+	</wsdl:message>
+	
+	<wsdl:message name="validateChangePasswordSecurityCodeResponse">
+		<wsdl:part element="ns1:validateChangePasswordSecurityCodeResponse"
+			name="parameters" />
+	</wsdl:message>
+	
+	<wsdl:message name="changeLevelSecurity">
+		<wsdl:part element="ns1:changeLevelSecurity" name="parameters" />
+	</wsdl:message>
+	
+	<wsdl:message name="changeLevelSecurityResponse">
+		<wsdl:part element="ns1:changeLevelSecurityResponse" name="parameters" />
+	</wsdl:message>
+	
+	<wsdl:message name="createUser">
+		<wsdl:part element="ns1:createUser" name="parameters" />
+	</wsdl:message>
+	
+	<wsdl:portType name="AdministrationCUWS">
+		
+		<wsdl:operation name="changeLevelSecurity">
+			<wsdl:input message="ns1:changeLevelSecurity" name="changeLevelSecurity" />
+			<wsdl:output message="ns1:changeLevelSecurityResponse"
+				name="changeLevelSecurityResponse" />
+		</wsdl:operation>
+		
+		<wsdl:operation name="changePassword">
+			<wsdl:input message="ns1:changePassword" name="changePassword" />
+			<wsdl:output message="ns1:changePasswordResponse" name="changePasswordResponse" />
+		</wsdl:operation>
+		
+		<wsdl:operation name="validateSecurityCode">
+			<wsdl:input message="ns1:validateSecurityCode" name="validateSecurityCode" />
+			<wsdl:output message="ns1:validateSecurityCodeResponse"
+				name="validateSecurityCodeResponse" />
+		</wsdl:operation>
+		
+		<wsdl:operation name="createUser">
+			<wsdl:input message="ns1:createUser" name="createUser" />
+			<wsdl:output message="ns1:createUserResponse" name="createUserResponse" />
+		</wsdl:operation>
+		
+		<wsdl:operation name="getGenericOptions">
+			<wsdl:input message="ns1:getGenericOptions" name="getGenericOptions" />
+			<wsdl:output message="ns1:getGenericOptionsResponse"
+				name="getGenericOptionsResponse" />
+		</wsdl:operation>
+		
+		<wsdl:operation name="getUserCU">
+			<wsdl:input message="ns1:getUserCU" name="getUserCU" />
+			<wsdl:output message="ns1:getUserCUResponse" name="getUserCUResponse" />
+		</wsdl:operation>
+		
+		<wsdl:operation name="lockUserByDevice">
+			<wsdl:input message="ns1:lockUserByDevice" name="lockUserByDevice" />
+			<wsdl:output message="ns1:lockUserByDeviceResponse" name="lockUserByDeviceResponse" />
+		</wsdl:operation>
+		
+		<wsdl:operation name="deleteUserCU">
+			<wsdl:input message="ns1:deleteUserCU" name="deleteUserCU" />
+			<wsdl:output message="ns1:deleteUserCUResponse" name="deleteUserCUResponse" />
+		</wsdl:operation>
+		
+		<wsdl:operation name="generateChangePasswordSecurityCode">
+			<wsdl:input message="ns1:generateChangePasswordSecurityCode"
+				name="generateChangePasswordSecurityCode" />
+			<wsdl:output message="ns1:generateChangePasswordSecurityCodeResponse"
+				name="generateChangePasswordSecurityCodeResponse" />
+		</wsdl:operation>
+		
+		<wsdl:operation name="existChangePasswordSecurityCodeCurrent">
+			<wsdl:input message="ns1:existChangePasswordSecurityCodeCurrent"
+				name="existChangePasswordSecurityCodeCurrent" />
+			<wsdl:output message="ns1:existChangePasswordSecurityCodeCurrentResponse"
+				name="existChangePasswordSecurityCodeCurrentResponse" />
+		</wsdl:operation>
+		
+		<wsdl:operation name="validateChangePasswordSecurityCode">
+			<wsdl:input message="ns1:validateChangePasswordSecurityCode"
+				name="validateChangePasswordSecurityCode" />
+			<wsdl:output message="ns1:validateChangePasswordSecurityCodeResponse"
+				name="validateChangePasswordSecurityCodeResponse" />
+		</wsdl:operation>
+	</wsdl:portType>
+</wsdl:definitions>

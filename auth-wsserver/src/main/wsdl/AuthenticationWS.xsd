@@ -1,0 +1,283 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions name="AuthenticationWS"
+	targetNamespace="http://ws.scc.taisachile.cl/" xmlns:ns1="http://ws.scc.taisachile.cl/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<wsdl:types>
+		<xs:schema elementFormDefault="unqualified" targetNamespace="http://ws.scc.taisachile.cl/"
+			version="1.0" xmlns:tns="http://ws.scc.taisachile.cl/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+			<xs:element name="authenticate" type="tns:authenticate" />
+			<xs:element name="authenticateCU" type="tns:authenticateCU" />
+			<xs:element name="authenticateCUResponse" type="tns:authenticateCUResponse" />
+			<xs:element name="authenticateOTP" type="tns:authenticateOTP" />
+			<xs:element name="authenticateOTPCorp" type="tns:authenticateOTPCorp" />
+			<xs:element name="authenticateOTPCorpResponse" type="tns:authenticateOTPCorpResponse" />
+			<xs:element name="authenticateOTPResponse" type="tns:authenticateOTPResponse" />
+			<xs:element name="authenticateResponse" type="tns:authenticateResponse" />
+			<xs:element name="getChallenge" type="tns:getChallenge" />
+			<xs:element name="getChallengeOTP" type="tns:getChallengeOTP" />
+			<xs:element name="getChallengeOTPCorp" type="tns:getChallengeOTPCorp" />
+			<xs:element name="getChallengeOTPCorpResponse" type="tns:getChallengeOTPCorpResponse" />
+			<xs:element name="getChallengeOTPResponse" type="tns:getChallengeOTPResponse" />
+			<xs:element name="getChallengeResponse" type="tns:getChallengeResponse" />
+			<xs:complexType name="getChallengeOTPCorp">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="getChallengeParamOTPCorp"
+						type="tns:getChallengeOTPParamVO" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="getChallengeOTPParamVO">
+				<xs:complexContent>
+					<xs:extension base="tns:abstractParamVO">
+						<xs:sequence>
+							<xs:element minOccurs="0" name="accountOrigin" type="xs:string" />
+							<xs:element minOccurs="0" name="amount" type="xs:string" />
+							<xs:element minOccurs="0" name="destinationAccount"
+								type="xs:string" />
+							<xs:element minOccurs="0" name="destinationBank" type="xs:string" />
+							<xs:element minOccurs="0" name="deviceType" type="xs:string" />
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:complexType abstract="true" name="abstractParamVO">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="contextVO" type="tns:contextVO" />
+					<xs:element minOccurs="0" name="userVO" type="tns:userVO" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="contextVO">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="channel" type="xs:string" />
+					<xs:element minOccurs="0" name="company" type="xs:string" />
+					<xs:element minOccurs="0" name="source" type="xs:string" />
+					<xs:element minOccurs="0" name="transactionType" type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="userVO">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="groupId" type="xs:string" />
+					<xs:element minOccurs="0" name="userId" type="xs:string" />
+					<xs:element minOccurs="0" name="userIdType" type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="getChallengeOTPCorpResponse">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="return"
+						type="tns:getChallengeResponseVO" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="getChallengeResponseVO">
+				<xs:complexContent>
+					<xs:extension base="tns:abstractResponseVO">
+						<xs:sequence>
+							<xs:element maxOccurs="unbounded" minOccurs="0"
+								name="challenge" nillable="true" type="xs:string" />
+							<xs:element minOccurs="0" name="deviceType" type="xs:string" />
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:complexType abstract="true" name="abstractResponseVO">
+				<xs:sequence>
+					<xs:element name="errorCode" type="xs:int" />
+					<xs:element minOccurs="0" name="errorMessage" type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="authenticateOTPCorp">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="authenticateOTPCorpParam"
+						type="tns:authenticateOTPParamVO" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="authenticateOTPParamVO">
+				<xs:complexContent>
+					<xs:extension base="tns:abstractParamVO">
+						<xs:sequence>
+							<xs:element minOccurs="0" name="accountOrigin" type="xs:string" />
+							<xs:element minOccurs="0" name="amount" type="xs:string" />
+							<xs:element maxOccurs="unbounded" minOccurs="0"
+								name="challengeResponse" nillable="true" type="xs:string" />
+							<xs:element minOccurs="0" name="destinationAccount"
+								type="xs:string" />
+							<xs:element minOccurs="0" name="destinationBank" type="xs:string" />
+							<xs:element minOccurs="0" name="deviceType" type="xs:string" />
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:complexType name="authenticateOTPCorpResponse">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="return"
+						type="tns:authenticateResponseVO" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="authenticateResponseVO">
+				<xs:complexContent>
+					<xs:extension base="tns:abstractResponseVO">
+						<xs:sequence />
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:complexType name="getChallengeOTP">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="getChallengeParamOTP"
+						type="tns:getChallengeOTPParamVO" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="getChallengeOTPResponse">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="return"
+						type="tns:getChallengeResponseVO" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="getChallenge">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="getChallengeParam" type="tns:getChallengeParamVO" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="getChallengeParamVO">
+				<xs:complexContent>
+					<xs:extension base="tns:abstractParamVO">
+						<xs:sequence>
+							<xs:element minOccurs="0" name="deviceType" type="xs:string" />
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:complexType name="getChallengeResponse">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="return"
+						type="tns:getChallengeResponseVO" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="authenticateCU">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="authenticateParam" type="tns:authenticateParamVO" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="authenticateParamVO">
+				<xs:complexContent>
+					<xs:extension base="tns:abstractParamVO">
+						<xs:sequence>
+							<xs:element maxOccurs="unbounded" minOccurs="0"
+								name="challengeResponse" nillable="true" type="xs:string" />
+							<xs:element minOccurs="0" name="deviceType" type="xs:string" />
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:complexType name="authenticateCUResponse">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="return"
+						type="tns:authenticateResponseCUVO" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="authenticateResponseCUVO">
+				<xs:complexContent>
+					<xs:extension base="tns:abstractResponseVO">
+						<xs:sequence>
+							<xs:element minOccurs="0" name="levelSecurity" type="xs:string" />
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:complexType name="authenticateOTP">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="authenticateOTPParam"
+						type="tns:authenticateOTPParamVO" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="authenticateOTPResponse">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="return"
+						type="tns:authenticateResponseVO" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="authenticate">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="authenticateParam" type="tns:authenticateParamVO" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="authenticateResponse">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="return"
+						type="tns:authenticateResponseVO" />
+				</xs:sequence>
+			</xs:complexType>
+		</xs:schema>
+	</wsdl:types>
+	<wsdl:message name="authenticateOTPCorpResponse">
+		<wsdl:part element="ns1:authenticateOTPCorpResponse" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="authenticateOTPResponse">
+		<wsdl:part element="ns1:authenticateOTPResponse" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="getChallengeOTP">
+		<wsdl:part element="ns1:getChallengeOTP" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="authenticateOTP">
+		<wsdl:part element="ns1:authenticateOTP" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="authenticateOTPCorp">
+		<wsdl:part element="ns1:authenticateOTPCorp" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="authenticateResponse">
+		<wsdl:part element="ns1:authenticateResponse" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="getChallengeOTPResponse">
+		<wsdl:part element="ns1:getChallengeOTPResponse" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="getChallenge">
+		<wsdl:part element="ns1:getChallenge" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="getChallengeOTPCorp">
+		<wsdl:part element="ns1:getChallengeOTPCorp" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="getChallengeResponse">
+		<wsdl:part element="ns1:getChallengeResponse" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="getChallengeOTPCorpResponse">
+		<wsdl:part element="ns1:getChallengeOTPCorpResponse" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="authenticateCU">
+		<wsdl:part element="ns1:authenticateCU" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="authenticateCUResponse">
+		<wsdl:part element="ns1:authenticateCUResponse" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="authenticate">
+		<wsdl:part element="ns1:authenticate" name="parameters" />
+	</wsdl:message>
+	<wsdl:portType name="AuthenticationWS">
+		<wsdl:operation name="getChallengeOTPCorp">
+			<wsdl:input message="ns1:getChallengeOTPCorp" name="getChallengeOTPCorp" />
+			<wsdl:output message="ns1:getChallengeOTPCorpResponse"
+				name="getChallengeOTPCorpResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="authenticateOTPCorp">
+			<wsdl:input message="ns1:authenticateOTPCorp" name="authenticateOTPCorp" />
+			<wsdl:output message="ns1:authenticateOTPCorpResponse"
+				name="authenticateOTPCorpResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="getChallengeOTP">
+			<wsdl:input message="ns1:getChallengeOTP" name="getChallengeOTP" />
+			<wsdl:output message="ns1:getChallengeOTPResponse" name="getChallengeOTPResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="getChallenge">
+			<wsdl:input message="ns1:getChallenge" name="getChallenge" />
+			<wsdl:output message="ns1:getChallengeResponse" name="getChallengeResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="authenticateCU">
+			<wsdl:input message="ns1:authenticateCU" name="authenticateCU" />
+			<wsdl:output message="ns1:authenticateCUResponse" name="authenticateCUResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="authenticateOTP">
+			<wsdl:input message="ns1:authenticateOTP" name="authenticateOTP" />
+			<wsdl:output message="ns1:authenticateOTPResponse" name="authenticateOTPResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="authenticate">
+			<wsdl:input message="ns1:authenticate" name="authenticate" />
+			<wsdl:output message="ns1:authenticateResponse" name="authenticateResponse" />
+		</wsdl:operation>
+	</wsdl:portType>
+</wsdl:definitions>

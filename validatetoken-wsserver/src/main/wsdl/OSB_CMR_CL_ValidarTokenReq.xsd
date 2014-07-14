@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+	targetNamespace="http://mdwcorp.falabella.com/OSB/schema/CMR/CL/Cliente/ValidarToken/Req-v2014.6"
+	elementFormDefault="qualified" xmlns:tns="http://mdwcorp.falabella.com/OSB/schema/CMR/CL/Cliente/ValidarToken/Req-v2014.6" xmlns:whttp="http://www.w3.org/ns/wsdl/http" xmlns:wsdl="http://www.w3.org/ns/wsdl" xmlns:wsoap="http://www.w3.org/ns/wsdl/soap" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+
+
+	<xs:element name="validarTokenRequestExp">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="token" type="xs:string" minOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+</xs:schema>

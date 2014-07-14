@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+	<import resource="classpath:META-INF/cxf/cxf.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
+
+	<context:annotation-config />
+	<context:component-scan base-package="com.falabella.ws.services" />
+
+	<jaxws:endpoint id="validateTokenWS" address="/ValidateToken">
+		<jaxws:implementor>
+			<ref bean="validateTokenService" />
+		</jaxws:implementor>
+	</jaxws:endpoint>
+
+	<jaxws:endpoint id="validateKeyWS" address="/ValidateKey">
+		<jaxws:implementor>
+			<ref bean="validateKeyService" />
+		</jaxws:implementor>
+	</jaxws:endpoint>
+	
+	<jaxws:endpoint id="administrationCUWS" address="/AdministrationCU">
+		<jaxws:implementor>
+			<ref bean="adminCUService" />
+		</jaxws:implementor>
+	</jaxws:endpoint>
+	
+	<jaxws:endpoint id="administrationWS" address="/Administration">
+		<jaxws:implementor>
+			<ref bean="administrationService" />
+		</jaxws:implementor>
+	</jaxws:endpoint>
+	
+	<jaxws:endpoint id="authenticationWS" address="/Authentication">
+		<jaxws:implementor>
+			<ref bean="authenticationService" />
+		</jaxws:implementor>
+	</jaxws:endpoint>
+	
+	<jaxws:endpoint id="getPreferencesWS" address="/AdministrationV2">
+		<jaxws:implementor>
+			<ref bean="getPreferencesService" />
+		</jaxws:implementor>
+	</jaxws:endpoint>
+	
+	<jaxws:endpoint id="panQueryWS" address="/PanQueryID">
+		<jaxws:implementor>
+			<ref bean="panQueryService" />
+		</jaxws:implementor>
+	</jaxws:endpoint>
+
+</beans>

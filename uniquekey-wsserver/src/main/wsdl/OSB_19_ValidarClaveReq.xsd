@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Esquema que representa el Request de la operacion Validar Clave -->
+<!-- Desarrollado por Marcelo Valeria - ext_mvaleria@falabella.cl - 2012 -->
+<xs:schema xmlns="http://mdwcorp.falabella.com/OSB/schema/CMR/CORP/cliente/validaClave/Req-v2012.06" xmlns:cliente="http://mdwcorp.falabella.com/schema/CMR/cliente/v2012.6" xmlns:clave="http://mdwcorp.falabella.com/schema/CMR/clave/v2012.6" xmlns:tarjeta="http://mdwcorp.falabella.com/schema/CMR/tarjeta/v2012.6" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://mdwcorp.falabella.com/OSB/schema/CMR/CORP/cliente/validaClave/Req-v2012.06" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://mdwcorp.falabella.com/schema/CMR/cliente/v2012.6" schemaLocation="BO_CMR_CORP_Cliente_v2012.6.xsd"/>
+	<xs:import namespace="http://mdwcorp.falabella.com/schema/CMR/clave/v2012.6" schemaLocation="BO_CMR_CORP_Clave_v2012.6.xsd"/>
+	<xs:import namespace="http://mdwcorp.falabella.com/schema/CMR/tarjeta/v2012.6" schemaLocation="BO_CMR_CORP_Tarjeta_v2012.6.xsd"/>
+	<xs:element name="ValidarClaveRequest" type="ValidarClaveRequest_TYPE"/>
+	<xs:complexType name="ValidarClaveRequest_TYPE">
+		<xs:sequence>
+			<xs:choice>
+				<xs:element ref="cliente:documentoIdentidad"/>
+				<xs:element ref="tarjeta:PAN"/>
+			</xs:choice>
+			<xs:element ref="clave:clave"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

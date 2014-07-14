@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="AdministrationWSImplService" targetNamespace="http://impl.ws.scc.taisachile.cl/" xmlns:ns1="http://ws.scc.taisachile.cl/" xmlns:ns2="http://cxf.apache.org/bindings/xformat" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://impl.ws.scc.taisachile.cl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:import location="AdministrationWS.xsd" namespace="http://ws.scc.taisachile.cl/" />
+  <wsdl:binding name="AdministrationWSImplServiceSoapBinding" type="ns1:AdministrationWS">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="addDailyAmount">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="addDailyAmount">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="addDailyAmountResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="assignGrid">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="assignGrid">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="assignGridResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUser">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getUser">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getUserResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="assignToken">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="assignToken">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="assignTokenResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getGeneratedChallengeByClient">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getGeneratedChallengeByClient">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getGeneratedChallengeByClientResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserMG">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getUserMG">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getUserMGResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateSoftToken">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="CreateSoftToken">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CreateSoftTokenResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="lockDevice">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="lockDevice">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="lockDeviceResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="unlockDevice">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="unlockDevice">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="unlockDeviceResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActivateSoftToken">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="ActivateSoftToken">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ActivateSoftTokenResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCells">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getCells">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getCellsResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AdministrationWSImplService">
+    <wsdl:port binding="tns:AdministrationWSImplServiceSoapBinding" name="AdministrationWSImplPort">
+      <soap:address location="http://localhost:8090/switch-ws/AdministrationWS" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

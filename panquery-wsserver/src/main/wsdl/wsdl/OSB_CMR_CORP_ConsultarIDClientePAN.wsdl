@@ -1,0 +1,70 @@
+<wsdl:definitions
+	targetNamespace="http://mdwcorp.falabella.com/OSB/wsdl/CMR/CORP/Satif/tarjeta/consultarIDClientePAN/consulta-v1.0"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+	xmlns:tns="http://mdwcorp.falabella.com/OSB/wsdl/CMR/CORP/Satif/tarjeta/consultarIDClientePAN/consulta-v1.0"
+	xmlns:cs="http://mdwcorp.falabella.com/common/schema/clientservice"
+	xmlns:envelope="http://schemas.xmlsoap.org/soap/envelope/"
+	xmlns:req="http://mdwcorp.falabella.com/OSB/schema/CMR/CORP/tarjeta/consultarIDClientePAN/Req-v2012.08"
+	xmlns:resp="http://mdwcorp.falabella.com/OSB/schema/CMR/CORP/tarjeta/consultarIDClientePAN/Resp-v2012.08">
+	<wsdl:types>
+		<xs:schema
+			targetNamespace="http://mdwcorp.falabella.com/OSB/wsdl/CMR/CORP/Satif/tarjeta/consultarIDClientePAN/consulta-v1.0"
+			elementFormDefault="qualified">
+			<xs:import namespace="http://mdwcorp.falabella.com/common/schema/clientservice"
+				schemaLocation="../Schemas/MdwCorp_Common_clientService.xsd"/>
+			<xs:import namespace="http://schemas.xmlsoap.org/soap/envelope/"
+				schemaLocation="../Schemas/MdwCorp_Common_soapFault.xsd"/>
+			<xs:import
+				namespace="http://mdwcorp.falabella.com/OSB/schema/CMR/CORP/tarjeta/consultarIDClientePAN/Req-v2012.08"
+				schemaLocation="../Schemas/OSB_CMR_CORP_ConsultarIDClientePANReq.xsd"/>
+			<xs:import
+				namespace="http://mdwcorp.falabella.com/OSB/schema/CMR/CORP/tarjeta/consultarIDClientePAN/Resp-v2012.08"
+				schemaLocation="../Schemas/OSB_CMR_CORP_ConsultarIDClientePANResp.xsd"/>
+		</xs:schema>
+	</wsdl:types>
+	<wsdl:message name="ClienteMsgReq">
+		<wsdl:part name="ClienteReqParam" element="req:consultarIDClientePANRequest"/>
+	</wsdl:message>
+	<wsdl:message name="ClienteMsgResp">
+		<wsdl:part name="ClienteRespParam" element="resp:consultarIDClientePANResponse"/>
+	</wsdl:message>
+	<wsdl:message name="FaultMsg">
+		<wsdl:part name="FaultParam" element="envelope:Fault"/>
+	</wsdl:message>
+	<wsdl:message name="ClientServiceMsg">
+		<wsdl:part name="ClientServiceParam" element="cs:ClientService"/>
+	</wsdl:message>
+	<wsdl:portType name="ConsultarIDClientePANPt">
+		<wsdl:operation name="ConsultaIDClientePANOp">
+			<wsdl:input message="tns:ClienteMsgReq"/>
+			<wsdl:output message="tns:ClienteMsgResp"/>
+			<wsdl:fault name="Fault" message="tns:FaultMsg"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="ConsultarIDClientePANBinding" type="tns:ConsultarIDClientePANPt">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="ConsultaIDClientePANOp">
+			<soap:operation
+				soapAction="http://mdwcorp.falabella.com/OSB/wsdl/CMR/CORP/Satif/tarjeta/consultarIDClientePAN/consulta-v1.0/ConsultaIDClientePAN"
+				style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+				<soap:header message="tns:ClientServiceMsg" part="ClientServiceParam" use="literal"
+				/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="ConsultarIDClientePANService">
+		<wsdl:port name="ConsultarIDClientePANPort" binding="tns:ConsultarIDClientePANBinding">
+			<soap:address location="http://localhost"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

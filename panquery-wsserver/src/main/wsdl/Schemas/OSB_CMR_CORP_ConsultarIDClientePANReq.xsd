@@ -1,0 +1,16 @@
+<!-- Esquema que representa el Request de la operacion Consultar ID Cliente mediante PAN--><!-- Desarrollado por Marcelo Valeria - ext_mvaleria@falabella.cl - 2012 -->
+<xs:schema
+	targetNamespace="http://mdwcorp.falabella.com/OSB/schema/CMR/CORP/tarjeta/consultarIDClientePAN/Req-v2012.08"
+	elementFormDefault="qualified" attributeFormDefault="unqualified"
+	xmlns="http://mdwcorp.falabella.com/OSB/schema/CMR/CORP/tarjeta/consultarIDClientePAN/Req-v2012.08"
+	xmlns:tarjeta="http://mdwcorp.falabella.com/schema/CMR/tarjeta/v2012.6"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:import namespace="http://mdwcorp.falabella.com/schema/CMR/tarjeta/v2012.6"
+		schemaLocation="BO_CMR_CORP_Tarjeta_v2012.6.xsd"/>
+	<xs:element name="consultarIDClientePANRequest" type="consultarIDClientePANRequest_TYPE"/>
+	<xs:complexType name="consultarIDClientePANRequest_TYPE">
+		<xs:sequence>
+			<xs:element ref="tarjeta:PAN"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

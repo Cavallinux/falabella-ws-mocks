@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="AuthenticationWSImplService" targetNamespace="http://impl.ws.scc.taisachile.cl/" xmlns:ns1="http://ws.scc.taisachile.cl/" xmlns:ns2="http://cxf.apache.org/bindings/xformat" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://impl.ws.scc.taisachile.cl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:import location="AuthenticationWS.xsd" namespace="http://ws.scc.taisachile.cl/" />
+  <wsdl:binding name="AuthenticationWSImplServiceSoapBinding" type="ns1:AuthenticationWS">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getChallengeOTPCorp">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getChallengeOTPCorp">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getChallengeOTPCorpResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="authenticateOTPCorp">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="authenticateOTPCorp">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="authenticateOTPCorpResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getChallengeOTP">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getChallengeOTP">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getChallengeOTPResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getChallenge">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getChallenge">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getChallengeResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="authenticateCU">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="authenticateCU">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="authenticateCUResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="authenticateOTP">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="authenticateOTP">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="authenticateOTPResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="authenticate">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="authenticate">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="authenticateResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AuthenticationWSImplService">
+    <wsdl:port binding="tns:AuthenticationWSImplServiceSoapBinding" name="AuthenticationWSImplPort">
+      <soap:address location="http://localhost:8090/switch-ws/AuthenticationWS" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

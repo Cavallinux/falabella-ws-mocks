@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.falabella</groupId>
+		<artifactId>wsmocks</artifactId>
+		<version>0.0.1</version>
+	</parent>
+
+	<artifactId>wsmocks-webapp</artifactId>
+	<packaging>war</packaging>
+	<name>Mocks WS, web application</name>
+	<description>Web application que contiene las implementaciones mock de los servicios web de CMR y TAISA</description>
+
+	<build>
+		<finalName>wsmocks</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>1.3.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.3.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.falabella</groupId>
+			<artifactId>validatetoken-wsserver</artifactId>
+			<version>0.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.falabella</groupId>
+			<artifactId>uniquekey-wsserver</artifactId>
+			<version>0.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.falabella</groupId>
+			<artifactId>admincu-wsserver</artifactId>
+			<version>0.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.falabella</groupId>
+			<artifactId>admin-wsserver</artifactId>
+			<version>0.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.falabella</groupId>
+			<artifactId>auth-wsserver</artifactId>
+			<version>0.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.falabella</groupId>
+			<artifactId>wsmocks-utils</artifactId>
+			<version>0.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.falabella</groupId>
+			<artifactId>getpreferences-wsserver</artifactId>
+			<version>0.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.falabella</groupId>
+			<artifactId>panquery-wsserver</artifactId>
+			<version>0.0.1</version>
+		</dependency>
+	</dependencies>
+</project>

@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2008 rel. 2 sp1 (http://www.altova.com) by joyarzun (EMBRACE) -->
+<xs:schema xmlns:cliente="http://mdwcorp.falabella.com/schema/CMR/cliente/v2012.6" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://mdwcorp.falabella.com/schema/CMR/cliente/v2012.6" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="documentoIdentidad" type="cliente:documentoIdentidad_Type">
+		<xs:annotation>
+			<xs:documentation>Documento de identidad del cliente</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="documentoIdentidad_Type">
+		<xs:sequence>
+			<xs:element ref="cliente:tipoDocumentoIdentidad"/>
+			<xs:element ref="cliente:numeroDocumentoIdentidad"/>
+			<xs:element ref="cliente:verificadorDocumentoIdentidad" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="tipoDocumentoIdentidad" type="cliente:tipoDocumentoIdentidad_TYPE">
+		<xs:annotation>
+			<xs:documentation>Tipo de documento de identidad del cliente de acuerdo a la realidad de cada pais</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:simpleType name="tipoDocumentoIdentidad_TYPE">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="RUT">
+				<xs:annotation>
+					<xs:documentation>CL Rol Unico Tributario</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="NIT">
+				<xs:annotation>
+					<xs:documentation>CO Numero de Identificacion Tributaria </xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CEDULA_DE_CIUDADANIA">
+				<xs:annotation>
+					<xs:documentation>CO Cedula de ciudadania</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CEDULA_DE_EXTRANJERIA">
+				<xs:annotation>
+					<xs:documentation>CO Cedula de extranjeria</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="TARJETA_DE_IDENTIDAD">
+				<xs:annotation>
+					<xs:documentation>CO Tarjeta de identidad (menores)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PASAPORTE">
+				<xs:annotation>
+					<xs:documentation>CORP Pasaporte</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CARNET_DIPLOMATICO">
+				<xs:annotation>
+					<xs:documentation>CORP Carnet diplomatico</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DNI">
+				<xs:annotation>
+					<xs:documentation>PE, AR Documento nacional de identidad</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CARNET_DE_EXTRANJERIA">
+				<xs:annotation>
+					<xs:documentation>PE Carnet de extranjeria</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CARNET_FFPP">
+				<xs:annotation>
+					<xs:documentation>PE Carnet de fuerzas policiales</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CARNET_FFAA">
+				<xs:annotation>
+					<xs:documentation>PE Carnet de fuerzas armadas</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="LT">
+				<xs:annotation>
+					<xs:documentation>PE Libreta tributaria</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="RUC">
+				<xs:annotation>
+					<xs:documentation>PE registro unico de contribuyentes</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="LIBRETA_CIVICA">
+				<xs:annotation>
+					<xs:documentation>AR Libreta civica</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="LIBRETA_ENROLAMIENTO">
+				<xs:annotation>
+					<xs:documentation>AR Libreta de enrolamiento</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PRESTAMOS_SODIMAC_MUTUAL">
+				<xs:annotation>
+					<xs:documentation>NO DEFINIDO</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CUIT">
+				<xs:annotation>
+					<xs:documentation>AR Codigo unico de identificacion tributaria</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CUIL">
+				<xs:annotation>
+					<xs:documentation>AR Codigo unico de identificacion laboral</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CI">
+				<xs:annotation>
+					<xs:documentation>AR Cedula de identidad</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CIU">
+				<xs:annotation>
+					<xs:documentation>AR Clave de identificacion unica</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="numeroDocumentoIdentidad" type="cliente:numeroDocumentoIdentidad_TYPE"/>
+	<xs:simpleType name="numeroDocumentoIdentidad_TYPE">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]*"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="verificadorDocumentoIdentidad" type="cliente:verificadorDocumentoIdentidad_TYPE">
+		<xs:annotation>
+			<xs:documentation>Verificador del numero del documento del cliente.Obligatorio en el caso de Chile</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:simpleType name="verificadorDocumentoIdentidad_TYPE">
+		<xs:restriction base="xs:string"/>
+	</xs:simpleType>
+	<xs:element name="tipoCliente" type="cliente:tipoCliente_TYPE">
+		<xs:annotation>
+			<xs:documentation>Tipo de cliente de CMR</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:simpleType name="tipoCliente_TYPE">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="NORMAL"/>
+			<xs:enumeration value="PREMIUM"/>
+			<xs:enumeration value="ELITE"/>
+			<xs:enumeration value="NORMAL_EMPLOYEE"/>
+			<xs:enumeration value="PREMIUM_EMPLOYEE"/>
+			<xs:enumeration value="ELITE_EMPLOYEE"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="nombreCompleto" type="cliente:nombreCompleto_Type">
+		<xs:annotation>
+			<xs:documentation>Nombres y apellidos del cliente</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="nombreCompleto_Type">
+		<xs:sequence>
+			<xs:element ref="cliente:nombres"/>
+			<xs:element ref="cliente:apellidoPaterno"/>
+			<xs:element ref="cliente:apellidoMaterno"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="nombres" type="cliente:nombres_TYPE">
+		<xs:annotation>
+			<xs:documentation>Nombres del cliente</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:simpleType name="nombres_TYPE">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[^0-9]*"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="apellidoMaterno" type="cliente:apellidoMaterno_TYPE">
+		<xs:annotation>
+			<xs:documentation>Apellido materno del cliente</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:simpleType name="apellidoMaterno_TYPE">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[^0-9]*"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="apellidoPaterno" type="cliente:apellidoPaterno_TYPE">
+		<xs:annotation>
+			<xs:documentation>Apellido paterno del cliente</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:simpleType name="apellidoPaterno_TYPE">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[^0-9]*"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="fechaNacimiento" type="cliente:fechaNacimiento_TYPE">
+		<xs:annotation>
+			<xs:documentation>Fecha de nacimiento del cliente</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:simpleType name="fechaNacimiento_TYPE">
+		<xs:restriction base="xs:date"/>
+	</xs:simpleType>
+	<xs:element name="nivelSeguridad" type="cliente:nivelSeguridad_TYPE">
+		<xs:annotation>
+			<xs:documentation>Nivel de seguridad del cliente</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:simpleType name="nivelSeguridad_TYPE">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Alto"/>
+			<xs:enumeration value="Bajo"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="cantidadContratos" type="cliente:cantidadContratos_TYPE">
+		<xs:annotation>
+			<xs:documentation>Cantidad de contratos que tiene el cliente</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:simpleType name="cantidadContratos_TYPE">
+		<xs:restriction base="xs:nonNegativeInteger"/>
+	</xs:simpleType>
+</xs:schema>

@@ -1,0 +1,72 @@
+<wsdl:definitions name="ValidarToken"
+	targetNamespace="http://mdwcorp.falabella.com/OSB/wsdl/CMR/CL/Cliente/ValidarToken-v1.0"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://mdwcorp.falabella.com/OSB/wsdl/CMR/CL/Cliente/ValidarToken-v1.0"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:env="http://schemas.xmlsoap.org/soap/envelope/"
+	xmlns:req="http://mdwcorp.falabella.com/OSB/schema/CMR/CL/Cliente/ValidarToken/Req-v2014.6"
+	xmlns:resp="http://mdwcorp.falabella.com/OSB/schema/CMR/CL/Cliente/ValidarToken/Resp-v2014.6"
+	xmlns:cs="http://mdwcorp.falabella.com/common/schema/clientservice">
+	<wsdl:types>
+		<xsd:schema
+			targetNamespace="http://mdwcorp.falabella.com/OSB/wsdl/CMR/CL/Cliente/ValidarToken-v1.0">
+			<xsd:import schemaLocation="OSB_CMR_CL_ValidarTokenReq.xsd"
+				namespace="http://mdwcorp.falabella.com/OSB/schema/CMR/CL/Cliente/ValidarToken/Req-v2014.6" />
+
+			<xsd:import schemaLocation="OSB_CMR_CL_ValidarTokenResp.xsd"
+				namespace="http://mdwcorp.falabella.com/OSB/schema/CMR/CL/Cliente/ValidarToken/Resp-v2014.6" />
+
+			<xsd:import
+				schemaLocation="MdwCorp_Common_clientService.xsd"
+				namespace="http://mdwcorp.falabella.com/common/schema/clientservice" />
+			<xsd:import
+				schemaLocation="MdwCorp_Common_soapFault.xsd"
+				namespace="http://schemas.xmlsoap.org/soap/envelope/" />
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="ValidarTokenRequest">
+		<wsdl:part name="parameters" element="req:validarTokenRequestExp" />
+	</wsdl:message>
+	<wsdl:message name="ValidarTokenResponse">
+		<wsdl:part name="parameters" element="resp:validarTokenResponseExp" />
+	</wsdl:message>
+
+	<wsdl:message name="FaultMsg">
+		<wsdl:part name="FaultParam" element="env:Fault" />
+	</wsdl:message>
+	<wsdl:message name="ClientServiceMsg">
+		<wsdl:part name="ClientServiceParam" element="cs:ClientService" />
+	</wsdl:message>
+
+	<wsdl:portType name="ValidarTokenPt">
+		<wsdl:operation name="validarTokenOp">
+			<wsdl:input message="tns:ValidarTokenRequest" />
+			<wsdl:output message="tns:ValidarTokenResponse" />
+			<wsdl:fault name="Fault" message="tns:FaultMsg" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="ValidarTokenBinding" type="tns:ValidarTokenPt">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="validarTokenOp">
+			<soap:operation
+				soapAction="http://mdwcorp.falabella.com/OSB/wsdl/CMR/CL/Cliente/ValidarToken-v1.0/ValidarToken" />
+			<wsdl:input>
+				<soap:body use="literal" />
+				<soap:header message="tns:ClientServiceMsg" part="ClientServiceParam"
+					use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="Fault">
+				<soap:fault name="Fault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="ValidarTokenService">
+		<wsdl:port name="ValidarTokenPort" binding="tns:ValidarTokenBinding">
+			<soap:address location="http://localhost/" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

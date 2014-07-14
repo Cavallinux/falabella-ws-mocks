@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2008 rel. 2 sp1 (http://www.altova.com) by joyarzun (EMBRACE) -->
+<xs:schema xmlns:tarjeta="http://mdwcorp.falabella.com/schema/CMR/tarjeta/v2012.6" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://mdwcorp.falabella.com/schema/CMR/tarjeta/v2012.6" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="PAN" type="tarjeta:PAN_TYPE">
+		<xs:annotation>
+			<xs:documentation>Numero de la tarjeta</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:simpleType name="PAN_TYPE">
+		<xs:restriction base="xs:string">
+			<xs:length value="16"/>
+			<xs:pattern value="[0-9]*"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="producto" type="tarjeta:producto_TYPE">
+		<xs:annotation>
+			<xs:documentation>Producto de la tarjeta (VISA, MASTERCARD, CLASICA)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:simpleType name="producto_TYPE">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="VISA"/>
+			<xs:enumeration value="CLASICA"/>
+			<xs:enumeration value="MASTERCARD"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="estado" type="tarjeta:estado_TYPE">
+		<xs:annotation>
+			<xs:documentation>Estado en que se encuentra la tarjeta</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:simpleType name="estado_TYPE">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Activa"/>
+			<xs:enumeration value="Bloqueada"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="tipoTarjeta" type="tarjeta:tipoTarjeta_TYPE">
+		<xs:annotation>
+			<xs:documentation>Tipo de la tarjeta (Titular, Adicional)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:simpleType name="tipoTarjeta_TYPE">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Titular"/>
+			<xs:enumeration value="Adicional"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="CVV" type="tarjeta:CVV_TYPE">
+		<xs:annotation>
+			<xs:documentation>Codigo de seguridad de la tarjeta</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:simpleType name="CVV_TYPE">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9][0-9][0-9]"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="fechaExpiracion" type="tarjeta:fechaExpiracion_TYPE">
+		<xs:annotation>
+			<xs:documentation>Fecha de expiracion de la tarjeta</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="fechaExpiracion_TYPE">
+		<xs:sequence>
+			<xs:element ref="tarjeta:mes"/>
+			<xs:element ref="tarjeta:ano"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="mes" type="tarjeta:mes_TYPE">
+		<xs:annotation>
+			<xs:documentation>Mes de la fecha de expiracion de la tarjeta</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:simpleType name="mes_TYPE">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="(0[1-9]|1[012])+"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="ano" type="tarjeta:ano_TYPE">
+		<xs:annotation>
+			<xs:documentation>Año de la fecha de expiracion de la tarjeta</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:simpleType name="ano_TYPE">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="(20[1-9][2-9])+"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>
