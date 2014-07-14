@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.falabella</groupId>
-		<artifactId>wsmocks</artifactId>
+		<artifactId>falabella-ws-mocks</artifactId>
 		<version>0.0.1</version>
 	</parent>
 
@@ -14,12 +14,31 @@
 	<name>Mocks WS, web application</name>
 	<description>Web application que contiene las implementaciones mock de los servicios web de CMR y TAISA</description>
 
+	<properties>
+		<tomcat.manager.url>http://falabellavm:8080/manager</tomcat.manager.url>
+		<tomcat.username>manager</tomcat.username>
+		<tomcat.password>manager</tomcat.password>
+		<final.name>wsmocks</final.name>
+	</properties>
+	
 	<build>
-		<finalName>wsmocks</finalName>
+		<finalName>${final.name}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>tomcat-maven-plugin</artifactId>
+				<version>1.1</version>
+				<configuration>
+					<url>${tomcat.manager.url}</url>
+					<username>${tomcat.username}</username>
+					<password>${tomcat.password}</password>
+					<update>true</update>
+					<path>/${project.build.finalName}</path>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
@@ -79,6 +98,11 @@
 			<groupId>com.falabella</groupId>
 			<artifactId>panquery-wsserver</artifactId>
 			<version>0.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.7.7</version>
 		</dependency>
 	</dependencies>
 </project>
