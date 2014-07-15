@@ -1,5 +1,9 @@
 package com.falabella.ws.services.uniquekey;
 
+import java.util.List;
+
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Service;
 
 import com.falabella.mdwcorp.common.schema.clientservice.ClientServiceTYPE;
@@ -11,13 +15,15 @@ import com.falabella.mdwcorp.osb.wsdl.cmr.corp.switchriesgo.cliente.validaclave.
 
 @Service("validateKeyService")
 public class UniqueKeyServiceImpl implements ValidarClavePt {
+    @Resource(name = "validPasswordsList")
+    private List<String> validPasswords;
 
     @Override
     public ValidarClaveResponseTYPE validaClaveOp(ValidarClaveRequestTYPE claveReqParam, ClientServiceTYPE clientServiceParam) throws FaultMsg {
 	OperacionStatus operacionStatus = new OperacionStatus();
         String password = claveReqParam.getClave();
         
-	if ("1234".endsWith(password) || "1234567890".endsWith(password)) {
+	if (validPasswords.contains(password)) {
             operacionStatus.setCodigoStatus("00");
             operacionStatus.setGlosaStatus("Ok");
         } else if ("9999999999".equals(password)) {
