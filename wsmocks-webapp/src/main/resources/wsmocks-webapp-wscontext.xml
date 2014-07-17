@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:util="http://www.springframework.org/schema/util"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -15,11 +14,24 @@
 
 	<context:annotation-config />
 	<context:component-scan base-package="com.falabella.ws.services" />
-	
-	<util:list id="validPasswordsList" list-class="java.util.ArrayList" >
+
+	<util:list id="validPasswordsList" list-class="java.util.ArrayList">
 		<value>1234</value>
 		<value>1234567890</value>
 	</util:list>
+	
+	<!--  
+		En este mapa, se deben asociar las tarjeta de credito validas para los botones de pago a los rut de clientes. Los
+		Rut deben ir sin puntos, guion ni digito verificador. La aplicacion hace el calculo del digito verificador
+	-->
+	<util:map id="rutCreditCardsMap" map-class="java.util.HashMap">
+		<entry key="6271801052479391" value="15956647" />
+		<entry key="6271801077438026" value="22222222" />
+		<entry key="4600720010114113" value="15956647" />
+		<entry key="4051880400349994" value="18117235" />
+		<entry key="4051885600446623" value="17671685" />
+		<entry key="6271801077438025" value="1" />
+	</util:map>
 
 	<jaxws:endpoint id="validateTokenWS" address="/ValidateToken">
 		<jaxws:implementor>
@@ -32,31 +44,31 @@
 			<ref bean="validateKeyService" />
 		</jaxws:implementor>
 	</jaxws:endpoint>
-	
+
 	<jaxws:endpoint id="administrationCUWS" address="/AdministrationCU">
 		<jaxws:implementor>
 			<ref bean="adminCUService" />
 		</jaxws:implementor>
 	</jaxws:endpoint>
-	
+
 	<jaxws:endpoint id="administrationWS" address="/Administration">
 		<jaxws:implementor>
 			<ref bean="administrationService" />
 		</jaxws:implementor>
 	</jaxws:endpoint>
-	
+
 	<jaxws:endpoint id="authenticationWS" address="/Authentication">
 		<jaxws:implementor>
 			<ref bean="authenticationService" />
 		</jaxws:implementor>
 	</jaxws:endpoint>
-	
+
 	<jaxws:endpoint id="getPreferencesWS" address="/AdministrationV2">
 		<jaxws:implementor>
 			<ref bean="getPreferencesService" />
 		</jaxws:implementor>
 	</jaxws:endpoint>
-	
+
 	<jaxws:endpoint id="panQueryWS" address="/PanQueryID">
 		<jaxws:implementor>
 			<ref bean="panQueryService" />

@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project activeEnvironment="Default" name="Consulta de Rut, por Tarjeta de credito" resourceRoot="" soapui-version="4.6.2" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="ConsultarIDClientePANBinding" type="wsdl" bindingName="{http://mdwcorp.falabella.com/OSB/wsdl/CMR/CORP/Satif/tarjeta/consultarIDClientePAN/consulta-v1.0}ConsultarIDClientePANBinding" soapVersion="1_1" anonymous="optional" definition="file:/home/cavallinux/dev/src/sandbox/falabella-ws-mocks/panquery-wsserver/src/main/wsdl/wsdl/OSB_CMR_CORP_ConsultarIDClientePAN.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:/home/cavallinux/dev/src/sandbox/falabella-ws-mocks/panquery-wsserver/src/main/wsdl/wsdl/OSB_CMR_CORP_ConsultarIDClientePAN.wsdl"><con:part><con:url>file:/home/cavallinux/dev/src/sandbox/falabella-ws-mocks/panquery-wsserver/src/main/wsdl/wsdl/OSB_CMR_CORP_ConsultarIDClientePAN.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://mdwcorp.falabella.com/OSB/wsdl/CMR/CORP/Satif/tarjeta/consultarIDClientePAN/consulta-v1.0" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://mdwcorp.falabella.com/OSB/wsdl/CMR/CORP/Satif/tarjeta/consultarIDClientePAN/consulta-v1.0" xmlns:cs="http://mdwcorp.falabella.com/common/schema/clientservice" xmlns:envelope="http://schemas.xmlsoap.org/soap/envelope/" xmlns:req="http://mdwcorp.falabella.com/OSB/schema/CMR/CORP/tarjeta/consultarIDClientePAN/Req-v2012.08" xmlns:resp="http://mdwcorp.falabella.com/OSB/schema/CMR/CORP/tarjeta/consultarIDClientePAN/Resp-v2012.08">
+  <wsdl:types>
+    <xs:schema targetNamespace="http://mdwcorp.falabella.com/OSB/wsdl/CMR/CORP/Satif/tarjeta/consultarIDClientePAN/consulta-v1.0" elementFormDefault="qualified">
+      <xs:import namespace="http://mdwcorp.falabella.com/common/schema/clientservice" schemaLocation="../Schemas/MdwCorp_Common_clientService.xsd"/>
+      <xs:import namespace="http://schemas.xmlsoap.org/soap/envelope/" schemaLocation="../Schemas/MdwCorp_Common_soapFault.xsd"/>
+      <xs:import namespace="http://mdwcorp.falabella.com/OSB/schema/CMR/CORP/tarjeta/consultarIDClientePAN/Req-v2012.08" schemaLocation="../Schemas/OSB_CMR_CORP_ConsultarIDClientePANReq.xsd"/>
+      <xs:import namespace="http://mdwcorp.falabella.com/OSB/schema/CMR/CORP/tarjeta/consultarIDClientePAN/Resp-v2012.08" schemaLocation="../Schemas/OSB_CMR_CORP_ConsultarIDClientePANResp.xsd"/>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="ClienteMsgReq">
+    <wsdl:part name="ClienteReqParam" element="req:consultarIDClientePANRequest"/>
+  </wsdl:message>
+  <wsdl:message name="ClienteMsgResp">
+    <wsdl:part name="ClienteRespParam" element="resp:consultarIDClientePANResponse"/>
+  </wsdl:message>
+  <wsdl:message name="FaultMsg">
+    <wsdl:part name="FaultParam" element="envelope:Fault"/>
+  </wsdl:message>
+  <wsdl:message name="ClientServiceMsg">
+    <wsdl:part name="ClientServiceParam" element="cs:ClientService"/>
+  </wsdl:message>
+  <wsdl:portType name="ConsultarIDClientePANPt">
+    <wsdl:operation name="ConsultaIDClientePANOp">
+      <wsdl:input message="tns:ClienteMsgReq"/>
+      <wsdl:output message="tns:ClienteMsgResp"/>
+      <wsdl:fault name="Fault" message="tns:FaultMsg"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ConsultarIDClientePANBinding" type="tns:ConsultarIDClientePANPt">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="ConsultaIDClientePANOp">
+      <soap:operation soapAction="http://mdwcorp.falabella.com/OSB/wsdl/CMR/CORP/Satif/tarjeta/consultarIDClientePAN/consulta-v1.0/ConsultaIDClientePAN" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:ClientServiceMsg" part="ClientServiceParam" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Fault">
+        <soap:fault name="Fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ConsultarIDClientePANService">
+    <wsdl:port name="ConsultarIDClientePANPort" binding="tns:ConsultarIDClientePANBinding">
+      <soap:address location="http://localhost"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>file:/home/cavallinux/dev/src/sandbox/falabella-ws-mocks/panquery-wsserver/src/main/wsdl/Schemas/MdwCorp_Common_clientService.xsd</con:url><con:content><![CDATA[<xs:schema targetNamespace="http://mdwcorp.falabella.com/common/schema/clientservice" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns:cs="http://mdwcorp.falabella.com/common/schema/clientservice" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="ClientService" type="cs:ClientService_TYPE"/>
+  <xs:complexType name="ClientService_TYPE">
+    <xs:sequence>
+      <xs:element name="country" type="cs:Country_TYPE"/>
+      <xs:element name="commerce" type="cs:Commerce_TYPE"/>
+      <xs:element name="channel" type="cs:Channel_TYPE"/>
+      <xs:element name="storeId" type="xs:string" minOccurs="0"/>
+      <xs:element name="terminalId" type="xs:string" minOccurs="0"/>
+      <xs:element name="date" type="xs:date" minOccurs="0"/>
+      <xs:element name="hour" type="xs:time" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="Country_TYPE">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="AR"/>
+      <xs:enumeration value="CL"/>
+      <xs:enumeration value="CO"/>
+      <xs:enumeration value="PE"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Commerce_TYPE">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Banco"/>
+      <xs:enumeration value="CMR"/>
+      <xs:enumeration value="Falabella"/>
+      <xs:enumeration value="Seguros"/>
+      <xs:enumeration value="Sodimac"/>
+      <xs:enumeration value="Tottus"/>
+      <xs:enumeration value="Viajes"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Channel_TYPE">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ASL+"/>
+      <xs:enumeration value="B2B"/>
+      <xs:enumeration value="B2C"/>
+      <xs:enumeration value="Comercio Adherido"/>
+      <xs:enumeration value="Fono Compras"/>
+      <xs:enumeration value="IVR"/>
+      <xs:enumeration value="Kiosco"/>
+      <xs:enumeration value="Mobile"/>
+      <xs:enumeration value="Portal"/>
+      <xs:enumeration value="Presencial"/>
+      <xs:enumeration value="SIX"/>
+      <xs:enumeration value="Web"/>
+      <xs:enumeration value="Web CMR"/>
+      <xs:enumeration value="Web-PAC"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:/home/cavallinux/dev/src/sandbox/falabella-ws-mocks/panquery-wsserver/src/main/wsdl/Schemas/MdwCorp_Common_soapFault.xsd</con:url><con:content><![CDATA[<xs:schema targetNamespace="http://schemas.xmlsoap.org/soap/envelope/" elementFormDefault="unqualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://schemas.xmlsoap.org/soap/envelope/">
+  <xs:element name="Fault">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="faultcode" type="xs:string" minOccurs="0"/>
+        <xs:element name="faultstring" type="xs:string" minOccurs="0"/>
+        <xs:element name="faultactor" type="xs:string" minOccurs="0"/>
+        <xs:element name="detail" type="xs:anyType" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:/home/cavallinux/dev/src/sandbox/falabella-ws-mocks/panquery-wsserver/src/main/wsdl/Schemas/OSB_CMR_CORP_ConsultarIDClientePANReq.xsd</con:url><con:content><![CDATA[<!--Esquema que representa el Request de la operacion Consultar ID Cliente mediante PAN-->
+<!--Desarrollado por Marcelo Valeria - ext_mvaleria@falabella.cl - 2012-->
+<xs:schema targetNamespace="http://mdwcorp.falabella.com/OSB/schema/CMR/CORP/tarjeta/consultarIDClientePAN/Req-v2012.08" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns="http://mdwcorp.falabella.com/OSB/schema/CMR/CORP/tarjeta/consultarIDClientePAN/Req-v2012.08" xmlns:tarjeta="http://mdwcorp.falabella.com/schema/CMR/tarjeta/v2012.6" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://mdwcorp.falabella.com/schema/CMR/tarjeta/v2012.6" schemaLocation="BO_CMR_CORP_Tarjeta_v2012.6.xsd"/>
+  <xs:element name="consultarIDClientePANRequest" type="consultarIDClientePANRequest_TYPE"/>
+  <xs:complexType name="consultarIDClientePANRequest_TYPE">
+    <xs:sequence>
+      <xs:element ref="tarjeta:PAN"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:/home/cavallinux/dev/src/sandbox/falabella-ws-mocks/panquery-wsserver/src/main/wsdl/Schemas/BO_CMR_CORP_Tarjeta_v2012.6.xsd</con:url><con:content><![CDATA[<!--edited with XMLSpy v2008 rel. 2 sp1 (http://www.altova.com) by joyarzun (EMBRACE)-->
+<xs:schema targetNamespace="http://mdwcorp.falabella.com/schema/CMR/tarjeta/v2012.6" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:tarjeta="http://mdwcorp.falabella.com/schema/CMR/tarjeta/v2012.6" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="PAN" type="tarjeta:PAN_TYPE">
+    <xs:annotation>
+      <xs:documentation>Numero de la tarjeta</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:simpleType name="PAN_TYPE">
+    <xs:restriction base="xs:string">
+      <xs:length value="16"/>
+      <xs:pattern value="[0-9]*"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="producto" type="tarjeta:producto_TYPE">
+    <xs:annotation>
+      <xs:documentation>Producto de la tarjeta (VISA, MASTERCARD, CLASICA)</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:simpleType name="producto_TYPE">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="VISA"/>
+      <xs:enumeration value="CLASICA"/>
+      <xs:enumeration value="MASTERCARD"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="estado" type="tarjeta:estado_TYPE">
+    <xs:annotation>
+      <xs:documentation>Estado en que se encuentra la tarjeta</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:simpleType name="estado_TYPE">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Activa"/>
+      <xs:enumeration value="Bloqueada"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="tipoTarjeta" type="tarjeta:tipoTarjeta_TYPE">
+    <xs:annotation>
+      <xs:documentation>Tipo de la tarjeta (Titular, Adicional)</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:simpleType name="tipoTarjeta_TYPE">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Titular"/>
+      <xs:enumeration value="Adicional"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="CVV" type="tarjeta:CVV_TYPE">
+    <xs:annotation>
+      <xs:documentation>Codigo de seguridad de la tarjeta</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:simpleType name="CVV_TYPE">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9][0-9][0-9]"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="fechaExpiracion" type="tarjeta:fechaExpiracion_TYPE">
+    <xs:annotation>
+      <xs:documentation>Fecha de expiracion de la tarjeta</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="fechaExpiracion_TYPE">
+    <xs:sequence>
+      <xs:element ref="tarjeta:mes"/>
+      <xs:element ref="tarjeta:ano"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="mes" type="tarjeta:mes_TYPE">
+    <xs:annotation>
+      <xs:documentation>Mes de la fecha de expiracion de la tarjeta</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:simpleType name="mes_TYPE">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="(0[1-9]|1[012])+"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ano" type="tarjeta:ano_TYPE">
+    <xs:annotation>
+      <xs:documentation>Año de la fecha de expiracion de la tarjeta</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:simpleType name="ano_TYPE">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="(20[1-9][2-9])+"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:/home/cavallinux/dev/src/sandbox/falabella-ws-mocks/panquery-wsserver/src/main/wsdl/Schemas/OSB_CMR_CORP_ConsultarIDClientePANResp.xsd</con:url><con:content><![CDATA[<!--Esquema que representa el Response de la operacion Consultar ID Cliente mediante PAN-->
+<!--Desarrollado por Marcelo Valeria - ext_mvaleria@falabella.cl - 2012-->
+<xs:schema targetNamespace="http://mdwcorp.falabella.com/OSB/schema/CMR/CORP/tarjeta/consultarIDClientePAN/Resp-v2012.08" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns="http://mdwcorp.falabella.com/OSB/schema/CMR/CORP/tarjeta/consultarIDClientePAN/Resp-v2012.08" xmlns:tarjeta="http://mdwcorp.falabella.com/schema/CMR/tarjeta/v2012.6" xmlns:cliente="http://mdwcorp.falabella.com/schema/CMR/cliente/v2012.6" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://mdwcorp.falabella.com/schema/CMR/tarjeta/v2012.6" schemaLocation="BO_CMR_CORP_Tarjeta_v2012.6.xsd"/>
+  <xs:import namespace="http://mdwcorp.falabella.com/schema/CMR/cliente/v2012.6" schemaLocation="BO_CMR_CORP_Cliente_v2012.6.xsd"/>
+  <xs:element name="consultarIDClientePANResponse" type="consultarIDClientePANResponse_TYPE"/>
+  <xs:complexType name="consultarIDClientePANResponse_TYPE">
+    <xs:sequence>
+      <xs:element name="operacionStatus">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="codigoStatus" type="xs:string"/>
+            <xs:element name="glosaStatus" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element ref="cliente:documentoIdentidad" minOccurs="0"/>
+      <xs:element ref="tarjeta:PAN"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:/home/cavallinux/dev/src/sandbox/falabella-ws-mocks/panquery-wsserver/src/main/wsdl/Schemas/BO_CMR_CORP_Cliente_v2012.6.xsd</con:url><con:content><![CDATA[<!--edited with XMLSpy v2008 rel. 2 sp1 (http://www.altova.com) by joyarzun (EMBRACE)-->
+<xs:schema targetNamespace="http://mdwcorp.falabella.com/schema/CMR/cliente/v2012.6" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:cliente="http://mdwcorp.falabella.com/schema/CMR/cliente/v2012.6" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="documentoIdentidad" type="cliente:documentoIdentidad_Type">
+    <xs:annotation>
+      <xs:documentation>Documento de identidad del cliente</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="documentoIdentidad_Type">
+    <xs:sequence>
+      <xs:element ref="cliente:tipoDocumentoIdentidad"/>
+      <xs:element ref="cliente:numeroDocumentoIdentidad"/>
+      <xs:element ref="cliente:verificadorDocumentoIdentidad" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="tipoDocumentoIdentidad" type="cliente:tipoDocumentoIdentidad_TYPE">
+    <xs:annotation>
+      <xs:documentation>Tipo de documento de identidad del cliente de acuerdo a la realidad de cada pais</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:simpleType name="tipoDocumentoIdentidad_TYPE">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="RUT">
+        <xs:annotation>
+          <xs:documentation>CL Rol Unico Tributario</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="NIT">
+        <xs:annotation>
+          <xs:documentation>CO Numero de Identificacion Tributaria</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CEDULA_DE_CIUDADANIA">
+        <xs:annotation>
+          <xs:documentation>CO Cedula de ciudadania</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CEDULA_DE_EXTRANJERIA">
+        <xs:annotation>
+          <xs:documentation>CO Cedula de extranjeria</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="TARJETA_DE_IDENTIDAD">
+        <xs:annotation>
+          <xs:documentation>CO Tarjeta de identidad (menores)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PASAPORTE">
+        <xs:annotation>
+          <xs:documentation>CORP Pasaporte</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CARNET_DIPLOMATICO">
+        <xs:annotation>
+          <xs:documentation>CORP Carnet diplomatico</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DNI">
+        <xs:annotation>
+          <xs:documentation>PE, AR Documento nacional de identidad</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CARNET_DE_EXTRANJERIA">
+        <xs:annotation>
+          <xs:documentation>PE Carnet de extranjeria</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CARNET_FFPP">
+        <xs:annotation>
+          <xs:documentation>PE Carnet de fuerzas policiales</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CARNET_FFAA">
+        <xs:annotation>
+          <xs:documentation>PE Carnet de fuerzas armadas</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="LT">
+        <xs:annotation>
+          <xs:documentation>PE Libreta tributaria</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="RUC">
+        <xs:annotation>
+          <xs:documentation>PE registro unico de contribuyentes</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="LIBRETA_CIVICA">
+        <xs:annotation>
+          <xs:documentation>AR Libreta civica</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="LIBRETA_ENROLAMIENTO">
+        <xs:annotation>
+          <xs:documentation>AR Libreta de enrolamiento</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PRESTAMOS_SODIMAC_MUTUAL">
+        <xs:annotation>
+          <xs:documentation>NO DEFINIDO</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CUIT">
+        <xs:annotation>
+          <xs:documentation>AR Codigo unico de identificacion tributaria</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CUIL">
+        <xs:annotation>
+          <xs:documentation>AR Codigo unico de identificacion laboral</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CI">
+        <xs:annotation>
+          <xs:documentation>AR Cedula de identidad</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CIU">
+        <xs:annotation>
+          <xs:documentation>AR Clave de identificacion unica</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="numeroDocumentoIdentidad" type="cliente:numeroDocumentoIdentidad_TYPE"/>
+  <xs:simpleType name="numeroDocumentoIdentidad_TYPE">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]*"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="verificadorDocumentoIdentidad" type="cliente:verificadorDocumentoIdentidad_TYPE">
+    <xs:annotation>
+      <xs:documentation>Verificador del numero del documento del cliente.Obligatorio en el caso de Chile</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:simpleType name="verificadorDocumentoIdentidad_TYPE">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="tipoCliente" type="cliente:tipoCliente_TYPE">
+    <xs:annotation>
+      <xs:documentation>Tipo de cliente de CMR</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:simpleType name="tipoCliente_TYPE">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NORMAL"/>
+      <xs:enumeration value="PREMIUM"/>
+      <xs:enumeration value="ELITE"/>
+      <xs:enumeration value="NORMAL_EMPLOYEE"/>
+      <xs:enumeration value="PREMIUM_EMPLOYEE"/>
+      <xs:enumeration value="ELITE_EMPLOYEE"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="nombreCompleto" type="cliente:nombreCompleto_Type">
+    <xs:annotation>
+      <xs:documentation>Nombres y apellidos del cliente</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="nombreCompleto_Type">
+    <xs:sequence>
+      <xs:element ref="cliente:nombres"/>
+      <xs:element ref="cliente:apellidoPaterno"/>
+      <xs:element ref="cliente:apellidoMaterno"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="nombres" type="cliente:nombres_TYPE">
+    <xs:annotation>
+      <xs:documentation>Nombres del cliente</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:simpleType name="nombres_TYPE">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[^0-9]*"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="apellidoMaterno" type="cliente:apellidoMaterno_TYPE">
+    <xs:annotation>
+      <xs:documentation>Apellido materno del cliente</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:simpleType name="apellidoMaterno_TYPE">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[^0-9]*"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="apellidoPaterno" type="cliente:apellidoPaterno_TYPE">
+    <xs:annotation>
+      <xs:documentation>Apellido paterno del cliente</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:simpleType name="apellidoPaterno_TYPE">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[^0-9]*"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="fechaNacimiento" type="cliente:fechaNacimiento_TYPE">
+    <xs:annotation>
+      <xs:documentation>Fecha de nacimiento del cliente</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:simpleType name="fechaNacimiento_TYPE">
+    <xs:restriction base="xs:date"/>
+  </xs:simpleType>
+  <xs:element name="nivelSeguridad" type="cliente:nivelSeguridad_TYPE">
+    <xs:annotation>
+      <xs:documentation>Nivel de seguridad del cliente</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:simpleType name="nivelSeguridad_TYPE">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Alto"/>
+      <xs:enumeration value="Bajo"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="cantidadContratos" type="cliente:cantidadContratos_TYPE">
+    <xs:annotation>
+      <xs:documentation>Cantidad de contratos que tiene el cliente</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:simpleType name="cantidadContratos_TYPE">
+    <xs:restriction base="xs:nonNegativeInteger"/>
+  </xs:simpleType>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://192.168.0.70:8080/wsmocks/services/PanQueryID</con:endpoint><con:endpoint>http://localhost</con:endpoint></con:endpoints><con:operation isOneWay="false" action="http://mdwcorp.falabella.com/OSB/wsdl/CMR/CORP/Satif/tarjeta/consultarIDClientePAN/consulta-v1.0/ConsultaIDClientePAN" name="ConsultaIDClientePANOp" bindingOperationName="ConsultaIDClientePANOp" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Consulta de CMR Clasica"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://192.168.0.70:8080/wsmocks/services/PanQueryID</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://mdwcorp.falabella.com/common/schema/clientservice" xmlns:req="http://mdwcorp.falabella.com/OSB/schema/CMR/CORP/tarjeta/consultarIDClientePAN/Req-v2012.08" xmlns:v20="http://mdwcorp.falabella.com/schema/CMR/tarjeta/v2012.6">
+   <soapenv:Header>
+      <cli:ClientService>
+         <cli:country>CL</cli:country>
+         <cli:commerce>CMR</cli:commerce>
+         <cli:channel>Web</cli:channel>
+      </cli:ClientService>
+   </soapenv:Header>
+   <soapenv:Body>
+      <req:consultarIDClientePANRequest>
+         <v20:PAN>6271801052479391</v20:PAN>
+      </req:consultarIDClientePANRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://mdwcorp.falabella.com/OSB/wsdl/CMR/CORP/Satif/tarjeta/consultarIDClientePAN/consulta-v1.0/ConsultaIDClientePAN"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/></con:soapui-project>
