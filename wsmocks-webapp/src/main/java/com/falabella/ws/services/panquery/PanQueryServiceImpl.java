@@ -37,26 +37,6 @@ public class PanQueryServiceImpl implements ConsultarIDClientePANPt {
 	    documentoIdentidad.setNumeroDocumentoIdentidad(rut);
 	    documentoIdentidad.setVerificadorDocumentoIdentidad(RUTUtils.getDV(Integer.parseInt(rut)));
 	    
-	    /*if ("6271801052479391".equals(creditCardNumber)) {
-		documentoIdentidad.setNumeroDocumentoIdentidad("15956647");
-		documentoIdentidad.setVerificadorDocumentoIdentidad("1");
-	    } else if ("6271801077438026".equals(creditCardNumber)) {
-		documentoIdentidad.setNumeroDocumentoIdentidad("22222222");
-		documentoIdentidad.setVerificadorDocumentoIdentidad("2");
-	    } else if ("4600720010114113".equals(creditCardNumber)) {
-		documentoIdentidad.setNumeroDocumentoIdentidad("15956647");
-		documentoIdentidad.setVerificadorDocumentoIdentidad("1");
-	    } else if ("4051880400349994".equals(creditCardNumber)) {
-		documentoIdentidad.setNumeroDocumentoIdentidad("18117235");
-		documentoIdentidad.setVerificadorDocumentoIdentidad("5");
-	    } else if ("4051885600446623".equals(creditCardNumber)) {
-		documentoIdentidad.setNumeroDocumentoIdentidad("17671685");
-		documentoIdentidad.setVerificadorDocumentoIdentidad("1");
-	    } else if ("6271801077438025".equals(creditCardNumber)) {
-		documentoIdentidad.setNumeroDocumentoIdentidad("1");
-		documentoIdentidad.setVerificadorDocumentoIdentidad("9");
-	    }*/
-	    
 	    OperacionStatus operacionStatus = new OperacionStatus();
 	    operacionStatus.setCodigoStatus("00");
 	    operacionStatus.setGlosaStatus("PAN Ok");
