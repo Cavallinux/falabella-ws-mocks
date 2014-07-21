@@ -32,6 +32,15 @@
 		<entry key="4051885600446623" value="17671685" />
 		<entry key="6271801077438025" value="1" />
 	</util:map>
+	
+	<util:set id="validRutSet" set-class="java.util.HashSet">
+		<value>159566471</value>
+		<value>13450594K</value>
+		<value>222222222</value>
+		<value>19</value>
+		<value>181172355</value>
+		<value>176716851</value>
+	</util:set>
 
 	<jaxws:endpoint id="validateTokenWS" address="/ValidateToken">
 		<jaxws:implementor>
