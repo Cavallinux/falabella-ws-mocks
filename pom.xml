@@ -25,6 +25,7 @@
 		<module>panquery-wsserver</module>
 		<module>wsmocks-utils</module>
 		<module>wsmocks-webapp</module>
+		<module>wsmocks-ear-module</module>
 	</modules>
 
 	<build>
