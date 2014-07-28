@@ -10,15 +10,6 @@
 	<name>Validate Token, WS Server</name>
 	<description>Fuentes lado servidor del servicio web de validacion de token</description>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
-	
 	<profiles>
 		<profile>
 			<id>validatetoken-wscodegen</id>
@@ -55,4 +46,17 @@
 			</build>
 		</profile>
 	</profiles>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-frontend-jaxws</artifactId>
+			<version>${cxf.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-transports-http</artifactId>
+			<version>${cxf.version}</version>
+		</dependency>
+	</dependencies>
 </project>

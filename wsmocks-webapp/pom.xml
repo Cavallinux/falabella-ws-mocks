@@ -20,7 +20,7 @@
 		<tomcat.password>manager</tomcat.password>
 		<final.name>wsmocks</final.name>
 	</properties>
-	
+
 	<build>
 		<finalName>${final.name}</finalName>
 		<plugins>
@@ -103,6 +103,16 @@
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>1.7.7</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-frontend-jaxws</artifactId>
+			<version>${cxf.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-transports-http</artifactId>
+			<version>${cxf.version}</version>
 		</dependency>
 	</dependencies>
 </project>
