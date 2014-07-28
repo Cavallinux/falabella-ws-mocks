@@ -1,0 +1,4 @@
+Notas de instalacion.
+
+- Para logging de aplicacion web, setear la siguiente variable en los parametros de arranque de la maquina virtual del applicationServer
+o contenedor de servlets: path.logs indicando la ruta absoluta donde se ubicaran los logs de la aplicacion.
