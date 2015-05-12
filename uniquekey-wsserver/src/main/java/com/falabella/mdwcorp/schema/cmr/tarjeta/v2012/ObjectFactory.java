@@ -24,7 +24,7 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _Año_QNAME = new QName("http://mdwcorp.falabella.com/schema/CMR/tarjeta/v2012.6", "a\u00f1o");
+    private final static QName _Anio_QNAME = new QName("http://mdwcorp.falabella.com/schema/CMR/tarjeta/v2012.6", "a\u00f1o");
     private final static QName _PAN_QNAME = new QName("http://mdwcorp.falabella.com/schema/CMR/tarjeta/v2012.6", "PAN");
     private final static QName _CVV_QNAME = new QName("http://mdwcorp.falabella.com/schema/CMR/tarjeta/v2012.6", "CVV");
     private final static QName _Producto_QNAME = new QName("http://mdwcorp.falabella.com/schema/CMR/tarjeta/v2012.6", "producto");
@@ -52,9 +52,9 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://mdwcorp.falabella.com/schema/CMR/tarjeta/v2012.6", name = "a\u00f1o")
-    public JAXBElement<String> createAño(String value) {
-        return new JAXBElement<String>(_Año_QNAME, String.class, null, value);
+    @XmlElementDecl(namespace = "http://mdwcorp.falabella.com/schema/CMR/tarjeta/v2012.6", name = "anio")
+    public JAXBElement<String> createAnio(String value) {
+        return new JAXBElement<String>(_Anio_QNAME, String.class, null, value);
     }
 
     /**

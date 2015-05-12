@@ -47,15 +47,15 @@
 		</jaxws:implementor>
 	</jaxws:endpoint>
 
-	<jaxws:endpoint id="getPreferencesWS" address="/AdministrationV2">
-		<jaxws:implementor>
-			<ref bean="getPreferencesService" />
-		</jaxws:implementor>
-	</jaxws:endpoint>
-
 	<jaxws:endpoint id="panQueryWS" address="/PanQueryID">
 		<jaxws:implementor>
 			<ref bean="panQueryService" />
+		</jaxws:implementor>
+	</jaxws:endpoint>
+	
+	<jaxws:endpoint id="adminV2WS" address="/Administrationv2">
+		<jaxws:implementor>
+			<ref bean="adminV2Service" />
 		</jaxws:implementor>
 	</jaxws:endpoint>
 

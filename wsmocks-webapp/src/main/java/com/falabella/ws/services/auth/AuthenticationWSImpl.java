@@ -22,6 +22,7 @@ public class AuthenticationWSImpl implements AuthenticationWS {
 	GetChallengeResponseVO response = new GetChallengeResponseVO();
 	response.setErrorCode(0);
 	response.setErrorMessage("Ok");
+	response.setDeviceType("OTP");
 	return response;
     }
 

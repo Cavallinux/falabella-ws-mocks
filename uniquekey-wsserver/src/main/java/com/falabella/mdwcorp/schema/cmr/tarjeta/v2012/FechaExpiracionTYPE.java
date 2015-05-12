@@ -30,14 +30,14 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "fechaExpiracion_TYPE", propOrder = {
     "mes",
-    "a\u00f1o"
+    "anio"
 })
 public class FechaExpiracionTYPE {
 
     @XmlElement(required = true)
     protected String mes;
     @XmlElement(required = true)
-    protected String año;
+    protected String ano;
 
     /**
      * Gets the value of the mes property.
@@ -71,8 +71,8 @@ public class FechaExpiracionTYPE {
      *     {@link String }
      *     
      */
-    public String getAño() {
-        return año;
+    public String getAno() {
+        return ano;
     }
 
     /**
@@ -83,8 +83,8 @@ public class FechaExpiracionTYPE {
      *     {@link String }
      *     
      */
-    public void setAño(String value) {
-        this.año = value;
+    public void setAno(String value) {
+        this.ano = value;
     }
 
 }

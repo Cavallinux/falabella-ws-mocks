@@ -26,6 +26,7 @@
 		<module>wsmocks-utils</module>
 		<module>wsmocks-webapp</module>
 		<module>wsmocks-ear-module</module>
+		<module>adminv2-wsserver</module>
 	</modules>
 
 	<build>

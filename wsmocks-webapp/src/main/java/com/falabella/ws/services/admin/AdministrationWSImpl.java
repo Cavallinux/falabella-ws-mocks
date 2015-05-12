@@ -29,14 +29,12 @@ import cl.taisachile.scc.ws.UnlockDeviceResponseVO;
 
 @Service("administrationService")
 public class AdministrationWSImpl implements AdministrationWS {
-    //private static int stolen = 0;
-    
     @Override
     public GetUserResponseVO getUser(GetUserParamVO getUserParam) {
 	GetUserResponseVO response = new GetUserResponseVO();
 	ContactoInfoVO contactInfo = new ContactoInfoVO();
 	contactInfo.setLabel("EMAIL");
-	contactInfo.setValue("rvillablanca@orangepeople.cl");
+	contactInfo.setValue("pmezzano@experti.cl");
 	response.getUserInfo().add(contactInfo);
 
 	DeviceVO device = new DeviceVO();
@@ -53,10 +51,6 @@ public class AdministrationWSImpl implements AdministrationWS {
 	    device.setType("OTP");
 	} else if ("222222222".equals(userId)) {
 	    device.setType("OTP_SMS");
-	    //stolen++;
-	    /*
-	     * if (stolen == 5) { device.setState("CANCELED"); stolen = 0; }
-	     */
 	} else {
 	    device.setType("GRID");
 	}
