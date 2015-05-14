@@ -41,139 +41,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SetAuthenticationPreferenceParamVO }
+     * Create an instance of {@link AuthenticationPreferenceVO }
      * 
      */
-    public SetAuthenticationPreferenceParamVO createSetAuthenticationPreferenceParamVO() {
-        return new SetAuthenticationPreferenceParamVO();
-    }
-
-    /**
-     * Create an instance of {@link UserVO }
-     * 
-     */
-    public UserVO createUserVO() {
-        return new UserVO();
-    }
-
-    /**
-     * Create an instance of {@link GetUserResponseVO }
-     * 
-     */
-    public GetUserResponseVO createGetUserResponseVO() {
-        return new GetUserResponseVO();
-    }
-
-    /**
-     * Create an instance of {@link QaSecretVO }
-     * 
-     */
-    public QaSecretVO createQaSecretVO() {
-        return new QaSecretVO();
-    }
-
-    /**
-     * Create an instance of {@link MachineVO }
-     * 
-     */
-    public MachineVO createMachineVO() {
-        return new MachineVO();
-    }
-
-    /**
-     * Create an instance of {@link GetPreferencesResponseVO }
-     * 
-     */
-    public GetPreferencesResponseVO createGetPreferencesResponseVO() {
-        return new GetPreferencesResponseVO();
-    }
-
-    /**
-     * Create an instance of {@link SetAuthenticationPreferenceResponse }
-     * 
-     */
-    public SetAuthenticationPreferenceResponse createSetAuthenticationPreferenceResponse() {
-        return new SetAuthenticationPreferenceResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetPreferencesResponse }
-     * 
-     */
-    public GetPreferencesResponse createGetPreferencesResponse() {
-        return new GetPreferencesResponse();
-    }
-
-    /**
-     * Create an instance of {@link DeviceVO }
-     * 
-     */
-    public DeviceVO createDeviceVO() {
-        return new DeviceVO();
-    }
-
-    /**
-     * Create an instance of {@link GetAvailableDeviceTypes }
-     * 
-     */
-    public GetAvailableDeviceTypes createGetAvailableDeviceTypes() {
-        return new GetAvailableDeviceTypes();
-    }
-
-    /**
-     * Create an instance of {@link GetAvailableDeviceTypesResponseVO }
-     * 
-     */
-    public GetAvailableDeviceTypesResponseVO createGetAvailableDeviceTypesResponseVO() {
-        return new GetAvailableDeviceTypesResponseVO();
-    }
-
-    /**
-     * Create an instance of {@link ContactoInfoVO }
-     * 
-     */
-    public ContactoInfoVO createContactoInfoVO() {
-        return new ContactoInfoVO();
-    }
-
-    /**
-     * Create an instance of {@link DeviceTypeVO }
-     * 
-     */
-    public DeviceTypeVO createDeviceTypeVO() {
-        return new DeviceTypeVO();
-    }
-
-    /**
-     * Create an instance of {@link ContextVO }
-     * 
-     */
-    public ContextVO createContextVO() {
-        return new ContextVO();
-    }
-
-    /**
-     * Create an instance of {@link GetAvailableDeviceTypesParamVO }
-     * 
-     */
-    public GetAvailableDeviceTypesParamVO createGetAvailableDeviceTypesParamVO() {
-        return new GetAvailableDeviceTypesParamVO();
-    }
-
-    /**
-     * Create an instance of {@link GetPreferences }
-     * 
-     */
-    public GetPreferences createGetPreferences() {
-        return new GetPreferences();
-    }
-
-    /**
-     * Create an instance of {@link GetAvailableDeviceTypesResponse }
-     * 
-     */
-    public GetAvailableDeviceTypesResponse createGetAvailableDeviceTypesResponse() {
-        return new GetAvailableDeviceTypesResponse();
+    public AuthenticationPreferenceVO createAuthenticationPreferenceVO() {
+        return new AuthenticationPreferenceVO();
     }
 
     /**
@@ -185,19 +57,43 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AuthenticationPreferenceVO }
+     * Create an instance of {@link GetPreferences }
      * 
      */
-    public AuthenticationPreferenceVO createAuthenticationPreferenceVO() {
-        return new AuthenticationPreferenceVO();
+    public GetPreferences createGetPreferences() {
+        return new GetPreferences();
     }
 
     /**
-     * Create an instance of {@link SetAuthenticationPreference }
+     * Create an instance of {@link GetAvailableDeviceTypesResponseVO }
      * 
      */
-    public SetAuthenticationPreference createSetAuthenticationPreference() {
-        return new SetAuthenticationPreference();
+    public GetAvailableDeviceTypesResponseVO createGetAvailableDeviceTypesResponseVO() {
+        return new GetAvailableDeviceTypesResponseVO();
+    }
+
+    /**
+     * Create an instance of {@link ContextVO }
+     * 
+     */
+    public ContextVO createContextVO() {
+        return new ContextVO();
+    }
+
+    /**
+     * Create an instance of {@link QaSecretVO }
+     * 
+     */
+    public QaSecretVO createQaSecretVO() {
+        return new QaSecretVO();
+    }
+
+    /**
+     * Create an instance of {@link DeviceVO }
+     * 
+     */
+    public DeviceVO createDeviceVO() {
+        return new DeviceVO();
     }
 
     /**
@@ -209,11 +105,99 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetPreferencesResponseVO }
+     * 
+     */
+    public GetPreferencesResponseVO createGetPreferencesResponseVO() {
+        return new GetPreferencesResponseVO();
+    }
+
+    /**
+     * Create an instance of {@link SetAuthenticationPreferenceParamVO }
+     * 
+     */
+    public SetAuthenticationPreferenceParamVO createSetAuthenticationPreferenceParamVO() {
+        return new SetAuthenticationPreferenceParamVO();
+    }
+
+    /**
+     * Create an instance of {@link GetUserResponseVO }
+     * 
+     */
+    public GetUserResponseVO createGetUserResponseVO() {
+        return new GetUserResponseVO();
+    }
+
+    /**
+     * Create an instance of {@link UserVO }
+     * 
+     */
+    public UserVO createUserVO() {
+        return new UserVO();
+    }
+
+    /**
      * Create an instance of {@link GetPreferencesParamVO }
      * 
      */
     public GetPreferencesParamVO createGetPreferencesParamVO() {
         return new GetPreferencesParamVO();
+    }
+
+    /**
+     * Create an instance of {@link GetAvailableDeviceTypesParamVO }
+     * 
+     */
+    public GetAvailableDeviceTypesParamVO createGetAvailableDeviceTypesParamVO() {
+        return new GetAvailableDeviceTypesParamVO();
+    }
+
+    /**
+     * Create an instance of {@link MachineVO }
+     * 
+     */
+    public MachineVO createMachineVO() {
+        return new MachineVO();
+    }
+
+    /**
+     * Create an instance of {@link GetPreferencesResponse }
+     * 
+     */
+    public GetPreferencesResponse createGetPreferencesResponse() {
+        return new GetPreferencesResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetAvailableDeviceTypesResponse }
+     * 
+     */
+    public GetAvailableDeviceTypesResponse createGetAvailableDeviceTypesResponse() {
+        return new GetAvailableDeviceTypesResponse();
+    }
+
+    /**
+     * Create an instance of {@link ContactoInfoVO }
+     * 
+     */
+    public ContactoInfoVO createContactoInfoVO() {
+        return new ContactoInfoVO();
+    }
+
+    /**
+     * Create an instance of {@link SetAuthenticationPreferenceResponse }
+     * 
+     */
+    public SetAuthenticationPreferenceResponse createSetAuthenticationPreferenceResponse() {
+        return new SetAuthenticationPreferenceResponse();
+    }
+
+    /**
+     * Create an instance of {@link SetAuthenticationPreference }
+     * 
+     */
+    public SetAuthenticationPreference createSetAuthenticationPreference() {
+        return new SetAuthenticationPreference();
     }
 
     /**
@@ -230,6 +214,22 @@ public class ObjectFactory {
      */
     public GetUser createGetUser() {
         return new GetUser();
+    }
+
+    /**
+     * Create an instance of {@link DeviceTypeVO }
+     * 
+     */
+    public DeviceTypeVO createDeviceTypeVO() {
+        return new DeviceTypeVO();
+    }
+
+    /**
+     * Create an instance of {@link GetAvailableDeviceTypes }
+     * 
+     */
+    public GetAvailableDeviceTypes createGetAvailableDeviceTypes() {
+        return new GetAvailableDeviceTypes();
     }
 
     /**

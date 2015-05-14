@@ -105,6 +105,7 @@ public class Administrationv2WSImpl implements Administrationv2WS {
 
 	userInfo.setLabel("EMAIL");
 	userInfo.setValue(emailPairedByRut.get(getUserParam.getUserVO().getUserId()));
+	userInfo.setOtpAttemptsRemaining(3);
 	contactoInfoVo.add(userInfo);
 
 	userInfo2.setLabel("MOBILE");

@@ -1,239 +1,255 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<wsdl:definitions name="Administrationv2WS" targetNamespace="http://ws.scc.taisachile.cl/" xmlns:ns1="http://ws.scc.taisachile.cl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<?xml version="1.0" ?><wsdl:definitions name="Administrationv2WS" targetNamespace="http://ws.scc.taisachile.cl/" xmlns:ns1="http://ws.scc.taisachile.cl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <wsdl:types>
-    <xs:schema elementFormDefault="unqualified" targetNamespace="http://ws.scc.taisachile.cl/" version="1.0" xmlns:tns="http://ws.scc.taisachile.cl/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-      <xs:element name="getAvailableDeviceTypes" type="tns:getAvailableDeviceTypes"/>
-      <xs:element name="getAvailableDeviceTypesResponse" type="tns:getAvailableDeviceTypesResponse"/>
-      <xs:element name="getPreferences" type="tns:getPreferences"/>
-      <xs:element name="getPreferencesResponse" type="tns:getPreferencesResponse"/>
-      <xs:element name="getUser" type="tns:getUser"/>
-      <xs:element name="getUserResponse" type="tns:getUserResponse"/>
-      <xs:element name="setAuthenticationPreference" type="tns:setAuthenticationPreference"/>
-      <xs:element name="setAuthenticationPreferenceResponse" type="tns:setAuthenticationPreferenceResponse"/>
-      <xs:complexType name="getUser">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="getUserParam" type="tns:getUserParamVO"/>
-        </xs:sequence>
-      </xs:complexType>
-      <xs:complexType name="getUserParamVO">
-        <xs:complexContent>
-          <xs:extension base="tns:abstractParamVO">
-            <xs:sequence>
-              <xs:element name="getContactInfo" type="xs:boolean"/>
-              <xs:element name="getDevicePreferences" type="xs:boolean"/>
-              <xs:element name="getDevices" type="xs:boolean"/>
-            </xs:sequence>
-          </xs:extension>
-        </xs:complexContent>
-      </xs:complexType>
-      <xs:complexType abstract="true" name="abstractParamVO">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="contextVO" type="tns:contextVO"/>
-          <xs:element minOccurs="0" name="userVO" type="tns:userVO"/>
-        </xs:sequence>
-      </xs:complexType>
-      <xs:complexType name="contextVO">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="channel" type="xs:string"/>
-          <xs:element minOccurs="0" name="company" type="xs:string"/>
-          <xs:element minOccurs="0" name="source" type="xs:string"/>
-          <xs:element minOccurs="0" name="transactionType" type="xs:string"/>
-        </xs:sequence>
-      </xs:complexType>
-      <xs:complexType name="userVO">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="groupId" type="xs:string"/>
-          <xs:element minOccurs="0" name="userId" type="xs:string"/>
-          <xs:element minOccurs="0" name="userIdType" type="xs:string"/>
-        </xs:sequence>
-      </xs:complexType>
-      <xs:complexType name="getUserResponse">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="return" type="tns:getUserResponseVO"/>
-        </xs:sequence>
-      </xs:complexType>
-      <xs:complexType name="getUserResponseVO">
-        <xs:complexContent>
-          <xs:extension base="tns:abstractResponseVO">
-            <xs:sequence>
-              <xs:element maxOccurs="unbounded" minOccurs="0" name="devicePreferences" nillable="true" type="tns:authenticationPreferenceVO"/>
-              <xs:element maxOccurs="unbounded" minOccurs="0" name="devices" nillable="true" type="tns:deviceVO"/>
-              <xs:element minOccurs="0" name="fullName" type="xs:string"/>
-              <xs:element maxOccurs="unbounded" minOccurs="0" name="machines" nillable="true" type="tns:machineVO"/>
-              <xs:element maxOccurs="unbounded" minOccurs="0" name="qaSecrets" nillable="true" type="tns:qaSecretVO"/>
-              <xs:element minOccurs="0" name="user" type="tns:userVO"/>
-              <xs:element maxOccurs="unbounded" minOccurs="0" name="userInfo" nillable="true" type="tns:contactoInfoVO"/>
-            </xs:sequence>
-          </xs:extension>
-        </xs:complexContent>
-      </xs:complexType>
-      <xs:complexType abstract="true" name="abstractResponseVO">
-        <xs:sequence>
-          <xs:element name="errorCode" type="xs:int"/>
-          <xs:element minOccurs="0" name="errorMessage" type="xs:string"/>
-        </xs:sequence>
-      </xs:complexType>
-      <xs:complexType name="authenticationPreferenceVO">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="deviceType" type="tns:deviceTypeVO"/>
-          <xs:element name="priority" type="xs:int"/>
-        </xs:sequence>
-      </xs:complexType>
-      <xs:complexType name="deviceTypeVO">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="code" type="xs:string"/>
-          <xs:element minOccurs="0" name="description" type="xs:string"/>
-          <xs:element name="deviceTypeId" type="xs:int"/>
-        </xs:sequence>
-      </xs:complexType>
-      <xs:complexType name="deviceVO">
-        <xs:sequence>
-          <xs:element name="attemptsRemaining" type="xs:int"/>
-          <xs:element minOccurs="0" name="serialNumber" type="xs:string"/>
-          <xs:element minOccurs="0" name="state" type="xs:string"/>
-          <xs:element minOccurs="0" name="type" type="xs:string"/>
-        </xs:sequence>
-      </xs:complexType>
-      <xs:complexType name="machineVO">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="machineLabel" type="xs:string"/>
-          <xs:element minOccurs="0" name="nonce" type="xs:string"/>
-        </xs:sequence>
-      </xs:complexType>
-      <xs:complexType name="qaSecretVO">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="answer" type="xs:string"/>
-          <xs:element minOccurs="0" name="question" type="xs:string"/>
-        </xs:sequence>
-      </xs:complexType>
-      <xs:complexType name="contactoInfoVO">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="label" type="xs:string"/>
-          <xs:element minOccurs="0" name="value" type="xs:string"/>
-        </xs:sequence>
-      </xs:complexType>
-      <xs:complexType name="getAvailableDeviceTypes">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="params" type="tns:getAvailableDeviceTypesParamVO"/>
-        </xs:sequence>
-      </xs:complexType>
-      <xs:complexType name="getAvailableDeviceTypesParamVO">
-        <xs:complexContent>
-          <xs:extension base="tns:abstractParamVO">
-            <xs:sequence/>
-          </xs:extension>
-        </xs:complexContent>
-      </xs:complexType>
-      <xs:complexType name="getAvailableDeviceTypesResponse">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="return" type="tns:getAvailableDeviceTypesResponseVO"/>
-        </xs:sequence>
-      </xs:complexType>
-      <xs:complexType name="getAvailableDeviceTypesResponseVO">
-        <xs:complexContent>
-          <xs:extension base="tns:abstractResponseVO">
-            <xs:sequence>
-              <xs:element maxOccurs="unbounded" minOccurs="0" name="availableDeviceTypes" nillable="true" type="tns:deviceTypeVO"/>
-            </xs:sequence>
-          </xs:extension>
-        </xs:complexContent>
-      </xs:complexType>
-      <xs:complexType name="setAuthenticationPreference">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="params" type="tns:setAuthenticationPreferenceParamVO"/>
-        </xs:sequence>
-      </xs:complexType>
-      <xs:complexType name="setAuthenticationPreferenceParamVO">
-        <xs:complexContent>
-          <xs:extension base="tns:abstractParamVO">
-            <xs:sequence>
-              <xs:element maxOccurs="unbounded" minOccurs="0" name="authenticationPreferences" nillable="true" type="tns:authenticationPreferenceVO"/>
-            </xs:sequence>
-          </xs:extension>
-        </xs:complexContent>
-      </xs:complexType>
-      <xs:complexType name="setAuthenticationPreferenceResponse">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="return" type="tns:setAuthenticationPreferenceResponseVO"/>
-        </xs:sequence>
-      </xs:complexType>
-      <xs:complexType name="setAuthenticationPreferenceResponseVO">
-        <xs:complexContent>
-          <xs:extension base="tns:abstractResponseVO">
-            <xs:sequence/>
-          </xs:extension>
-        </xs:complexContent>
-      </xs:complexType>
-      <xs:complexType name="getPreferences">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="getPreferencesParam" type="tns:getPreferencesParamVO"/>
-        </xs:sequence>
-      </xs:complexType>
-      <xs:complexType name="getPreferencesParamVO">
-        <xs:complexContent>
-          <xs:extension base="tns:abstractParamVO">
-            <xs:sequence/>
-          </xs:extension>
-        </xs:complexContent>
-      </xs:complexType>
-      <xs:complexType name="getPreferencesResponse">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="return" type="tns:getPreferencesResponseVO"/>
-        </xs:sequence>
-      </xs:complexType>
-      <xs:complexType name="getPreferencesResponseVO">
-        <xs:complexContent>
-          <xs:extension base="tns:abstractResponseVO">
-            <xs:sequence>
-              <xs:element maxOccurs="unbounded" minOccurs="0" name="devicePreferences" nillable="true" type="tns:authenticationPreferenceVO"/>
-              <xs:element minOccurs="0" name="fullName" type="xs:string"/>
-              <xs:element minOccurs="0" name="user" type="tns:userVO"/>
-            </xs:sequence>
-          </xs:extension>
-        </xs:complexContent>
-      </xs:complexType>
-    </xs:schema>
+<xs:schema elementFormDefault="unqualified" targetNamespace="http://ws.scc.taisachile.cl/" version="1.0" xmlns:tns="http://ws.scc.taisachile.cl/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="getAvailableDeviceTypes" type="tns:getAvailableDeviceTypes"></xs:element>
+<xs:element name="getAvailableDeviceTypesResponse" type="tns:getAvailableDeviceTypesResponse"></xs:element>
+<xs:element name="getPreferences" type="tns:getPreferences"></xs:element>
+<xs:element name="getPreferencesResponse" type="tns:getPreferencesResponse"></xs:element>
+<xs:element name="getUser" type="tns:getUser"></xs:element>
+<xs:element name="getUserResponse" type="tns:getUserResponse"></xs:element>
+<xs:element name="setAuthenticationPreference" type="tns:setAuthenticationPreference"></xs:element>
+<xs:element name="setAuthenticationPreferenceResponse" type="tns:setAuthenticationPreferenceResponse"></xs:element>
+<xs:complexType name="getUser">
+<xs:sequence>
+<xs:element minOccurs="0" name="getUserParam" type="tns:getUserParamVO"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getUserParamVO">
+<xs:complexContent>
+<xs:extension base="tns:abstractParamVO">
+<xs:sequence>
+<xs:element name="getContactInfo" type="xs:boolean"></xs:element>
+<xs:element name="getDevicePreferences" type="xs:boolean"></xs:element>
+<xs:element name="getDevices" type="xs:boolean"></xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType abstract="true" name="abstractParamVO">
+<xs:sequence>
+<xs:element minOccurs="0" name="contextVO" type="tns:contextVO"></xs:element>
+<xs:element minOccurs="0" name="userVO" type="tns:userVO"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="contextVO">
+<xs:sequence>
+<xs:element minOccurs="0" name="channel" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="company" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="source" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="transactionType" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="userVO">
+<xs:sequence>
+<xs:element minOccurs="0" name="groupId" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="userId" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="userIdType" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getUserResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:getUserResponseVO"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getUserResponseVO">
+<xs:complexContent>
+<xs:extension base="tns:abstractResponseVO">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="devicePreferences" nillable="true" type="tns:authenticationPreferenceVO"></xs:element>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="devices" nillable="true" type="tns:deviceVO"></xs:element>
+<xs:element minOccurs="0" name="fullName" type="xs:string"></xs:element>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="machines" nillable="true" type="tns:machineVO"></xs:element>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="qaSecrets" nillable="true" type="tns:qaSecretVO"></xs:element>
+<xs:element minOccurs="0" name="user" type="tns:userVO"></xs:element>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="userInfo" nillable="true" type="tns:contactoInfoVO"></xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType abstract="true" name="abstractResponseVO">
+<xs:sequence>
+<xs:element name="errorCode" type="xs:int"></xs:element>
+<xs:element minOccurs="0" name="errorMessage" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="authenticationPreferenceVO">
+<xs:sequence>
+<xs:element minOccurs="0" name="deviceType" type="tns:deviceTypeVO"></xs:element>
+<xs:element name="priority" type="xs:int"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="deviceTypeVO">
+<xs:sequence>
+<xs:element minOccurs="0" name="code" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="description" type="xs:string"></xs:element>
+<xs:element name="deviceTypeId" type="xs:int"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="deviceVO">
+<xs:sequence>
+<xs:element name="attemptsRemaining" type="xs:int"></xs:element>
+<xs:element minOccurs="0" name="serialNumber" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="state" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="type" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="machineVO">
+<xs:sequence>
+<xs:element minOccurs="0" name="machineLabel" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="nonce" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="qaSecretVO">
+<xs:sequence>
+<xs:element minOccurs="0" name="answer" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="question" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="contactoInfoVO">
+<xs:sequence>
+<xs:element minOccurs="0" name="label" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="otpAttemptsRemaining" type="xs:int"></xs:element>
+<xs:element minOccurs="0" name="value" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getAvailableDeviceTypes">
+<xs:sequence>
+<xs:element minOccurs="0" name="params" type="tns:getAvailableDeviceTypesParamVO"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getAvailableDeviceTypesParamVO">
+<xs:complexContent>
+<xs:extension base="tns:abstractParamVO">
+<xs:sequence></xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="getAvailableDeviceTypesResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:getAvailableDeviceTypesResponseVO"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getAvailableDeviceTypesResponseVO">
+<xs:complexContent>
+<xs:extension base="tns:abstractResponseVO">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="availableDeviceTypes" nillable="true" type="tns:deviceTypeVO"></xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="setAuthenticationPreference">
+<xs:sequence>
+<xs:element minOccurs="0" name="params" type="tns:setAuthenticationPreferenceParamVO"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="setAuthenticationPreferenceParamVO">
+<xs:complexContent>
+<xs:extension base="tns:abstractParamVO">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="authenticationPreferences" nillable="true" type="tns:authenticationPreferenceVO"></xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="setAuthenticationPreferenceResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:setAuthenticationPreferenceResponseVO"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="setAuthenticationPreferenceResponseVO">
+<xs:complexContent>
+<xs:extension base="tns:abstractResponseVO">
+<xs:sequence></xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="getPreferences">
+<xs:sequence>
+<xs:element minOccurs="0" name="getPreferencesParam" type="tns:getPreferencesParamVO"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getPreferencesParamVO">
+<xs:complexContent>
+<xs:extension base="tns:abstractParamVO">
+<xs:sequence></xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="getPreferencesResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:getPreferencesResponseVO"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getPreferencesResponseVO">
+<xs:complexContent>
+<xs:extension base="tns:abstractResponseVO">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="devicePreferences" nillable="true" type="tns:authenticationPreferenceVO"></xs:element>
+<xs:element minOccurs="0" name="fullName" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="user" type="tns:userVO"></xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:schema>
   </wsdl:types>
   <wsdl:message name="setAuthenticationPreferenceResponse">
-    <wsdl:part element="ns1:setAuthenticationPreferenceResponse" name="parameters"/>
+    <wsdl:part element="ns1:setAuthenticationPreferenceResponse" name="parameters">
+    </wsdl:part>
   </wsdl:message>
   <wsdl:message name="getAvailableDeviceTypes">
-    <wsdl:part element="ns1:getAvailableDeviceTypes" name="parameters"/>
+    <wsdl:part element="ns1:getAvailableDeviceTypes" name="parameters">
+    </wsdl:part>
   </wsdl:message>
   <wsdl:message name="getUserResponse">
-    <wsdl:part element="ns1:getUserResponse" name="parameters"/>
+    <wsdl:part element="ns1:getUserResponse" name="parameters">
+    </wsdl:part>
   </wsdl:message>
   <wsdl:message name="setAuthenticationPreference">
-    <wsdl:part element="ns1:setAuthenticationPreference" name="parameters"/>
+    <wsdl:part element="ns1:setAuthenticationPreference" name="parameters">
+    </wsdl:part>
   </wsdl:message>
   <wsdl:message name="getPreferencesResponse">
-    <wsdl:part element="ns1:getPreferencesResponse" name="parameters"/>
+    <wsdl:part element="ns1:getPreferencesResponse" name="parameters">
+    </wsdl:part>
   </wsdl:message>
   <wsdl:message name="getPreferences">
-    <wsdl:part element="ns1:getPreferences" name="parameters"/>
+    <wsdl:part element="ns1:getPreferences" name="parameters">
+    </wsdl:part>
   </wsdl:message>
   <wsdl:message name="getAvailableDeviceTypesResponse">
-    <wsdl:part element="ns1:getAvailableDeviceTypesResponse" name="parameters"/>
+    <wsdl:part element="ns1:getAvailableDeviceTypesResponse" name="parameters">
+    </wsdl:part>
   </wsdl:message>
   <wsdl:message name="getUser">
-    <wsdl:part element="ns1:getUser" name="parameters"/>
+    <wsdl:part element="ns1:getUser" name="parameters">
+    </wsdl:part>
   </wsdl:message>
   <wsdl:portType name="Administrationv2WS">
     <wsdl:operation name="getUser">
-      <wsdl:input message="ns1:getUser" name="getUser"/>
-      <wsdl:output message="ns1:getUserResponse" name="getUserResponse"/>
+      <wsdl:input message="ns1:getUser" name="getUser">
+    </wsdl:input>
+      <wsdl:output message="ns1:getUserResponse" name="getUserResponse">
+    </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="getAvailableDeviceTypes">
-      <wsdl:input message="ns1:getAvailableDeviceTypes" name="getAvailableDeviceTypes"/>
-      <wsdl:output message="ns1:getAvailableDeviceTypesResponse" name="getAvailableDeviceTypesResponse"/>
+      <wsdl:input message="ns1:getAvailableDeviceTypes" name="getAvailableDeviceTypes">
+    </wsdl:input>
+      <wsdl:output message="ns1:getAvailableDeviceTypesResponse" name="getAvailableDeviceTypesResponse">
+    </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="setAuthenticationPreference">
-      <wsdl:input message="ns1:setAuthenticationPreference" name="setAuthenticationPreference"/>
-      <wsdl:output message="ns1:setAuthenticationPreferenceResponse" name="setAuthenticationPreferenceResponse"/>
+      <wsdl:input message="ns1:setAuthenticationPreference" name="setAuthenticationPreference">
+    </wsdl:input>
+      <wsdl:output message="ns1:setAuthenticationPreferenceResponse" name="setAuthenticationPreferenceResponse">
+    </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="getPreferences">
-      <wsdl:input message="ns1:getPreferences" name="getPreferences"/>
-      <wsdl:output message="ns1:getPreferencesResponse" name="getPreferencesResponse"/>
+      <wsdl:input message="ns1:getPreferences" name="getPreferences">
+    </wsdl:input>
+      <wsdl:output message="ns1:getPreferencesResponse" name="getPreferencesResponse">
+    </wsdl:output>
     </wsdl:operation>
   </wsdl:portType>
 </wsdl:definitions>
