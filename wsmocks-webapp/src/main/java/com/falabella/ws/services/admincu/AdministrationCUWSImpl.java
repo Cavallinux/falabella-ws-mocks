@@ -38,8 +38,8 @@ import cl.taisachile.scc.ws.ValidateSecurityCodeResponseVO;
 
 @Service("adminCUService")
 public class AdministrationCUWSImpl implements AdministrationCUWS {
-    @Resource(name = "validRutSet")
-    private Set<String> validRuts;
+    @Resource(name = "validAdminCURuts")
+    private Set<String> validAdminCURuts;
     private static Logger logger;
     
     static {
@@ -52,7 +52,7 @@ public class AdministrationCUWSImpl implements AdministrationCUWS {
 	GetUserCUResponseVO response = new GetUserCUResponseVO();
 	UserVO userVO = params.getUserVO();
 	String userId = userVO.getUserId();
-	boolean isValid = validRuts.contains(userId);
+	boolean isValid = validAdminCURuts.contains(userId);
 	response.setErrorCode(isValid ? 0 : 14);
 	QuestionAnswerVO questionAnswer = new QuestionAnswerVO();
 	questionAnswer.setAnswer("Prueba");

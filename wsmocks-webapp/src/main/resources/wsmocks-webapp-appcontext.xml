@@ -23,6 +23,16 @@
 		<entry key="4051885600446623" value="17671685" />
 		<entry key="6271801077438025" value="1" />
 	</util:map>
+	<!--  Mapa para asociacion rut, password del cliente.-->
+	<util:map id="rutAndPasswords" map-class="java.util.HashMap">
+		<entry key="159566471" value="1234" />
+		<entry key="13450594K" value="22222222" />
+		<entry key="222222222" value="17138599" />
+		<entry key="19" value="18117235" />
+        <entry key="181172355" value="15956647" />
+		<entry key="176716851" value="17671685" />
+		<entry key="170036913" value="12345678" />
+	</util:map>
 	
 	<!--  
 	Mapa que asocia el rut del cliente con un email para el servicio de getUser
@@ -42,5 +52,9 @@
 	
 	<util:set id="validTokensSet" set-class="java.util.HashSet">
 		<value>token_123456789</value>
+	</util:set>
+	
+	<util:set id="validAdminCURuts" set-class="java.util.HashSet">
+		<value>170036913</value>
 	</util:set>
 </beans>
