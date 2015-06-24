@@ -4,6 +4,10 @@ import java.util.Set;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import cl.taisachile.scc.ws.AdministrationCUWS;
@@ -26,6 +30,7 @@ import cl.taisachile.scc.ws.GetUserCUResponseVO;
 import cl.taisachile.scc.ws.LockUserParamVO;
 import cl.taisachile.scc.ws.LockUserResponseVO;
 import cl.taisachile.scc.ws.QuestionAnswerVO;
+import cl.taisachile.scc.ws.UserVO;
 import cl.taisachile.scc.ws.ValidateChangePasswordSecurityCodeParamVO;
 import cl.taisachile.scc.ws.ValidateChangePasswordSecurityCodeResponseVO;
 import cl.taisachile.scc.ws.ValidateSecurityCodeParamVO;
@@ -35,21 +40,29 @@ import cl.taisachile.scc.ws.ValidateSecurityCodeResponseVO;
 public class AdministrationCUWSImpl implements AdministrationCUWS {
     @Resource(name = "validRutSet")
     private Set<String> validRuts;
+    private static Logger logger;
+    
+    static {
+	logger = LoggerFactory.getLogger(AdministrationCUWSImpl.class);
+    }
     
     @Override
     public GetUserCUResponseVO getUserCU(GetUserCUParamVO params) {
+	logger.debug("Param received: {}", ToStringBuilder.reflectionToString(params, ToStringStyle.MULTI_LINE_STYLE));
 	GetUserCUResponseVO response = new GetUserCUResponseVO();
-	String userId = params.getUserVO().getUserId();
+	UserVO userVO = params.getUserVO();
+	String userId = userVO.getUserId();
 	boolean isValid = validRuts.contains(userId);
-	response.setErrorCode(isValid ? 0 : -1);
+	response.setErrorCode(isValid ? 0 : 14);
 	QuestionAnswerVO questionAnswer = new QuestionAnswerVO();
 	questionAnswer.setAnswer("Prueba");
 	questionAnswer.setGroupId("CMRCL");
 	questionAnswer.setQuestion("Pregunta?");
 	questionAnswer.setUserId(userId);
-	questionAnswer.setUserIdType(params.getUserVO().getUserIdType());
+	questionAnswer.setUserIdType(userVO.getUserIdType());
 	response.getQuestionsAnswers().add(questionAnswer);
-	response.setUser(params.getUserVO());
+	response.setUser(userVO);
+	logger.debug("Response to be sent: {}", ToStringBuilder.reflectionToString(params, ToStringStyle.MULTI_LINE_STYLE));
 	return response;
     }
 

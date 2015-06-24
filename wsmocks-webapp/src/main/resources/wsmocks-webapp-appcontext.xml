@@ -39,4 +39,8 @@
 		<value>181172355</value>
 		<value>176716851</value>
 	</util:set>
+	
+	<util:set id="validTokensSet" set-class="java.util.HashSet">
+		<value>token_123456789</value>
+	</util:set>
 </beans>

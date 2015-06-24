@@ -23,7 +23,7 @@
 		</jaxws:implementor>
 	</jaxws:endpoint>
 
-	<jaxws:endpoint id="validateKeyWS" address="/ValidateKey">
+	<jaxws:endpoint id="validateKeyWS" address="/ValidaClaveUnica">
 		<jaxws:implementor>
 			<ref bean="validateKeyService" />
 		</jaxws:implementor>
