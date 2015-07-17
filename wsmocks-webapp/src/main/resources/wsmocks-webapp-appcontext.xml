@@ -50,6 +50,11 @@
 		<value>176716851</value>
 	</util:set>
 	
+	<util:set id="validRutsNotSignedUp" set-class="java.util.HashSet">
+		<value>6786534K</value>
+		<value>6635539K</value>
+	</util:set>
+	
 	<util:set id="validTokensSet" set-class="java.util.HashSet">
 		<value>token_123456789</value>
 	</util:set>

@@ -40,6 +40,8 @@ import cl.taisachile.scc.ws.ValidateSecurityCodeResponseVO;
 public class AdministrationCUWSImpl implements AdministrationCUWS {
     @Resource(name = "validAdminCURuts")
     private Set<String> validAdminCURuts;
+    @Resource(name = "validRutsNotSignedUp")
+    private Set<String> validNotSignedRuts;
     private static Logger logger;
     
     static {
@@ -53,7 +55,8 @@ public class AdministrationCUWSImpl implements AdministrationCUWS {
 	UserVO userVO = params.getUserVO();
 	String userId = userVO.getUserId();
 	boolean isValid = validAdminCURuts.contains(userId);
-	response.setErrorCode(isValid ? 0 : 14);
+	boolean isNotSignedIn = validNotSignedRuts.contains(userId);
+	response.setErrorCode(isValid ? 0 : (isNotSignedIn ? 14 : 15));
 	QuestionAnswerVO questionAnswer = new QuestionAnswerVO();
 	questionAnswer.setAnswer("Prueba");
 	questionAnswer.setGroupId("CMRCL");
