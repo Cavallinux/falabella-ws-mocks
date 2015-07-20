@@ -55,20 +55,6 @@ public class UniqueKeyServiceImpl implements ValidarClavePt {
 	    operacionStatus.setGlosaStatus("Hack para parsear 55 en la glosa");
 	}
         
-	/*if (validPasswords.contains(password)) {
-            operacionStatus.setCodigoStatus("00");
-            operacionStatus.setGlosaStatus("Ok");
-        } else if ("9999999999".equals(password)) {
-            operacionStatus.setCodigoStatus("06");
-            operacionStatus.setGlosaStatus("Hack para parsear 55 en la glosa");
-        } else if ("8888888888".equals(password)) {
-            operacionStatus.setCodigoStatus("55");
-            operacionStatus.setGlosaStatus("Hola");
-        } else {
-            operacionStatus.setCodigoStatus("90");
-            operacionStatus.setGlosaStatus("Denied");
-        }*/
-        
         ValidarClaveResponseTYPE response = new ValidarClaveResponseTYPE();
         response.setSistemaResolutor("Switch CMR");
         response.setNivelDeSeguridad("HIGH");
