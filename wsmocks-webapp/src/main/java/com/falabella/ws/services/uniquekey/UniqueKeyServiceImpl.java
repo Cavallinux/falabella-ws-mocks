@@ -22,45 +22,46 @@ import com.falabella.mdwcorp.schema.cmr.cliente.v2012.DocumentoIdentidadType;
 
 @Service("validateKeyService")
 public class UniqueKeyServiceImpl implements ValidarClavePt {
-    @Resource(name = "validPasswordsList")
-    private List<String> validPasswords;
-    @Resource(name = "rutAndPasswords")
-    private Map<String, String> rutAndPasswords;
-    private static Logger logger;
-    
-    static {
-	logger = LoggerFactory.getLogger(UniqueKeyServiceImpl.class);
-    }
+	@Resource(name = "validPasswordsList")
+	private List<String> validPasswords;
+	@Resource(name = "rutAndPasswords")
+	private Map<String, String> rutAndPasswords;
+	private static Logger logger;
 
-    @Override
-    public ValidarClaveResponseTYPE validaClaveOp(ValidarClaveRequestTYPE claveReqParam, ClientServiceTYPE clientServiceParam) throws FaultMsg {
-	logger.debug("Params received: {}, {}", new Object[]{ToStringBuilder.reflectionToString(claveReqParam, ToStringStyle.MULTI_LINE_STYLE), ToStringBuilder.reflectionToString(clientServiceParam, ToStringStyle.MULTI_LINE_STYLE)});
-	OperacionStatus operacionStatus = new OperacionStatus();
-        DocumentoIdentidadType documentoIdentidad = claveReqParam.getDocumentoIdentidad();
-	String dv = documentoIdentidad.getVerificadorDocumentoIdentidad();
-	String rutAndDV = documentoIdentidad.getNumeroDocumentoIdentidad().concat(dv);
-	
-	if (rutAndPasswords.containsKey(rutAndDV)) {
-	    String password = claveReqParam.getClave();
-	    String passwordMap = rutAndPasswords.get(rutAndDV);
-	    if (StringUtils.equals(password, passwordMap)) {
-		operacionStatus.setCodigoStatus("00");
-		operacionStatus.setGlosaStatus("Ok");
-	    } else {
-		operacionStatus.setCodigoStatus("90");
-		operacionStatus.setGlosaStatus("Denied");
-	    }
-	} else {
-	    operacionStatus.setCodigoStatus("06");
-	    operacionStatus.setGlosaStatus("Hack para parsear 55 en la glosa");
+	static {
+		logger = LoggerFactory.getLogger(UniqueKeyServiceImpl.class);
 	}
-        
-        ValidarClaveResponseTYPE response = new ValidarClaveResponseTYPE();
-        response.setSistemaResolutor("Switch CMR");
-        response.setNivelDeSeguridad("HIGH");
-        response.setOperacionStatus(operacionStatus);
-        
-        logger.debug("Response to be sent: {}", ToStringBuilder.reflectionToString(response, ToStringStyle.MULTI_LINE_STYLE));
-        return response;
-    }
+
+	@Override
+	public ValidarClaveResponseTYPE validaClaveOp(ValidarClaveRequestTYPE claveReqParam, ClientServiceTYPE clientServiceParam) throws FaultMsg {
+		logger.debug("Params received: {}, {}", new Object[] { ToStringBuilder.reflectionToString(claveReqParam, ToStringStyle.MULTI_LINE_STYLE), ToStringBuilder.reflectionToString(clientServiceParam, ToStringStyle.MULTI_LINE_STYLE) });
+		OperacionStatus operacionStatus = new OperacionStatus();
+		DocumentoIdentidadType documentoIdentidad = claveReqParam.getDocumentoIdentidad();
+		String dv = documentoIdentidad.getVerificadorDocumentoIdentidad();
+		String rutAndDV = documentoIdentidad.getNumeroDocumentoIdentidad().concat(dv);
+
+		if (rutAndPasswords.containsKey(rutAndDV)) {
+			String password = claveReqParam.getClave();
+			String passwordMap = rutAndPasswords.get(rutAndDV);
+			if (StringUtils.equals(password, passwordMap)) {
+				operacionStatus.setCodigoStatus("00");
+				operacionStatus.setGlosaStatus("Ok");
+			} else {
+				operacionStatus.setCodigoStatus("90");
+				operacionStatus.setGlosaStatus("Denied");
+			}
+		} else {
+			operacionStatus.setCodigoStatus("06");
+			operacionStatus.setGlosaStatus("Hack para parsear 55 en la glosa");
+		}
+
+		ValidarClaveResponseTYPE response = new ValidarClaveResponseTYPE();
+		response.setSistemaResolutor("Switch CMR");
+		response.setNivelDeSeguridad("HIGH");
+		response.setOperacionStatus(operacionStatus);
+
+		logger.debug("Response to be sent: {}", ToStringBuilder.reflectionToString(response,
+				ToStringStyle.MULTI_LINE_STYLE));
+		return response;
+	}
 }

@@ -38,86 +38,87 @@ import cl.taisachile.scc.ws.ValidateSecurityCodeResponseVO;
 
 @Service("adminCUService")
 public class AdministrationCUWSImpl implements AdministrationCUWS {
-    @Resource(name = "validAdminCURuts")
-    private Set<String> validAdminCURuts;
-    @Resource(name = "validRutsNotSignedUp")
-    private Set<String> validNotSignedRuts;
-    private static Logger logger;
-    
-    static {
-	logger = LoggerFactory.getLogger(AdministrationCUWSImpl.class);
-    }
-    
-    @Override
-    public GetUserCUResponseVO getUserCU(GetUserCUParamVO params) {
-	logger.debug("Param received: {}", ToStringBuilder.reflectionToString(params, ToStringStyle.MULTI_LINE_STYLE));
-	GetUserCUResponseVO response = new GetUserCUResponseVO();
-	UserVO userVO = params.getUserVO();
-	String userId = userVO.getUserId();
-	boolean isValid = validAdminCURuts.contains(userId);
-	boolean isNotSignedIn = validNotSignedRuts.contains(userId);
-	response.setErrorCode(isValid ? 0 : (isNotSignedIn ? 14 : 15));
-	QuestionAnswerVO questionAnswer = new QuestionAnswerVO();
-	questionAnswer.setAnswer("Prueba");
-	questionAnswer.setGroupId("CMRCL");
-	questionAnswer.setQuestion("Pregunta?");
-	questionAnswer.setUserId(userId);
-	questionAnswer.setUserIdType(userVO.getUserIdType());
-	response.getQuestionsAnswers().add(questionAnswer);
-	response.setUser(userVO);
-	logger.debug("Response to be sent: {}", ToStringBuilder.reflectionToString(params, ToStringStyle.MULTI_LINE_STYLE));
-	return response;
-    }
+	@Resource(name = "validAdminCURuts")
+	private Set<String> validAdminCURuts;
+	@Resource(name = "validRutsNotSignedUp")
+	private Set<String> validNotSignedRuts;
+	private static Logger logger;
 
-    @Override
-    public ValidateSecurityCodeResponseVO validateSecurityCode(ValidateSecurityCodeParamVO params) {
-	// TODO Auto-generated method stub
-	return null;
-    }
+	static {
+		logger = LoggerFactory.getLogger(AdministrationCUWSImpl.class);
+	}
 
-    @Override
-    public ChangeLevelSecurityResponseVO changeLevelSecurity(ChangeLevelSecurityParamVO params) {
-	// TODO Auto-generated method stub
-	return null;
-    }
+	@Override
+	public GetUserCUResponseVO getUserCU(GetUserCUParamVO params) {
+		logger.debug("Param received: {}", ToStringBuilder.reflectionToString(params, ToStringStyle.MULTI_LINE_STYLE));
+		GetUserCUResponseVO response = new GetUserCUResponseVO();
+		UserVO userVO = params.getUserVO();
+		String userId = userVO.getUserId();
+		boolean isValid = validAdminCURuts.contains(userId);
+		boolean isNotSignedIn = validNotSignedRuts.contains(userId);
+		response.setErrorCode(isValid ? 0 : (isNotSignedIn ? 14 : 15));
+		QuestionAnswerVO questionAnswer = new QuestionAnswerVO();
+		questionAnswer.setAnswer("Prueba");
+		questionAnswer.setGroupId("CMRCL");
+		questionAnswer.setQuestion("Pregunta?");
+		questionAnswer.setUserId(userId);
+		questionAnswer.setUserIdType(userVO.getUserIdType());
+		response.getQuestionsAnswers().add(questionAnswer);
+		response.setUser(userVO);
+		logger.debug("Response to be sent: {}", ToStringBuilder.reflectionToString(params, ToStringStyle.MULTI_LINE_STYLE));
+		return response;
+	}
 
-    @Override
-    public ChangePasswordResponseVO changePassword(ChangePasswordParamVO params) {
-	return null;
-    }
+	@Override
+	public ValidateSecurityCodeResponseVO validateSecurityCode(ValidateSecurityCodeParamVO params) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-    @Override
-    public CreateUserResponseVO createUser(CreateUserParamVO params) {
-	return null;
-    }
+	@Override
+	public ChangeLevelSecurityResponseVO changeLevelSecurity(ChangeLevelSecurityParamVO params) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-    @Override
-    public ValidateChangePasswordSecurityCodeResponseVO validateChangePasswordSecurityCode(ValidateChangePasswordSecurityCodeParamVO params) {
-	return null;
-    }
+	@Override
+	public ChangePasswordResponseVO changePassword(ChangePasswordParamVO params) {
+		return null;
+	}
 
-    @Override
-    public DeleteUserCUResponseVO deleteUserCU(DeleteUserCUParamVO params) {
-	return null;
-    }
+	@Override
+	public CreateUserResponseVO createUser(CreateUserParamVO params) {
+		return null;
+	}
 
-    @Override
-    public LockUserResponseVO lockUserByDevice(LockUserParamVO params) {
-	return null;
-    }
+	@Override
+	public ValidateChangePasswordSecurityCodeResponseVO validateChangePasswordSecurityCode(ValidateChangePasswordSecurityCodeParamVO params) {
+		return null;
+	}
 
-    @Override
-    public ExistActivationCodeCurrentResponseVO existChangePasswordSecurityCodeCurrent(ExistActivationCodeCurrentParamVO params) {
-	return null;
-    }
+	@Override
+	public DeleteUserCUResponseVO deleteUserCU(DeleteUserCUParamVO params) {
+		return null;
+	}
 
-    @Override
-    public GenerateChangePasswordSecurityCodeResponseVO generateChangePasswordSecurityCode(GenerateChangePasswordSecurityCodeParamVO params) {
-	return null;
-    }
+	@Override
+	public LockUserResponseVO lockUserByDevice(LockUserParamVO params) {
+		return null;
+	}
 
-    @Override
-    public GetGenericOptionsResponseVO getGenericOptions(GetGenericOptionsParamVO params) {
-	return null;
-    }
+	@Override
+	public ExistActivationCodeCurrentResponseVO existChangePasswordSecurityCodeCurrent(
+			ExistActivationCodeCurrentParamVO params) {
+		return null;
+	}
+
+	@Override
+	public GenerateChangePasswordSecurityCodeResponseVO generateChangePasswordSecurityCode(GenerateChangePasswordSecurityCodeParamVO params) {
+		return null;
+	}
+
+	@Override
+	public GetGenericOptionsResponseVO getGenericOptions(GetGenericOptionsParamVO params) {
+		return null;
+	}
 }

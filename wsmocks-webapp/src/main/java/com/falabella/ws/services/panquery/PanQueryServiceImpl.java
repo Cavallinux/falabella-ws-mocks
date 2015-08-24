@@ -19,38 +19,38 @@ import com.falabella.ws.utils.RUTUtils;
 
 @Service("panQueryService")
 public class PanQueryServiceImpl implements ConsultarIDClientePANPt {
-    @Resource(name = "rutCreditCardsMap")
-    private Map<String, String> rutCreditCards;
+	@Resource(name = "rutCreditCardsMap")
+	private Map<String, String> rutCreditCards;
 
-    @Override
-    public ConsultarIDClientePANResponseTYPE consultaIDClientePANOp(ConsultarIDClientePANRequestTYPE clienteReqParam, ClientServiceTYPE clientServiceParam) throws FaultMsg {
-	ConsultarIDClientePANResponseTYPE response = new ConsultarIDClientePANResponseTYPE();
-	String creditCardNumber = clienteReqParam.getPAN();
-	response.setPAN(creditCardNumber);
-	Set<String> creditCards = rutCreditCards.keySet();
+	@Override
+	public ConsultarIDClientePANResponseTYPE consultaIDClientePANOp(ConsultarIDClientePANRequestTYPE clienteReqParam, ClientServiceTYPE clientServiceParam) throws FaultMsg {
+		ConsultarIDClientePANResponseTYPE response = new ConsultarIDClientePANResponseTYPE();
+		String creditCardNumber = clienteReqParam.getPAN();
+		response.setPAN(creditCardNumber);
+		Set<String> creditCards = rutCreditCards.keySet();
 
-	if (creditCards.contains(creditCardNumber)) {
-	    String rut = rutCreditCards.get(creditCardNumber);
-	    
-	    DocumentoIdentidadType documentoIdentidad = new DocumentoIdentidadType();
-	    documentoIdentidad.setTipoDocumentoIdentidad(TipoDocumentoIdentidadTYPE.RUT);
-	    documentoIdentidad.setNumeroDocumentoIdentidad(rut);
-	    documentoIdentidad.setVerificadorDocumentoIdentidad(RUTUtils.getDV(Integer.parseInt(rut)));
-	    
-	    OperacionStatus operacionStatus = new OperacionStatus();
-	    operacionStatus.setCodigoStatus("00");
-	    operacionStatus.setGlosaStatus("PAN Ok");
+		if (creditCards.contains(creditCardNumber)) {
+			String rut = rutCreditCards.get(creditCardNumber);
 
-	    response.setDocumentoIdentidad(documentoIdentidad);
-	    response.setOperacionStatus(operacionStatus);
+			DocumentoIdentidadType documentoIdentidad = new DocumentoIdentidadType();
+			documentoIdentidad.setTipoDocumentoIdentidad(TipoDocumentoIdentidadTYPE.RUT);
+			documentoIdentidad.setNumeroDocumentoIdentidad(rut);
+			documentoIdentidad.setVerificadorDocumentoIdentidad(RUTUtils.getDV(Integer.parseInt(rut)));
 
-	} else {
-	    OperacionStatus operacionStatus = new OperacionStatus();
-	    operacionStatus.setCodigoStatus("05");
-	    operacionStatus.setGlosaStatus("Error de validacion");
-	    response.setOperacionStatus(operacionStatus);
+			OperacionStatus operacionStatus = new OperacionStatus();
+			operacionStatus.setCodigoStatus("00");
+			operacionStatus.setGlosaStatus("PAN Ok");
+
+			response.setDocumentoIdentidad(documentoIdentidad);
+			response.setOperacionStatus(operacionStatus);
+
+		} else {
+			OperacionStatus operacionStatus = new OperacionStatus();
+			operacionStatus.setCodigoStatus("05");
+			operacionStatus.setGlosaStatus("Error de validacion");
+			response.setOperacionStatus(operacionStatus);
+		}
+
+		return response;
 	}
-	
-	return response;
-    }
 }
