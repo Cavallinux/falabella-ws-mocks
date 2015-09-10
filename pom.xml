@@ -23,10 +23,12 @@
 		<module>auth-wsserver</module>
 		<module>getpreferences-wsserver</module>
 		<module>panquery-wsserver</module>
+		<module>adminv2-wsserver</module>
+		<module>clienteidentidadvalidar-wsserver</module>
+		<module>clienteidentidadvalidar-wsclient</module>
 		<module>wsmocks-utils</module>
 		<module>wsmocks-webapp</module>
 		<module>wsmocks-ear-module</module>
-		<module>adminv2-wsserver</module>
 	</modules>
 
 	<build>
@@ -44,17 +46,4 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-
-<!-- 	<dependencies>
-		<dependency>
-			<groupId>org.apache.cxf</groupId>
-			<artifactId>cxf-rt-frontend-jaxws</artifactId>
-			<version>${cxf.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.cxf</groupId>
-			<artifactId>cxf-rt-transports-http</artifactId>
-			<version>${cxf.version}</version>
-		</dependency>
-	</dependencies> -->
 </project>

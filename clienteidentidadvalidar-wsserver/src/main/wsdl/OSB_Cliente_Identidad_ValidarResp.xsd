@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema 
+	xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://mdwcorp.falabella.com/OSB/schema/FIF/CORP/cliente/identidad/validar/Resp-v2015.08" 
+	xmlns:tns="http://mdwcorp.falabella.com/OSB/schema/FIF/CORP/cliente/identidad/validar/Resp-v2015.08" 
+	elementFormDefault="unqualified">
+	
+	<xs:element name="clienteIdentidadValidarExpResp" type="tns:clienteIdentidadValidarExpResp_TYPE" />
+	<xs:complexType name="clienteIdentidadValidarExpResp_TYPE">
+		<xs:sequence>
+			<xs:element name="respuesta" type="tns:respuesta_TYPE"/>
+		</xs:sequence>
+	</xs:complexType>
+			
+	<xs:complexType name="respuesta_TYPE">
+		<xs:sequence>	
+			<xs:element name="codigoRespuesta" type="xs:string" minOccurs="0"/>
+			<xs:element name="glosaRespuesta" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+</schema>

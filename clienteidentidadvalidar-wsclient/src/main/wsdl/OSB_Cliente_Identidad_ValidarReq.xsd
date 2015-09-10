@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema 
+	xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://mdwcorp.falabella.com/OSB/schema/FIF/CORP/cliente/identidad/validar/Req-v2015.08" 
+	xmlns:tns="http://mdwcorp.falabella.com/OSB/schema/FIF/CORP/cliente/identidad/validar/Req-v2015.08" 
+	elementFormDefault="unqualified">
+
+	<xs:element name="clienteIdentidadValidarExpReq" type="tns:clienteIdentidadValidarExpReq_TYPE" />
+	<xs:complexType name="clienteIdentidadValidarExpReq_TYPE">
+		<xs:sequence>
+			<xs:element name="cliente" type="tns:cliente_TYPE"/>
+			<xs:element name="datosTransaccion" type="tns:datosTransaccion_TYPE" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="cliente_TYPE">
+		<xs:sequence>
+			<xs:element name="tipoDocumento" minOccurs="0" maxOccurs="1">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="1"/>
+                        <xs:enumeration value="2"/>
+                        <xs:enumeration value="3"/>
+                        <xs:enumeration value="4"/>
+                        <xs:enumeration value="5"/>
+                        <xs:enumeration value="6"/>
+                        <xs:enumeration value="C"/>
+                        <xs:enumeration value="D"/>
+                        <xs:enumeration value="E"/>
+                        <xs:enumeration value="P"/>
+                        <xs:enumeration value="W"/>
+                        <xs:enumeration value="X"/>
+                    </xs:restriction>
+                </xs:simpleType>
+			</xs:element>
+			<xs:element name="numeroDocumento" type="xs:string" minOccurs="1" maxOccurs="1" />
+			<xs:element name="clave" type="xs:string" minOccurs="1" maxOccurs="unbounded" />
+			<xs:element name="tipoDispositivo" minOccurs="1" maxOccurs="1" >
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="GRID"/>
+                        <xs:enumeration value="OTP"/>
+                        <xs:enumeration value="TOKENRO"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="datosTransaccion_TYPE">
+		<xs:sequence>
+			<xs:element name="cuentaOrigen" type="xs:string" minOccurs="0" maxOccurs="1" />
+			<xs:element name="cuentaDestino" type="xs:string" minOccurs="0" maxOccurs="1" />
+			<xs:element name="monto" type="xs:decimal" minOccurs="0" maxOccurs="1" />
+			<xs:element name="banco" type="xs:string" minOccurs="0" maxOccurs="1" />
+			<xs:element name="tipoTransaccion" type="xs:string" minOccurs="0" maxOccurs="1" />
+		</xs:sequence>
+	</xs:complexType>
+
+</schema>

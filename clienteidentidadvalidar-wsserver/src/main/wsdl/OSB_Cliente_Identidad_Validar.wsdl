@@ -1,0 +1,65 @@
+<wsdl:definitions name="OSB_Cliente_Identidad_Validar"
+    targetNamespace="http://mdwcorp.falabella.com/OSB/wsdl/FIF/CORP/cliente/identidad/validar-v1.0"
+    xmlns:tns="http://mdwcorp.falabella.com/OSB/wsdl/FIF/CORP/cliente/identidad/validar-v1.0" 
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	xmlns:cs="http://mdwcorp.falabella.com/common/schema/clientservice" 
+	xmlns:env="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:req="http://mdwcorp.falabella.com/OSB/schema/FIF/CORP/cliente/identidad/validar/Req-v2015.08"
+	xmlns:resp="http://mdwcorp.falabella.com/OSB/schema/FIF/CORP/cliente/identidad/validar/Resp-v2015.08">
+    
+    <wsdl:types>
+		<xs:schema>
+			<xs:import schemaLocation="MdwCorp_Common_clientService.xsd" namespace="http://mdwcorp.falabella.com/common/schema/clientservice"/>
+			<xs:import schemaLocation="MdwCorp_Common_soapFault.xsd" namespace="http://schemas.xmlsoap.org/soap/envelope/"/>
+			<xs:import schemaLocation="OSB_Cliente_Identidad_ValidarReq.xsd" namespace="http://mdwcorp.falabella.com/OSB/schema/FIF/CORP/cliente/identidad/validar/Req-v2015.08"/>
+			<xs:import schemaLocation="OSB_Cliente_Identidad_ValidarResp.xsd" namespace="http://mdwcorp.falabella.com/OSB/schema/FIF/CORP/cliente/identidad/validar/Resp-v2015.08"/>
+		</xs:schema>
+	</wsdl:types>
+    
+    <wsdl:message name="ClienteIdentidadValidarMsgReq">
+		<wsdl:part name="ClienteIdentidadValidarReqParam" element="req:clienteIdentidadValidarExpReq"/>
+	</wsdl:message>
+	<wsdl:message name="ClienteIdentidadValidarMsgResp">
+		<wsdl:part name="ClienteIdentidadValidarRespParam" element="resp:clienteIdentidadValidarExpResp"/>
+	</wsdl:message>
+    
+    <wsdl:message name="FaultMsg">
+		<wsdl:part name="FaultParam" element="env:Fault"/>
+	</wsdl:message>
+	<wsdl:message name="ClientServiceMsg">
+		<wsdl:part name="ClientServiceParam" element="cs:ClientService"/>
+	</wsdl:message>
+    
+    <wsdl:portType name="ClienteIdentidadValidarPt">
+		<wsdl:operation name="ClienteIdentidadValidarOp">
+			<wsdl:input message="tns:ClienteIdentidadValidarMsgReq"/>
+			<wsdl:output message="tns:ClienteIdentidadValidarMsgResp"/>
+			<wsdl:fault name="Fault" message="tns:FaultMsg"/>
+		</wsdl:operation>
+	</wsdl:portType>
+    
+    <wsdl:binding name="ClienteIdentidadValidarBinding" type="tns:ClienteIdentidadValidarPt">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="ClienteIdentidadValidarOp">
+			<soap:operation soapAction="http://mdwcorp.falabella.com/OSB/wsdl/FIF/CORP/cliente/identidad/validar-v1.0/Op"/>
+			<wsdl:input>
+				<soap:header message="tns:ClientServiceMsg" part="ClientServiceParam" use="literal"/>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+    
+    <wsdl:service name="ClienteIdentidadValidarService">
+		<wsdl:port name="ClienteIdentidadValidarPort" binding="tns:ClienteIdentidadValidarBinding">
+			<soap:address location="http://localhost"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>
