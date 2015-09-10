@@ -58,6 +58,12 @@
 			<ref bean="adminV2Service" />
 		</jaxws:implementor>
 	</jaxws:endpoint>
+	
+	<jaxws:endpoint id="robustAuthenticationWS" address="/RobustAuthentication">
+		<jaxws:implementor>
+			<ref bean="robustAuthenticationService" />
+		</jaxws:implementor>
+	</jaxws:endpoint>
 
 	<cxf:bus>
 		<cxf:features>
