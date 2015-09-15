@@ -9,6 +9,7 @@
 	<util:list id="validPasswordsList" list-class="java.util.ArrayList">
 		<value>1234</value>
 		<value>1234567890</value>
+		<value>12345</value>
 	</util:list>
 
 	<!-- En este mapa, se deben asociar las tarjeta de credito validas para 
@@ -23,6 +24,7 @@
 		<entry key="4051885600446623" value="17671685" />
 		<entry key="6271801077438025" value="1" />
 	</util:map>
+	
 	<!--  Mapa para asociacion rut, password del cliente.-->
 	<util:map id="rutAndPasswords" map-class="java.util.HashMap">
 		<entry key="159566471" value="1234" />
