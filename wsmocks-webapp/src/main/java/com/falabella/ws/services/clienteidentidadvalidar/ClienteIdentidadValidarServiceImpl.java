@@ -32,7 +32,7 @@ public class ClienteIdentidadValidarServiceImpl implements ClienteIdentidadValid
 	
 	@PostConstruct
 	public void init() {
-		pattern = Pattern.compile("^[a-zA-Z0-9]{3,15}$");
+		pattern = Pattern.compile("^[a-zA-Z0-9]$");
 	}
 	
 	static {
@@ -57,7 +57,7 @@ public class ClienteIdentidadValidarServiceImpl implements ClienteIdentidadValid
 				int passwordLength = clave.length();
 				
 				if (passwordLength < 6) {
-					authResponse.setCodigoRespuesta("461");
+					authResponse.setCodigoRespuesta("412");
 					authResponse.setGlosaRespuesta("La contrase\u00d1a debe tener 6 d\u00edgitos.");
 				} else {
 					Matcher matcher = pattern.matcher(clave);
