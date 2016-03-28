@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<s0:definitions name="WSGuardaRequerimientoWFServiceDefinitions" targetNamespace="http://com/adaptus/ws/controladores" xmlns:s0="http://schemas.xmlsoap.org/wsdl/" xmlns:s1="http://com/adaptus/ws/controladores" xmlns:s2="http://schemas.xmlsoap.org/wsdl/soap/">
+  <s0:types>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://com/adaptus/ws/controladores" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="RequerimientoWF">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="RUT" type="xs:string"/>
+            <xs:element name="NOMBRES" type="xs:string"/>
+            <xs:element name="APELLIDO_PATERNO" type="xs:string"/>
+            <xs:element name="APELLIDO_MATERNO" type="xs:string"/>
+            <xs:element name="TELEFONO_PARTICULAR" type="xs:string"/>
+            <xs:element name="CELULAR" type="xs:string"/>
+            <xs:element name="DESC_CIUDAD" type="xs:string"/>
+            <xs:element name="COD_CIUDAD" type="xs:string"/>
+            <xs:element name="MAIL" type="xs:string"/>
+            <xs:element name="TIPO_REQUERIMIENTO" type="xs:string"/>
+            <xs:element name="CONCEPTO" type="xs:string"/>
+            <xs:element name="PRODUCTO" type="xs:string"/>
+            <xs:element name="TIPO" type="xs:string"/>
+            <xs:element name="MOTIVO" type="xs:string"/>
+            <xs:element name="COD_SEGMENTO" type="xs:string"/>
+            <xs:element name="AREA_INGRESO" type="xs:string"/>
+            <xs:element name="COD_OFICINA" type="xs:string"/>
+            <xs:element name="ORIGINADOR" type="xs:string"/>
+            <xs:element name="TIPO_FORMULARIO" type="xs:string"/>
+            <xs:element name="COMENTARIOS" type="xs:string"/>
+            <xs:element name="MALA_ATENCION" type="xs:string"/>
+            <xs:element name="EJEC_MALA_ATENCION" type="xs:string"/>
+            <xs:element name="SUC_MALA_ATENCION" type="xs:string"/>
+            <xs:element name="EJEC_SOL_PGO" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RequerimientoWFResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </s0:types>
+  <s0:message name="RequerimientoWF">
+    <s0:part element="s1:RequerimientoWF" name="parameters"/>
+  </s0:message>
+  <s0:message name="RequerimientoWFResponse">
+    <s0:part element="s1:RequerimientoWFResponse" name="parameters"/>
+  </s0:message>
+  <s0:portType name="WSGuardaRequerimientoWF">
+    <s0:operation name="RequerimientoWF" parameterOrder="parameters">
+      <s0:input message="s1:RequerimientoWF"/>
+      <s0:output message="s1:RequerimientoWFResponse"/>
+    </s0:operation>
+  </s0:portType>
+  <s0:binding name="WSGuardaRequerimientoWFServiceSoapBinding" type="s1:WSGuardaRequerimientoWF">
+    <s2:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <s0:operation name="RequerimientoWF">
+      <s2:operation style="document"/>
+      <s0:input>
+        <s2:body parts="parameters" use="literal"/>
+      </s0:input>
+      <s0:output>
+        <s2:body parts="parameters" use="literal"/>
+      </s0:output>
+    </s0:operation>
+  </s0:binding>
+  <s0:service name="WSGuardaRequerimientoWFService">
+    <s0:port binding="s1:WSGuardaRequerimientoWFServiceSoapBinding" name="WSGuardaRequerimientoWFSoapPort">
+      <s2:address location="http://ebankingcont1.bancofalabella.cl:7010/WSSolicitudProductos/WSGuardaRequerimientoWF"/>
+    </s0:port>
+  </s0:service>
+</s0:definitions>

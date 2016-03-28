@@ -26,6 +26,9 @@
 		<module>adminv2-wsserver</module>
 		<module>clienteidentidadvalidar-wsserver</module>
 		<module>clienteidentidadvalidar-wsclient</module>
+		<module>aumentocupo-wsserver</module>
+		<module>guardarequerimientowf-wsserver</module>
+		<module>cliclienteconsolidado-wsserver</module>
 		<module>wsmocks-utils</module>
 		<module>wsmocks-webapp</module>
 		<module>wsmocks-ear-module</module>

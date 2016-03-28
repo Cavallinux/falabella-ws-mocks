@@ -64,6 +64,24 @@
 			<ref bean="robustAuthenticationService" />
 		</jaxws:implementor>
 	</jaxws:endpoint>
+	
+	<jaxws:endpoint id="aumentoCupoWS" address="/AumentoDeCupo">
+		<jaxws:implementor>
+			<ref bean="aumentoCupoService" />
+		</jaxws:implementor>
+	</jaxws:endpoint>
+	
+	<jaxws:endpoint id="guardaRequerimientoWFWS" address="/WSGuardaRequerimientoWF">
+		<jaxws:implementor>
+			<ref bean="guardaRequerimientoWFService" />
+		</jaxws:implementor>
+	</jaxws:endpoint>
+	
+	<jaxws:endpoint id="cliClienteConsolidadoWS" address="/CliClienteConsolidado">
+		<jaxws:implementor>
+			<ref bean="cliClienteConsolidadoService" />
+		</jaxws:implementor>
+	</jaxws:endpoint>
 
 	<cxf:bus>
 		<cxf:features>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s0:definitions name="CliClienteConsolidadoServiceDefinitions" targetNamespace="http://cl/bancofalabella/ebanking/service" xmlns:s0="http://schemas.xmlsoap.org/wsdl/" xmlns:s1="http://cl/bancofalabella/ebanking/service" xmlns:s2="java:cl.bancofalabella.ebanking.exception" xmlns:s3="http://schemas.xmlsoap.org/wsdl/soap/">
+  <s0:types>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://cl/bancofalabella/ebanking/service" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="java:cl.bancofalabella.ebanking.message.cliClienteConsolidado"/>
+      <xs:element name="CliResumenCon">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="CLI_CLIENTE_RUT" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CliResumenConResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="java:ArrayOfCliResumenConMsg_literal" xmlns:java="java:cl.bancofalabella.ebanking.message.cliClienteConsolidado"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="java:cl.bancofalabella.ebanking.message.cliClienteConsolidado" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="CliResumenConMsg">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="CLI_CODIGO_MONEDA" nillable="false" type="xs:short"/>
+          <xs:element minOccurs="1" name="CLI_CODIGO_PARIDAD" nillable="false" type="xs:short"/>
+          <xs:element minOccurs="1" name="CLI_CUOTAS_TOTALES" nillable="false" type="xs:short"/>
+          <xs:element minOccurs="1" name="CLI_CUOTA_A_PAGAR" nillable="false" type="xs:short"/>
+          <xs:element minOccurs="1" name="CLI_CUPO_AUTORIZADO" nillable="true" type="xs:decimal"/>
+          <xs:element minOccurs="1" name="CLI_CUPO_AUTORIZADO_1" nillable="true" type="xs:decimal"/>
+          <xs:element minOccurs="1" name="CLI_CUPO_AUTORIZADO_2" nillable="true" type="xs:decimal"/>
+          <xs:element minOccurs="1" name="CLI_CUPO_AUTORIZADO_3" nillable="true" type="xs:decimal"/>
+          <xs:element minOccurs="1" name="CLI_CUPO_UTILIZADO_1" nillable="true" type="xs:decimal"/>
+          <xs:element minOccurs="1" name="CLI_CUPO_UTILIZADO_2" nillable="true" type="xs:decimal"/>
+          <xs:element minOccurs="1" name="CLI_CUPO_UTILIZADO_3" nillable="true" type="xs:decimal"/>
+          <xs:element minOccurs="1" name="CLI_DEUDA_UTILIZADA" nillable="true" type="xs:decimal"/>
+          <xs:element minOccurs="1" name="CLI_DISPONIBLE" nillable="true" type="xs:decimal"/>
+          <xs:element minOccurs="1" name="CLI_DISPONIBLE_1" nillable="true" type="xs:decimal"/>
+          <xs:element minOccurs="1" name="CLI_DISPONIBLE_2" nillable="true" type="xs:decimal"/>
+          <xs:element minOccurs="1" name="CLI_DISPONIBLE_3" nillable="true" type="xs:decimal"/>
+          <xs:element minOccurs="1" name="CLI_FECHA_VENCIMIENTO" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="CLI_FECHA_VENCIMIENTO_2" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="CLI_MONTO_INVERSION" nillable="true" type="xs:decimal"/>
+          <xs:element minOccurs="1" name="CLI_OPERACION_CODIGO" nillable="false" type="xs:long"/>
+          <xs:element minOccurs="1" name="CLI_PRODUCTO_CODIGO" nillable="false" type="xs:short"/>
+          <xs:element minOccurs="1" name="CLI_SALDO_CONTABLE" nillable="true" type="xs:decimal"/>
+          <xs:element minOccurs="1" name="CLI_SALDO_DISPONIBLE" nillable="true" type="xs:decimal"/>
+          <xs:element minOccurs="1" name="CLI_SUBPRODUCTO_CODIGO" nillable="false" type="xs:short"/>
+          <xs:element minOccurs="1" name="CLI_SUBPRODUCTO_NOMBRE" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="CLI_TIPO" nillable="false" type="xs:short"/>
+          <xs:element minOccurs="1" name="CLI_VALOR_CUOTA" nillable="true" type="xs:decimal"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ArrayOfCliResumenConMsg_literal">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="CliResumenConMsg" nillable="true" type="java:CliResumenConMsg" xmlns:java="java:cl.bancofalabella.ebanking.message.cliClienteConsolidado"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfCliResumenConMsg_literal" type="java:ArrayOfCliResumenConMsg_literal" xmlns:java="java:cl.bancofalabella.ebanking.message.cliClienteConsolidado"/>
+    </xs:schema>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="java:cl.bancofalabella.ebanking.exception" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="BancoFalabellaException">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="Codigo" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="Error" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="BancoFalabellaException" type="java:BancoFalabellaException" xmlns:java="java:cl.bancofalabella.ebanking.exception"/>
+    </xs:schema>
+  </s0:types>
+  <s0:message name="CliResumenCon">
+    <s0:part element="s1:CliResumenCon" name="parameters"/>
+  </s0:message>
+  <s0:message name="CliResumenConResponse">
+    <s0:part element="s1:CliResumenConResponse" name="parameters"/>
+  </s0:message>
+  <s0:message name="BancoFalabellaException">
+    <s0:part element="s2:BancoFalabellaException" name="BancoFalabellaException"/>
+  </s0:message>
+  <s0:portType name="CliClienteConsolidado">
+    <s0:operation name="CliResumenCon" parameterOrder="parameters">
+      <s0:input message="s1:CliResumenCon"/>
+      <s0:output message="s1:CliResumenConResponse"/>
+      <s0:fault message="s1:BancoFalabellaException" name="BancoFalabellaException"/>
+    </s0:operation>
+  </s0:portType>
+  <s0:binding name="CliClienteConsolidadoServiceSoapBinding" type="s1:CliClienteConsolidado">
+    <s3:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <s0:operation name="CliResumenCon">
+      <s3:operation soapAction="" style="document"/>
+      <s0:input>
+        <s3:body parts="parameters" use="literal"/>
+      </s0:input>
+      <s0:output>
+        <s3:body parts="parameters" use="literal"/>
+      </s0:output>
+      <s0:fault name="BancoFalabellaException">
+        <s3:fault name="BancoFalabellaException" use="literal"/>
+      </s0:fault>
+    </s0:operation>
+  </s0:binding>
+  <s0:service name="CliClienteConsolidadoService">
+    <s0:port binding="s1:CliClienteConsolidadoServiceSoapBinding" name="CliClienteConsolidadoSoapPort">
+      <s3:address location="http://192.168.1.120:7001/eBanking/CliClienteConsolidado"/>
+    </s0:port>
+  </s0:service>
+</s0:definitions>

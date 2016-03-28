@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Oracle JAX-WS 2.1.3-07/10/2008 08:41 PM(bt).--><xs:schema version="1.0" targetNamespace="http://impl.ws.aumentocupo.trebolit.com/" xmlns:tns="http://impl.ws.aumentocupo.trebolit.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="aplicarAumentoCupoLC" type="tns:aplicarAumentoCupoLC"/>
+  <xs:element name="aplicarAumentoCupoLCResponse" type="tns:aplicarAumentoCupoLCResponse"/>
+  <xs:element name="aplicarAumentoCupoTC" type="tns:aplicarAumentoCupoTC"/>
+  <xs:element name="aplicarAumentoCupoTCResponse" type="tns:aplicarAumentoCupoTCResponse"/>
+  <xs:complexType name="aplicarAumentoCupoTC">
+    <xs:sequence>
+      <xs:element name="rut" type="xs:int" minOccurs="0"/>
+      <xs:element name="numeroTarjeta" type="xs:string" minOccurs="0"/>
+      <xs:element name="sucursal" type="xs:short" minOccurs="0"/>
+      <xs:element name="usuario" type="xs:int" minOccurs="0"/>
+      <xs:element name="cupoOtorgado" type="xs:double" minOccurs="0"/>
+      <xs:element name="cupoActual" type="xs:double" minOccurs="0"/>
+      <xs:element name="flagDolar" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="aplicarAumentoCupoTCResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:respuestaVO" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="respuestaVO">
+    <xs:sequence>
+      <xs:element name="codigoRespuesta" type="xs:short" minOccurs="0"/>
+      <xs:element name="mensajeRespuesta" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="aplicarAumentoCupoLC">
+    <xs:sequence>
+      <xs:element name="rut" type="xs:int" minOccurs="0"/>
+      <xs:element name="numeroCuenta" type="xs:double" minOccurs="0"/>
+      <xs:element name="sucursal" type="xs:short" minOccurs="0"/>
+      <xs:element name="usuario" type="xs:int" minOccurs="0"/>
+      <xs:element name="monto" type="xs:double" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="aplicarAumentoCupoLCResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:respuestaVO" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
