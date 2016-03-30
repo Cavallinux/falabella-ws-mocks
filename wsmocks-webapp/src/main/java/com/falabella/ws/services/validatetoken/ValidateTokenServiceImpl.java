@@ -18,33 +18,32 @@ import com.falabella.mdwcorp.osb.wsdl.cmr.cl.cliente.validartoken_v1_0.ValidarTo
 
 @Service("validateTokenService")
 public class ValidateTokenServiceImpl implements ValidarTokenPt {
-	@Resource(name = "validTokensSet")
-	private Set<String> validTokens;
-	private static Logger logger;
+    @Resource(name = "validTokensSet")
+    private Set<String> validTokens;
+    private static Logger logger;
 
-	static {
-		logger = LoggerFactory.getLogger(ValidateTokenServiceImpl.class);
+    static {
+	logger = LoggerFactory.getLogger(ValidateTokenServiceImpl.class);
+    }
+
+    @Override
+    public ValidarTokenResponseExp validarTokenOp(ValidarTokenRequestExp parameters,ClientServiceTYPE clientServiceParam) throws FaultMsg {
+	logger.debug("Parameters received: {} {}", new Object[] { ToStringBuilder.reflectionToString(parameters, ToStringStyle.MULTI_LINE_STYLE), ToStringBuilder.reflectionToString(clientServiceParam, ToStringStyle.MULTI_LINE_STYLE) });
+	String token = parameters.getToken();
+	ValidarTokenResponseExp validarTokenResponseExp = new ValidarTokenResponseExp();
+
+	if (validTokens.contains(token)) {
+	    validarTokenResponseExp.setCodigo(new String("00"));
+	    validarTokenResponseExp.setMensaje(new String("Login con éxito"));
+	} else {
+	    validarTokenResponseExp.setCodigo(new String("03"));
+	    validarTokenResponseExp.setMensaje(new String("Error genérico"));
 	}
+	validarTokenResponseExp.setRut(new String("1-9"));
+	validarTokenResponseExp.setUrlRespuesta(new String("http://respuesta.cl"));
 
-	@Override
-	public ValidarTokenResponseExp validarTokenOp(ValidarTokenRequestExp parameters, ClientServiceTYPE clientServiceParam) throws FaultMsg {
-		logger.debug("Parameters received: {} {}", new Object[] { ToStringBuilder.reflectionToString(parameters, ToStringStyle.MULTI_LINE_STYLE), ToStringBuilder.reflectionToString(clientServiceParam, ToStringStyle.MULTI_LINE_STYLE) });
-		String token = parameters.getToken();
-		ValidarTokenResponseExp validarTokenResponseExp = new ValidarTokenResponseExp();
+	logger.debug("Response to be sent:_{}", ToStringBuilder.reflectionToString(validarTokenResponseExp, ToStringStyle.MULTI_LINE_STYLE));
 
-		if (validTokens.contains(token)) {
-			validarTokenResponseExp.setCodigo(new String("00"));
-			validarTokenResponseExp.setMensaje(new String("Login con éxito"));
-
-		} else {
-			validarTokenResponseExp.setCodigo(new String("03"));
-			validarTokenResponseExp.setMensaje(new String("Error genérico"));
-		}
-		validarTokenResponseExp.setRut(new String("1-9"));
-		validarTokenResponseExp.setUrlRespuesta(new String("http://respuesta.cl"));
-
-		logger.debug("Response to be sent:_{}", ToStringBuilder.reflectionToString(validarTokenResponseExp, ToStringStyle.MULTI_LINE_STYLE));
-
-		return validarTokenResponseExp;
-	}
+	return validarTokenResponseExp;
+    }
 }

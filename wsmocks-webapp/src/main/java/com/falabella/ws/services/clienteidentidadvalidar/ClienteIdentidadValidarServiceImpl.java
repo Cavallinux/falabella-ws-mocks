@@ -25,58 +25,58 @@ import com.falabella.mdwcorp.osb.wsdl.fif.corp.cliente.identidad.validar_v1_0.Fa
 
 @Service("robustAuthenticationService")
 public class ClienteIdentidadValidarServiceImpl implements ClienteIdentidadValidarPt {
-	@Resource(name = "rutAndPasswords")
-	private Map<String, String> rutAndPasswords;
-	private Pattern pattern;
-	private static Logger logger;
-	
-	@PostConstruct
-	public void init() {
-		pattern = Pattern.compile("^[a-zA-Z0-9]$");
-	}
-	
-	static {
-		logger = LoggerFactory.getLogger(ClienteIdentidadValidarServiceImpl.class);
+    @Resource(name = "rutAndPasswords")
+    private Map<String, String> rutAndPasswords;
+    private Pattern pattern;
+    private static Logger logger;
+
+    @PostConstruct
+    public void init() {
+	pattern = Pattern.compile("^[a-zA-Z0-9]$");
+    }
+
+    static {
+	logger = LoggerFactory.getLogger(ClienteIdentidadValidarServiceImpl.class);
+    }
+
+    @Override
+    public ClienteIdentidadValidarExpRespTYPE clienteIdentidadValidarOp(ClienteIdentidadValidarExpReqTYPE clienteIdentidadValidarReqParam, ClientServiceTYPE clientServiceParam) throws FaultMsg {
+	logger.debug("Parametros recibidos: {}", ReflectionToStringBuilder.toString(clienteIdentidadValidarReqParam, ToStringStyle.MULTI_LINE_STYLE));
+	ClienteIdentidadValidarExpRespTYPE response = new ClienteIdentidadValidarExpRespTYPE();
+	RespuestaTYPE authResponse = new RespuestaTYPE();
+	ClienteTYPE datosCliente = clienteIdentidadValidarReqParam.getCliente();
+	List<String> listaClaves = datosCliente.getClave();
+	String clave = listaClaves.get(0);
+
+	if (rutAndPasswords.containsKey(datosCliente.getNumeroDocumento())) {
+	    String passwordMap = rutAndPasswords.get(datosCliente.getNumeroDocumento());
+	    if (StringUtils.equals(clave, passwordMap)) {
+		authResponse.setCodigoRespuesta("201");
+		authResponse.setGlosaRespuesta("Operaci\u00f3n realizada satisfactoriamente.");
+	    } else {
+		int passwordLength = clave.length();
+
+		if (passwordLength < 6) {
+		    authResponse.setCodigoRespuesta("412");
+		    authResponse.setGlosaRespuesta("La contrase\u00d1a debe tener 6 d\u00edgitos.");
+		} else {
+		    Matcher matcher = pattern.matcher(clave);
+		    if (matcher.matches()) {
+			authResponse.setCodigoRespuesta("753");
+			authResponse.setGlosaRespuesta("Autenticaci\u00f3n fallida.");
+		    } else {
+			authResponse.setCodigoRespuesta("468");
+			authResponse.setGlosaRespuesta("Contrase\u00d1a bloqueada por reintentos fallidos");
+		    }
+		}
+	    }
+	} else {
+	    authResponse.setCodigoRespuesta("410");
+	    authResponse.setGlosaRespuesta("Usuario inexistente");
 	}
 
-	@Override
-	public ClienteIdentidadValidarExpRespTYPE clienteIdentidadValidarOp(ClienteIdentidadValidarExpReqTYPE clienteIdentidadValidarReqParam, ClientServiceTYPE clientServiceParam) throws FaultMsg {
-		logger.debug("Parametros recibidos: {}", ReflectionToStringBuilder.toString(clienteIdentidadValidarReqParam, ToStringStyle.MULTI_LINE_STYLE));
-		ClienteIdentidadValidarExpRespTYPE response = new ClienteIdentidadValidarExpRespTYPE();
-		RespuestaTYPE authResponse = new RespuestaTYPE();
-		ClienteTYPE datosCliente = clienteIdentidadValidarReqParam.getCliente();
-		List<String> listaClaves = datosCliente.getClave();
-		String clave = listaClaves.get(0);
-		
-		if (rutAndPasswords.containsKey(datosCliente.getNumeroDocumento())) {
-			String passwordMap = rutAndPasswords.get(datosCliente.getNumeroDocumento());
-			if (StringUtils.equals(clave, passwordMap)) {
-				authResponse.setCodigoRespuesta("201");
-				authResponse.setGlosaRespuesta("Operaci\u00f3n realizada satisfactoriamente.");
-			} else {
-				int passwordLength = clave.length();
-				
-				if (passwordLength < 6) {
-					authResponse.setCodigoRespuesta("412");
-					authResponse.setGlosaRespuesta("La contrase\u00d1a debe tener 6 d\u00edgitos.");
-				} else {
-					Matcher matcher = pattern.matcher(clave);
-					if (matcher.matches()) {
-						authResponse.setCodigoRespuesta("753");
-						authResponse.setGlosaRespuesta("Autenticaci\u00f3n fallida.");
-					} else {
-						authResponse.setCodigoRespuesta("468");
-						authResponse.setGlosaRespuesta("Contrase\u00d1a bloqueada por reintentos fallidos");
-					}
-				}
-			}
-		} else {
-			authResponse.setCodigoRespuesta("410");
-			authResponse.setGlosaRespuesta("Usuario inexistente");
-		}
-		
-		response.setRespuesta(authResponse);
-		logger.debug("Respuesta a enviar: {}", ReflectionToStringBuilder.toString(response, ToStringStyle.MULTI_LINE_STYLE));
-		return response;
-	}
+	response.setRespuesta(authResponse);
+	logger.debug("Respuesta a enviar: {}", ReflectionToStringBuilder.toString(response, ToStringStyle.MULTI_LINE_STYLE));
+	return response;
+    }
 }
