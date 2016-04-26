@@ -12,13 +12,14 @@
 	<artifactId>wsmocks-webapp</artifactId>
 	<packaging>war</packaging>
 	<name>Mocks WS, web application</name>
-	<description>Web application que contiene las implementaciones mock de los servicios web de CMR y TAISA</description>
+	<description>Web application que contiene las implementaciones mock de los servicios web de CMR, TAISA y Banco Falabella</description>
 
 	<properties>
-		<tomcat.manager.url>http://falabellavm:8080/manager/text</tomcat.manager.url>
+		<tomcat.manager.url>http://bcofalabelladev:18080/manager/text</tomcat.manager.url>
 		<tomcat.username>manager</tomcat.username>
 		<tomcat.password>manager</tomcat.password>
 		<tomcat7.maven.plugin.version>2.2</tomcat7.maven.plugin.version>
+		<tomcat7.deploy.update>true</tomcat7.deploy.update>
 		<final.name>wsmocks</final.name>
 	</properties>
 
@@ -32,12 +33,12 @@
 			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>
 				<artifactId>tomcat7-maven-plugin</artifactId>
-				<version>2.2</version>
+				<version>${tomcat7.maven.plugin.version}</version>
 				<configuration>
 					<url>${tomcat.manager.url}</url>
 					<username>${tomcat.username}</username>
 					<password>${tomcat.password}</password>
-					<update>true</update>
+					<update>${tomcat7.deploy.update}</update>
 					<path>/${project.build.finalName}</path>
 				</configuration>
 			</plugin>

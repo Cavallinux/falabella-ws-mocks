@@ -34,15 +34,20 @@ public class CliClienteConsolidadoServiceImpl implements CliClienteConsolidado {
 	    String cliINCLUYEOFERTAMANTENCION, String cliINCLUYELCC, String cliINCLUYELCD, String cliINCLUYECRC,
 	    String cliINCLUYERDDCONSOLIDACION, String cliINCLUYEAPERTURALCC, String cliINCLUYETCR)
 	    throws BancoFalabellaException_Exception {
+	Random random = new Random();
 	ArrayOfCliOfertasClienteMsgLiteral response = new ArrayOfCliOfertasClienteMsgLiteral();
 	List<CliOfertasClienteMsg> offers = new ArrayList<CliOfertasClienteMsg>();
 	CliOfertasClienteMsg lineOffer = new CliOfertasClienteMsg();
 	lineOffer.setCLIPRODUCTOCODIGO((short) 19);
-	boolean hasOffer = new Random().nextBoolean();
-	logger.debug("Has Offer? {}", hasOffer);
+	boolean hasOffer = random.nextBoolean();
+	Object[] logArguments = new Object[] { cliCLIENTERUT, hasOffer };
+	logger.debug("Rut {} has Line Credit Offers? {}", logArguments);
 	lineOffer.setCLISOLICITUDMONTO(new BigDecimal(hasOffer ? "600000" : "0"));
 	CliOfertasClienteMsg creditOffer = new CliOfertasClienteMsg();
 	creditOffer.setCLIPRODUCTOCODIGO((short) 18);
+	hasOffer = true;random.nextBoolean();
+	logArguments = new Object[] { cliCLIENTERUT, hasOffer };
+	logger.debug("Rut {} has Credit Card Offers? {}", logArguments);
 	creditOffer.setCLISOLICITUDMONTO(new BigDecimal(hasOffer ? "500000" : "0"));
 	offers.add(creditOffer);
 	offers.add(lineOffer);
