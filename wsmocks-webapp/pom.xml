@@ -15,7 +15,7 @@
 	<description>Web application que contiene las implementaciones mock de los servicios web de CMR, TAISA y Banco Falabella</description>
 
 	<properties>
-		<tomcat.manager.url>http://bcofalabelladev:18080/manager/text</tomcat.manager.url>
+		<tomcat.manager.url>http://bcofalabelladev2:18080/manager/text</tomcat.manager.url>
 		<tomcat.username>manager</tomcat.username>
 		<tomcat.password>manager</tomcat.password>
 		<tomcat7.maven.plugin.version>2.2</tomcat7.maven.plugin.version>
@@ -51,6 +51,16 @@
 			<artifactId>spring-web</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
+		<dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-oxm</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.thoughtworks.xstream</groupId>
+            <artifactId>xstream</artifactId>
+            <version>${xstream.version}</version>
+        </dependency>
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
