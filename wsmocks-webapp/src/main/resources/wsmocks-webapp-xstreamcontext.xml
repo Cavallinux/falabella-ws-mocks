@@ -17,4 +17,8 @@
 	</bean>
 	
 	<bean id="wfGuardaReqMarshaller" factory-bean="wfGuardaReqMarshallerFactory" factory-method="getXStream" />
+
+	<bean id="dateFormatter" class="java.text.SimpleDateFormat">
+		<constructor-arg type="java.lang.String" value="dd/MM/yyyy" />
+	</bean>
 </beans>

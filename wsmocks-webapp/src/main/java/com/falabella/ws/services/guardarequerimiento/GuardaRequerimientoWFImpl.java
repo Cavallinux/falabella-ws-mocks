@@ -1,7 +1,6 @@
 package com.falabella.ws.services.guardarequerimiento;
 
 import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
 
@@ -21,12 +20,12 @@ public class GuardaRequerimientoWFImpl implements WSGuardaRequerimientoWF {
     @Resource(name = "wfGuardaReqMarshaller")
     private XStream marshaller;
     private static Random random;
-    private static DateFormat formatter;
+    @Resource(name = "dateFormatter")
+    private DateFormat formatter;
     private static Logger logger;
     
     static {
 	random = new Random(System.currentTimeMillis());
-	formatter = new SimpleDateFormat("dd/MM/yyyy");
 	logger = LoggerFactory.getLogger(GuardaRequerimientoWFImpl.class);
     }
 
