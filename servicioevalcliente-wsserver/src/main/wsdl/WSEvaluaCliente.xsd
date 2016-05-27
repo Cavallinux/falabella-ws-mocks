@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Oracle JAX-WS 2.1.3-07/10/2008 08:41 PM(bt).--><xs:schema version="1.0" targetNamespace="http://control.evaluacionEnlinea.ws.bancofalabella.cl/" xmlns:tns="http://control.evaluacionEnlinea.ws.bancofalabella.cl/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="entradaEvaluaCliente" type="tns:entradaEvaluaCliente"/>
+  <xs:element name="listaRechazos" type="tns:listaRechazos"/>
+  <xs:element name="rechazo" type="tns:rechazo"/>
+  <xs:element name="respEvaluaCliente" type="tns:respEvaluaCliente"/>
+  <xs:element name="salidaEvaluaCliente" type="tns:salidaEvaluaCliente"/>
+  <xs:complexType name="entradaEvaluaCliente">
+    <xs:sequence>
+      <xs:element name="CLI_PRODUCTO" type="xs:short"/>
+      <xs:element name="CLI_ORIGEN_EVALUACION" type="xs:short"/>
+      <xs:element name="CLI_RUT" type="xs:int"/>
+      <xs:element name="CLI_DIGVER" type="xs:string"/>
+      <xs:element name="CLI_RTA_TIPO" type="xs:short"/>
+      <xs:element name="CLI_RTA_MONTO" type="xs:double"/>
+      <xs:element name="CLI_FECHANACIMIENTO" type="xs:string"/>
+      <xs:element name="CLI_SEXOX" type="xs:short"/>
+      <xs:element name="CLI_TIPO_EMPLEO" type="xs:short"/>
+      <xs:element name="CLI_NOMBRE" type="xs:string"/>
+      <xs:element name="CLI_APELLIDOPATERNO" type="xs:string"/>
+      <xs:element name="CLI_APELLIDOMATERNO" type="xs:string"/>
+      <xs:element name="CANAL" type="xs:short"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="salidaEvaluaCliente">
+    <xs:sequence>
+      <xs:element name="RESPUESTA" type="tns:respEvaluaCliente"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="respEvaluaCliente">
+    <xs:sequence>
+      <xs:element name="CODIGO" type="xs:int"/>
+      <xs:element name="MENSAJE" type="xs:string"/>
+      <xs:element name="CLIENTE_BANCO" type="xs:string"/>
+      <xs:element name="SEMAFORO" type="xs:string"/>
+      <xs:element name="RECHAZOS" type="tns:listaRechazos"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listaRechazos">
+    <xs:sequence>
+      <xs:element name="RECHAZO" type="tns:rechazo" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="rechazo">
+    <xs:sequence>
+      <xs:element name="CODIGO" type="xs:short"/>
+      <xs:element name="DESCRIPCION" type="xs:string"/>
+      <xs:element name="PONDERACION" type="xs:short"/>
+      <xs:element name="ROJO_INMEDIATO" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

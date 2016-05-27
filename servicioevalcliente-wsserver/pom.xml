@@ -6,12 +6,11 @@
 		<artifactId>falabella-ws-mocks</artifactId>
 		<version>0.0.1</version>
 	</parent>
-	<artifactId>cliclienteconsolidado-wsserver</artifactId>
-	<name>CliClienteConsolidado</name>
-	<description>Fuentes lado server de servicio CliClienteConsolidado</description>
+	<artifactId>servicioevalcliente-wsserver</artifactId>
+	<name>Servicio Evaluacion Cliente, fuentes Servidor</name>
 	<profiles>
 		<profile>
-			<id>cliclienteconsolidado-wscodegen</id>
+			<id>evaluacliente-wscodegen</id>
 			<build>
 				<plugins>
 					<plugin>
@@ -26,11 +25,11 @@
 									<sourceRoot>${basedir}/src/main/java</sourceRoot>
 									<wsdlOptions>
 										<wsdlOption>
-											<wsdl>http://ebankingcont1.bancofalabella.cl:7010/eBanking/CliClienteConsolidado?wsdl</wsdl>
+											<wsdl>${basedir}/src/main/wsdl/WSEvaluaCliente_1.wsdl</wsdl>
 											<extraargs>
 												<extraarg>-server</extraarg>
 												<extrarg>-p</extrarg>
-												<extrarg>com.falabella.ws.service.cliclienteconsolidado</extrarg>
+												<extrarg>com.falabella.ws.service.evaluacliente</extrarg>
 											</extraargs>
 										</wsdlOption>
 									</wsdlOptions>

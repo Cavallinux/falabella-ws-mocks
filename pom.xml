@@ -32,6 +32,7 @@
 		<module>aumentocupo-wsserver</module>
 		<module>guardarequerimientowf-wsserver</module>
 		<module>cliclienteconsolidado-wsserver</module>
+		<module>servicioevalcliente-wsserver</module>
 		<module>wsmocks-utils</module>
 		<module>wsmocks-webapp</module>
 		<module>wsmocks-ear-module</module>

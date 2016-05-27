@@ -82,6 +82,12 @@
 			<ref bean="cliClienteConsolidadoService" />
 		</jaxws:implementor>
 	</jaxws:endpoint>
+	
+	<jaxws:endpoint id="evaluaClienteWS" address="/WSEvaluaCliente">
+		<jaxws:implementor>
+			<ref bean="evaluaClienteService" />
+		</jaxws:implementor>
+	</jaxws:endpoint>
 
 	<cxf:bus>
 		<cxf:features>

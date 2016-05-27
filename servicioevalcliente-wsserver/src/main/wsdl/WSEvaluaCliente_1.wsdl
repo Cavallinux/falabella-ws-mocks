@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<s0:definitions name="WSEvaluaCliente" targetNamespace="http://control.evaluacionEnlinea.ws.bancofalabella.cl/" xmlns:s0="http://schemas.xmlsoap.org/wsdl/" xmlns:s1="http://control.evaluacionEnlinea.ws.bancofalabella.cl/" xmlns:s2="http://schemas.xmlsoap.org/wsdl/soap/">
+  <s0:types>
+    <xsd:schema xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://control.evaluacionEnlinea.ws.bancofalabella.cl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import namespace="http://control.evaluacionEnlinea.ws.bancofalabella.cl/" schemaLocation="WSEvaluaCliente.xsd"/>
+    </xsd:schema>
+  </s0:types>
+  <s0:message name="EvaGenPondera">
+    <s0:part element="s1:entradaEvaluaCliente" name="parameters"/>
+  </s0:message>
+  <s0:message name="EvaGenPonderaResponse">
+    <s0:part element="s1:salidaEvaluaCliente" name="parameters"/>
+  </s0:message>
+  <s0:portType name="ServicioEvalCliente">
+    <s0:operation name="EvaGenPondera">
+      <s0:input message="s1:EvaGenPondera"/>
+      <s0:output message="s1:EvaGenPonderaResponse"/>
+    </s0:operation>
+  </s0:portType>
+  <s0:binding name="OperacionesBinding" type="s1:ServicioEvalCliente">
+    <s2:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <s0:operation name="EvaGenPondera">
+      <s2:operation/>
+      <s0:input>
+        <s2:body use="literal"/>
+      </s0:input>
+      <s0:output>
+        <s2:body use="literal"/>
+      </s0:output>
+    </s0:operation>
+  </s0:binding>
+  <s0:service name="WSEvaluaCliente">
+    <s0:port binding="s1:OperacionesBinding" name="Operaciones">
+      <s2:address location="http://ebankingcont1.bancofalabella.cl:7010/IBanking/WSEvaluaCliente"/>
+    </s0:port>
+  </s0:service>
+</s0:definitions>
