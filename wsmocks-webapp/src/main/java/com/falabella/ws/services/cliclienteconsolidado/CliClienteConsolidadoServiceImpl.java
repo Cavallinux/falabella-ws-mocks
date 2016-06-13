@@ -45,7 +45,7 @@ public class CliClienteConsolidadoServiceImpl implements CliClienteConsolidado {
 	lineOffer.setCLISOLICITUDMONTO(new BigDecimal(hasOffer ? "600000" : "0"));
 	CliOfertasClienteMsg creditOffer = new CliOfertasClienteMsg();
 	creditOffer.setCLIPRODUCTOCODIGO((short) 18);
-	hasOffer = true;random.nextBoolean();
+	hasOffer = random.nextBoolean();
 	logArguments = new Object[] { cliCLIENTERUT, hasOffer };
 	logger.debug("Rut {} has Credit Card Offers? {}", logArguments);
 	creditOffer.setCLISOLICITUDMONTO(new BigDecimal(hasOffer ? "500000" : "0"));
